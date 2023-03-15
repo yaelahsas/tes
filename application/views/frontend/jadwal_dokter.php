@@ -113,55 +113,61 @@
 		</section><!-- End Breadcrumbs Section -->
 
 		<section class="inner-page">
-			<div class="container my-5">
-				<h1 class="text-center">Form Pendaftaran Online Pasien Rumah Sakit</h1>
-				<form>
-					<div class="mb-3">
-						<label for="nama-pasien" class="form-label">Nama Pasien (tgl lahir)</label>
-						<input type="text" class="form-control" id="nama-pasien" name="nama-pasien">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="text-center">Jadwal Dokter Hari Ini</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Nama Dokter</th>
+									<th scope="col">Spesialis</th>
+									<th scope="col">Waktu Praktek</th>
+									<th scope="col">Jumlah Pasien</th>
+									<th scope="col">Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Dr. John Doe</td>
+									<td>Kardiologi</td>
+									<td>08:00 - 10:00</td>
+									<td>2</td>
+									<td><button type="button" class="btn btn-primary">Buat Janji</button></td>
+								</tr>
+								<tr>
+									<td>Dr. John Doe</td>
+									<td>Kardiologi</td>
+									<td>08:00 - 10:00</td>
+									<td>2</td>
+									<td><button type="button" class="btn btn-primary">Buat Janji</button></td>
+								</tr>
+								<tr>
+									<td>Dr. John Doe</td>
+									<td>Kardiologi</td>
+									<td>08:00 - 10:00</td>
+									<td>2</td>
+									<td><button type="button" class="btn btn-primary">Buat Janji</button></td>
+								</tr>
+								<tr>
+									<td>Dr. John Doe</td>
+									<td>Kardiologi</td>
+									<td>08:00 - 10:00</td>
+									<td>2</td>
+									<td><button type="button" class="btn btn-primary">Buat Janji</button></td>
+								</tr>
+								<tr>
+									<td>Dr. John Doe</td>
+									<td>Kardiologi</td>
+									<td>08:00 - 10:00</td>
+									<td>2</td>
+									<td><button type="button" class="btn btn-primary">Buat Janji</button></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="mb-3">
-						<label for="nik" class="form-label">NIK</label>
-						<input type="text" class="form-control" id="nik" name="nik">
-					</div>
-					<div class="mb-3">
-						<label for="nama-ibu" class="form-label">Nama Ibu</label>
-						<input type="text" class="form-control" id="nama-ibu" name="nama-ibu">
-					</div>
-					<div class="mb-3">
-						<label for="jenis-asuransi" class="form-label">Jenis Asuransi (BPJS / SPM / Umum / Lainnya)</label>
-						<input type="text" class="form-control" id="jenis-asuransi" name="jenis-asuransi">
-					</div>
-					<div class="mb-3">
-						<label for="tujuan-poli" class="form-label">Tujuan Poli</label>
-						<input type="text" class="form-control" id="tujuan-poli" name="tujuan-poli">
-					</div>
-					<div class="mb-3">
-						<label for="tgl-rencana-periksa" class="form-label">Tgl. Rencana Periksa</label>
-						<input type="date" class="form-control" id="tgl-rencana-periksa" name="tgl-rencana-periksa">
-					</div>
-					<div class="mb-3">
-						<label for="no-telp" class="form-label">No. Telp</label>
-						<input type="tel" class="form-control" id="no-telp" name="no-telp">
-					</div>
-					<div class="mb-3">
-						<label for="no-rm" class="form-label">No. RM (Rekam Medis) *tambahkan "baru" bila belum pernah mendaftar pada nama pasien</label>
-						<input type="text" class="form-control" id="no-rm" name="no-rm">
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="syarat-ketentuan" name="syarat-ketentuan">
-						<label class="form-check-label" for="syarat-ketentuan">Saya menyetujui <a href="#">Syarat dan Ketentuan</a> yang berlaku</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Daftar</button>
-
-				</form>
-				<div class="my-5">
-					<p>Mohon melakukan pendaftaran pada jam kerja dan minimal sehari sebelum tanggal periksa.</p>
-					<p>Untuk layanan konsultasi hanya dilakukan pukul 07.00 - 12.00, apabila lebih dari itu layanan konsultasi akan dijawab kembali besok.</p>
 				</div>
 			</div>
-
-
 		</section>
 
 	</main><!-- End #main -->

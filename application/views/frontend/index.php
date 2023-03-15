@@ -160,7 +160,7 @@
 
 						<div class="icon"><i class="fas fa-calendar-days"></i></div>
 
-						<h4 class="title"><a href="<?php echo base_url('welcome/reg'); ?>">Pendaftaran Online</a></h4>
+						<h4 class="title"><a href="<?php echo base_url('home/reg'); ?>">Pendaftaran Online</a></h4>
 
 					</div>
 					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
@@ -175,12 +175,12 @@
 					</div>
 					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
 						<div class="icon"><i class="fas fa-bed-pulse"></i></div>
-						<h4 class="title"><a href="<?php echo base_url('welcome/tempat_tidur'); ?>">Ketersediaan Bed</a></h4>
+						<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>">Ketersediaan Bed</a></h4>
 
 					</div>
 					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="400">
 						<div class="icon"><i class="fas fa-envelope"></i></div>
-						<h4 class="title"><a href="<?php echo base_url('welcome/pengaduan'); ?>">Layanan Pengaduan</a></h4>
+						<h4 class="title"><a href="<?php echo base_url('home/pengaduan'); ?>">Layanan Pengaduan</a></h4>
 
 					</div>
 					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
@@ -437,37 +437,36 @@
 
 		<!-- ======= Features Section ======= -->
 		<!-- <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
+			<div class="container" data-aos="fade-up">
 
-        <div class="row">
-          <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-            <div class="icon-box mt-5 mt-lg-0">
-              <i class="bx bx-receipt"></i>
-              <h4>Est labore ad</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Harum esse qui</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-images"></i>
-              <h4>Aut occaecati</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/features.jpg");'
-            data-aos="zoom-in"></div>
-        </div>
+				<div class="row">
+					<div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
+						<div class="icon-box mt-5 mt-lg-0">
+							<i class="bx bx-receipt"></i>
+							<h4>Est labore ad</h4>
+							<p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+						</div>
+						<div class="icon-box mt-5">
+							<i class="bx bx-cube-alt"></i>
+							<h4>Harum esse qui</h4>
+							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+						</div>
+						<div class="icon-box mt-5">
+							<i class="bx bx-images"></i>
+							<h4>Aut occaecati</h4>
+							<p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+						</div>
+						<div class="icon-box mt-5">
+							<i class="bx bx-shield"></i>
+							<h4>Beatae veritatis</h4>
+							<p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+						</div>
+					</div>
+					<div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/features.jpg");' data-aos="zoom-in"></div>
+				</div>
 
-      </div>
-    </section>End Features Section -->
+			</div>
+		</section>End Features Section -->
 
 		<!-- ======= Services Section ======= -->
 

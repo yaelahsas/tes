@@ -113,55 +113,73 @@
 		</section><!-- End Breadcrumbs Section -->
 
 		<section class="inner-page">
-			<div class="container my-5">
-				<h1 class="text-center">Form Pendaftaran Online Pasien Rumah Sakit</h1>
-				<form>
-					<div class="mb-3">
-						<label for="nama-pasien" class="form-label">Nama Pasien (tgl lahir)</label>
-						<input type="text" class="form-control" id="nama-pasien" name="nama-pasien">
-					</div>
-					<div class="mb-3">
-						<label for="nik" class="form-label">NIK</label>
-						<input type="text" class="form-control" id="nik" name="nik">
-					</div>
-					<div class="mb-3">
-						<label for="nama-ibu" class="form-label">Nama Ibu</label>
-						<input type="text" class="form-control" id="nama-ibu" name="nama-ibu">
-					</div>
-					<div class="mb-3">
-						<label for="jenis-asuransi" class="form-label">Jenis Asuransi (BPJS / SPM / Umum / Lainnya)</label>
-						<input type="text" class="form-control" id="jenis-asuransi" name="jenis-asuransi">
-					</div>
-					<div class="mb-3">
-						<label for="tujuan-poli" class="form-label">Tujuan Poli</label>
-						<input type="text" class="form-control" id="tujuan-poli" name="tujuan-poli">
-					</div>
-					<div class="mb-3">
-						<label for="tgl-rencana-periksa" class="form-label">Tgl. Rencana Periksa</label>
-						<input type="date" class="form-control" id="tgl-rencana-periksa" name="tgl-rencana-periksa">
-					</div>
-					<div class="mb-3">
-						<label for="no-telp" class="form-label">No. Telp</label>
-						<input type="tel" class="form-control" id="no-telp" name="no-telp">
-					</div>
-					<div class="mb-3">
-						<label for="no-rm" class="form-label">No. RM (Rekam Medis) *tambahkan "baru" bila belum pernah mendaftar pada nama pasien</label>
-						<input type="text" class="form-control" id="no-rm" name="no-rm">
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="syarat-ketentuan" name="syarat-ketentuan">
-						<label class="form-check-label" for="syarat-ketentuan">Saya menyetujui <a href="#">Syarat dan Ketentuan</a> yang berlaku</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Daftar</button>
 
-				</form>
-				<div class="my-5">
-					<p>Mohon melakukan pendaftaran pada jam kerja dan minimal sehari sebelum tanggal periksa.</p>
-					<p>Untuk layanan konsultasi hanya dilakukan pukul 07.00 - 12.00, apabila lebih dari itu layanan konsultasi akan dijawab kembali besok.</p>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title"><i class="fas fa-user"></i> Laporan Anonim</h5>
+								<p class="card-text">Anda dapat melaporkan pelanggaran dengan cara anonim tanpa menyebutkan identitas Anda.</p>
+								<a href="#" class="btn btn-primary"><i class="fas fa-arrow-circle-right"></i> Laporkan Anonim</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title"><i class="fas fa-user-secret"></i> Laporan Teridentifikasi</h5>
+								<p class="card-text">Anda dapat melaporkan pelanggaran dengan menyebutkan identitas Anda jika ingin.</p>
+								<a href="#" class="btn btn-primary"><i class="fas fa-arrow-circle-right"></i> Laporkan Teridentifikasi</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-
-
+		</section>
+		<section>
+			<div class="container">
+				<h1 class="text-center my-5">Frequently Asked Questions</h1>
+				<div class="accordion" id="faqAccordion">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Apa itu Lorem Ipsum?
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+							<div class="accordion-body">
+								Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan yang signifikan.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Bagaimana cara menggunakan Bootstrap?
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+							<div class="accordion-body">
+								Bootstrap sangat mudah digunakan. Anda hanya perlu menambahkan file CSS dan JavaScript Bootstrap ke halaman HTML Anda, dan mulai menggunakan kelas-kelas Bootstrap untuk mengatur tampilan dan fungsionalitas situs web Anda.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Apa yang dimaksud dengan grid system di Bootstrap?
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+							<div class="accordion-body">
+								Grid system di Bootstrap adalah kumpulan kelas CSS yang memungkinkan Anda untuk dengan mudah membuat layout situs web yang responsif dan berbasis grid. Grid system ini terdiri dari 12 kolom, yang dapat diatur secara fleksibel untuk mengatur tata letak konten Anda pada berbagai ukuran layar.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 
 	</main><!-- End #main -->
@@ -245,7 +263,7 @@
 
 	<!-- Vendor JS Files -->
 	<script src="<?php echo base_url('assets/front/vendor/purecounter/purecounter_vanilla.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/front/vendor/aos/aos.js'); ?>" rel="stylesheet"></script>
+	<script src="<?php echo base_url('assets/front/vendor/aos/aos.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/front/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/front/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
@@ -254,6 +272,9 @@
 	<!-- Template Main JS File -->
 
 	<script src="<?php echo base_url('assets/front/js/main.js'); ?>"></script>
+	<script>
+
+	</script>
 
 </body>
 

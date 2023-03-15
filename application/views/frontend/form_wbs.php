@@ -113,57 +113,49 @@
 		</section><!-- End Breadcrumbs Section -->
 
 		<section class="inner-page">
-			<div class="container my-5">
-				<h1 class="text-center">Form Pendaftaran Online Pasien Rumah Sakit</h1>
+
+
+			<div class="container">
 				<form>
-					<div class="mb-3">
-						<label for="nama-pasien" class="form-label">Nama Pasien (tgl lahir)</label>
-						<input type="text" class="form-control" id="nama-pasien" name="nama-pasien">
+					<div class="form-group">
+						<label for="inputNama">Nama Lengkap</label>
+						<input type="text" class="form-control" id="inputNama" placeholder="Masukkan nama lengkap">
 					</div>
-					<div class="mb-3">
-						<label for="nik" class="form-label">NIK</label>
-						<input type="text" class="form-control" id="nik" name="nik">
+					<div class="form-group">
+						<label for="inputNIK">Nomor Induk Kependudukan (NIK)</label>
+						<input type="text" class="form-control" id="inputNIK" placeholder="Masukkan NIK">
 					</div>
-					<div class="mb-3">
-						<label for="nama-ibu" class="form-label">Nama Ibu</label>
-						<input type="text" class="form-control" id="nama-ibu" name="nama-ibu">
+					<div class="form-group">
+						<label for="inputAlamat">Alamat</label>
+						<input type="text" class="form-control" id="inputAlamat" placeholder="Masukkan alamat">
 					</div>
-					<div class="mb-3">
-						<label for="jenis-asuransi" class="form-label">Jenis Asuransi (BPJS / SPM / Umum / Lainnya)</label>
-						<input type="text" class="form-control" id="jenis-asuransi" name="jenis-asuransi">
+					<div class="form-group">
+						<label for="inputTelepon">Nomor Telepon</label>
+						<input type="text" class="form-control" id="inputTelepon" placeholder="Masukkan nomor telepon">
 					</div>
-					<div class="mb-3">
-						<label for="tujuan-poli" class="form-label">Tujuan Poli</label>
-						<input type="text" class="form-control" id="tujuan-poli" name="tujuan-poli">
+					<div class="form-group">
+						<label for="inputEmail">Email</label>
+						<input type="email" class="form-control" id="inputEmail" placeholder="Masukkan email">
 					</div>
-					<div class="mb-3">
-						<label for="tgl-rencana-periksa" class="form-label">Tgl. Rencana Periksa</label>
-						<input type="date" class="form-control" id="tgl-rencana-periksa" name="tgl-rencana-periksa">
+					<div class="form-group">
+						<label for="inputJudul">Judul Pengaduan</label>
+						<input type="text" class="form-control" id="inputJudul" placeholder="Masukkan judul pengaduan">
 					</div>
-					<div class="mb-3">
-						<label for="no-telp" class="form-label">No. Telp</label>
-						<input type="tel" class="form-control" id="no-telp" name="no-telp">
+					<div class="form-group">
+						<label for="inputPengaduan">Isi Pengaduan</label>
+						<textarea class="form-control" id="inputPengaduan" rows="5" placeholder="Masukkan isi pengaduan"></textarea>
 					</div>
-					<div class="mb-3">
-						<label for="no-rm" class="form-label">No. RM (Rekam Medis) *tambahkan "baru" bila belum pernah mendaftar pada nama pasien</label>
-						<input type="text" class="form-control" id="no-rm" name="no-rm">
+					<div class="form-group">
+						<label for="inputGambar">Upload Gambar (JPG, PNG, atau GIF)</label>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGambar">
+							<label class="custom-file-label" for="inputGambar">Pilih gambar</label>
+						</div>
 					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="syarat-ketentuan" name="syarat-ketentuan">
-						<label class="form-check-label" for="syarat-ketentuan">Saya menyetujui <a href="#">Syarat dan Ketentuan</a> yang berlaku</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Daftar</button>
-
+					<button type="submit" class="btn btn-primary">Kirim Pengaduan</button>
 				</form>
-				<div class="my-5">
-					<p>Mohon melakukan pendaftaran pada jam kerja dan minimal sehari sebelum tanggal periksa.</p>
-					<p>Untuk layanan konsultasi hanya dilakukan pukul 07.00 - 12.00, apabila lebih dari itu layanan konsultasi akan dijawab kembali besok.</p>
-				</div>
 			</div>
-
-
 		</section>
-
 	</main><!-- End #main -->
 
 	<!-- ======= Footer ======= -->
@@ -254,6 +246,17 @@
 	<!-- Template Main JS File -->
 
 	<script src="<?php echo base_url('assets/front/js/main.js'); ?>"></script>
+	<script>
+		< script >
+			$(document).ready(function() {
+				$('.collapse').on('shown.bs.collapse', function() {
+					$(this).parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+				}).on('hidden.bs.collapse', function() {
+					$(this).parent().find(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+				});
+			}); <
+		/>
+	</script>
 
 </body>
 
