@@ -22,6 +22,7 @@ class Layanan extends CI_Controller
         );
         $this->load->view('Layanan/Layanan_data', $data);
     }
+    // json
 
     public function json()
     {
