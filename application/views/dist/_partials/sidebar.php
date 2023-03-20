@@ -15,6 +15,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <a href="<?= site_url('Dashboard') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
       </li> -->
 
+			<li class="<?php echo $this->uri->segment(1) == 'Profil' ? 'active' : ''; ?>">
+				<a href="<?= site_url('Profil') ?>" class="nav-link"><i class="fas fa-user"></i><span>Profil</span></a>
+			</li>
 			<li class="<?php echo $this->uri->segment(1) == 'Poli' ? 'active' : ''; ?>">
 				<a href="<?= site_url('Poli') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Poli</span></a>
 			</li>

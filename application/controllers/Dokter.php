@@ -73,7 +73,9 @@ class Dokter extends CI_Controller
 				}
 			} else {
 
-
+				$data = array(
+					'nama' => $this->input->post('nama', TRUE)
+				);
 				$this->Dokter_model->insert($data);
 				if ($this->db->affected_rows() > 0) {
 					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
