@@ -115,7 +115,7 @@
 				</div>
 
 				<!-- Slide 2 -->
-				<div class="carousel-item" style="background-image: url(assets/front/img/slide/slide-1.jpg); height: 100vh;">
+				<div class="carousel-item" style="background-image: url(assets/front/img/slide/HIPERBARIK.jpg);">
 
 
 
@@ -489,56 +489,26 @@
 			<div class="container" data-aos="fade-up">
 
 				<div class="section-title">
-					<h2>Make an Appointment</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-						consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-						in iste officiis commodi quidem hic quas.</p>
+					<h2>Artikel</h2>
+				</div>
+				<div class="container">
+					<div class="row">
+						<?php foreach ($artikel as  $value) {
+						?>
+							<div class="col-sm-6 col-md-4">
+								<div class="card">
+									<img src="<?php echo base_url('gambar/artikel/') . $value->sampul ?>" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title"><?php echo  $value->judul ?></h5>
+
+										<a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
+									</div>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
 				</div>
 
-				<form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-					<div class="row">
-						<div class="col-md-4 form-group">
-							<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-						</div>
-						<div class="col-md-4 form-group mt-3 mt-md-0">
-							<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-						</div>
-						<div class="col-md-4 form-group mt-3 mt-md-0">
-							<input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 form-group mt-3">
-							<input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
-						</div>
-						<div class="col-md-4 form-group mt-3">
-							<select name="department" id="department" class="form-select">
-								<option value="">Select Department</option>
-								<option value="Department 1">Department 1</option>
-								<option value="Department 2">Department 2</option>
-								<option value="Department 3">Department 3</option>
-							</select>
-						</div>
-						<div class="col-md-4 form-group mt-3">
-							<select name="doctor" id="doctor" class="form-select">
-								<option value="">Select Doctor</option>
-								<option value="Doctor 1">Doctor 1</option>
-								<option value="Doctor 2">Doctor 2</option>
-								<option value="Doctor 3">Doctor 3</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form-group mt-3">
-						<textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-					</div>
-					<div class="my-3">
-						<div class="loading">Loading</div>
-						<div class="error-message"></div>
-						<div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-					</div>
-					<div class="text-center"><button type="submit">Make an Appointment</button></div>
-				</form>
 
 			</div>
 		</section><!-- End Appointment Section -->
@@ -626,96 +596,7 @@
 			</div>
 		</section><!-- End Departments Section -->
 
-		<!-- ======= Testimonials Section ======= -->
-		<section id="testimonials" class="testimonials">
-			<div class="container" data-aos="fade-up">
 
-				<div class="section-title">
-					<h2>Testimonials</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-						consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-						in iste officiis commodi quidem hic quas.</p>
-				</div>
-
-				<div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-					<div class="swiper-wrapper">
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-									quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<img src="assets/front/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-								<h3>Saul Goodman</h3>
-								<h4>Ceo &amp; Founder</h4>
-							</div>
-						</div><!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
-									quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<img src="assets/front/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-								<h3>Sara Wilsson</h3>
-								<h4>Designer</h4>
-							</div>
-						</div><!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim
-									tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<img src="assets/front/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-								<h3>Jena Karlis</h3>
-								<h4>Store Owner</h4>
-							</div>
-						</div><!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit
-									minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<img src="assets/front/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-								<h3>Matt Brandon</h3>
-								<h4>Freelancer</h4>
-							</div>
-						</div><!-- End testimonial item -->
-
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa
-									labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<img src="assets/front/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-								<h3>John Larson</h3>
-								<h4>Entrepreneur</h4>
-							</div>
-						</div><!-- End testimonial item -->
-
-					</div>
-					<div class="swiper-pagination"></div>
-				</div>
-
-			</div>
-		</section><!-- End Testimonials Section -->
 
 		<!-- ======= Doctors Section ======= -->
 		<section id="doctors" class="doctors section-bg">

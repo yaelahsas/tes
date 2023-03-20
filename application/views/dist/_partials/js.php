@@ -76,7 +76,7 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 								return 'Admin';
 								break;
 							case '2':
-								return 'Gudang';
+								return 'User';
 								break;
 							default:
 								return '';

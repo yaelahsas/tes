@@ -11,7 +11,7 @@ class Home extends CI_Controller
 		// check_admin_1();
 		// check_not_login();
 		$this->load->model('User_model');
-
+		$this->load->model('Artikel_model');
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
 	}
@@ -19,8 +19,9 @@ class Home extends CI_Controller
 
 	public function index()
 	{
-
-		$this->load->view('frontend/index');
+		$artikel = $this->Artikel_model->get_new();
+		$data['artikel'] = $artikel;
+		$this->load->view('frontend/index', $data);
 	}
 	public function reg()
 	{
