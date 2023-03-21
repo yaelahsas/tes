@@ -52,7 +52,7 @@ class Profil extends CI_Controller
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']      = '2048';
             $config['upload_path']   = './gambar/profil/';
-            $config['file_name']   = 'Profil -' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+            $config['file_name']   = 'Profil-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
             $this->load->library('upload', $config);
 
             if (@$_FILES['img_profil']['name'] != null) {
@@ -175,7 +175,9 @@ class Profil extends CI_Controller
     public function _rules()
     {
         $this->form_validation->set_rules('is_active', 'is_active', 'trim|required');
-        $this->form_validation->set_rules('img_galeri', 'img_galeri', 'trim');
+        $this->form_validation->set_rules('img_profil', 'img_profil', 'trim');
+
+
 
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
