@@ -27,12 +27,12 @@ $this->load->view('dist/_partials/header');
                                 <?= $this->session->flashdata('message'); ?>
 
                                 <div class="form-group">
-                                    <label for="img_profil">Foto </label>
-                                    <?php if ($img_profil != null) { ?>
+                                    <label for="img_galeri">Foto </label>
+                                    <?php if ($img_galeri != null) { ?>
                                         <br>
-                                        <img src="<?= base_url('gambar/profil/' . $img_profil) ?>" style="width:300px">
+                                        <img src="<?= base_url('gambar/galeri/' . $img_galeri) ?>" style="width:300px">
                                     <?php } ?> <br><br>
-                                    <input type="file" name="img_profil" class="form-control" id="img_profil" required autofocus />
+                                    <input type="file" name="img_galeri" class="form-control" id="img_galeri" required autofocus />
 
                                 </div>
                                 <div class="form-group">
@@ -45,7 +45,7 @@ $this->load->view('dist/_partials/header');
                                 </div>
                                 <input type="hidden" name="id" value="<?php echo $id; ?>" />
                                 <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-                                <a href="<?php echo site_url('Profil') ?>" class="btn btn-secondary">Cancel</a>
+                                <a href="<?php echo site_url('Galeri') ?>" class="btn btn-secondary">Cancel</a>
                             </div>
                         </div>
                         <?= form_close() ?>
