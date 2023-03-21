@@ -454,7 +454,9 @@ h6 {
 }
 
 #hero .carousel-item {
-	background-size: cover;
+	background-size: 100%;
+	margin-top: 100px;
+	/* background-size: contain; */
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
