@@ -7,7 +7,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<a href="#">i-RS</a>
 		</div>
 		<div class="sidebar-brand sidebar-brand-sm">
-			<a href="#">rsud</a>
+			<a href="#">RSUD</a>
 		</div>
 		<ul class="sidebar-menu">
 			<li class="menu-header">Transaction</li>
@@ -17,6 +17,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 			<li class="<?php echo $this->uri->segment(1) == 'Profil' ? 'active' : ''; ?>">
 				<a href="<?= site_url('Profil') ?>" class="nav-link"><i class="fas fa-user"></i><span>Profil</span></a>
+			</li>
+			<li class="<?php echo $this->uri->segment(1) == 'Galeri' ? 'active' : ''; ?>">
+				<a href="<?= site_url('Galeri') ?>" class="nav-link"><i class="fas fa-user"></i><span>Galeri</span></a>
 			</li>
 			<li class="<?php echo $this->uri->segment(1) == 'Poli' ? 'active' : ''; ?>">
 				<a href="<?= site_url('Poli') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Poli</span></a>

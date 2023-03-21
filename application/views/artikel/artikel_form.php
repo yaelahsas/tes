@@ -32,8 +32,6 @@ $this->load->view('dist/_partials/header');
                                         <?php foreach ($kate_all as $key => $data) { ?>
                                             <option value="<?= $data->id ?>" <?= $data->id == $kategori ? "selected" : null ?>><?= $data->nama ?> </option>
                                         <?php } ?>
-
-
                                     </select>
                                 </div>
                                 <div class="form-group">
