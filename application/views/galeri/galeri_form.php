@@ -32,7 +32,7 @@ $this->load->view('dist/_partials/header');
                                         <br>
                                         <img src="<?= base_url('gambar/galeri/' . $img_galeri) ?>" style="width:300px">
                                     <?php } ?> <br><br>
-                                    <input type="file" name="img_galeri" class="form-control" id="img_galeri" />
+                                    <input type="file" name="img_galeri" class="form-control" id="img_galeri" required autofocus />
 
                                 </div>
                                 <div class="form-group">

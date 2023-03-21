@@ -41,7 +41,7 @@ $this->load->view('dist/_partials/header');
 
                                         <img src="<?= base_url('gambar/layanan/' . $img) ?>" style="width:400px">
                                     <?php } ?> <br><br>
-                                    <input type="file" name="img" class="form-control" id="img" />
+                                    <input type="file" name="img" class="form-control" id="img" required autofocus />
 
                                 </div>
                                 <input type="hidden" name="id" value="<?php echo $id; ?>" />
