@@ -32,6 +32,7 @@ $this->load->view('dist/_partials/header');
 										<tr>
 											<th width="80px">No</th>
 											<th>Dokter</th>
+											<th>Spesialis</th>
 											<th>Foto</th>
 											<th width="200px">Action</th>
 										</tr>

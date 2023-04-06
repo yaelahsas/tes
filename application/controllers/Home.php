@@ -12,6 +12,7 @@ class Home extends CI_Controller
 		// check_not_login();
 		$this->load->model('User_model');
 		$this->load->model('Artikel_model');
+		$this->load->model('Home_model');
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
 	}
@@ -20,7 +21,13 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$artikel = $this->Artikel_model->get_new();
-		$data['artikel'] = $artikel;
+		// $data['artikel'] = $artikel;
+		$data  = array(
+			'dokters' => $this->Home_model->get_dokter(),
+			'artikel' => $artikel,
+		);
+		// var_dump($data['dokter']);
+		// die;
 		$this->load->view('frontend/index', $data);
 	}
 	public function reg()

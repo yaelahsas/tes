@@ -28,8 +28,13 @@ $this->load->view('dist/_partials/header');
 
 								<div class="form-group">
 									<label for="nama">Nama Dokter *</label>
-									<input type="text" class="form-control" name="nama" value="<?= $nama ?>" id="nama">
+									<input type="text" class="form-control" name="nama" value="<?= $nama ?>" id="nama" required autofocus>
 									<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+								</div>
+								<div class="form-group">
+									<label for="spesialis">Dokter spesialis *</label>
+									<input type="text" class="form-control" name="spesialis" value="<?= $spesialis ?>" id="spesialis" required autofocus>
+									<?= form_error('spesialis', '<small class="text-danger">', '</small>'); ?>
 								</div>
 								<div class="form-group">
 									<label for="img">Foto </label>

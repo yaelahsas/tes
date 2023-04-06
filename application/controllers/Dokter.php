@@ -37,6 +37,7 @@ class Dokter extends CI_Controller
 			'action' => site_url('Dokter/create_action'),
 			'id' => set_value('id'),
 			'nama' => set_value('nama'),
+			'spesialis' => set_value('spesialis'),
 			'img' => set_value('img'),
 		);
 		$this->load->view('dokter/dokter_form', $data);
@@ -60,6 +61,7 @@ class Dokter extends CI_Controller
 				if ($this->upload->do_upload('img')) {
 					$data = array(
 						'nama' => $this->input->post('nama', TRUE),
+						'spesialis' => $this->input->post('spesialis', TRUE),
 						'img' => $this->upload->data('file_name')
 					);
 					$this->Dokter_model->insert($data);
@@ -74,7 +76,8 @@ class Dokter extends CI_Controller
 			} else {
 
 				$data = array(
-					'nama' => $this->input->post('nama', TRUE)
+					'nama' => $this->input->post('nama', TRUE),
+					'spesialis' => $this->input->post('spesialis', TRUE),
 				);
 				$this->Dokter_model->insert($data);
 				if ($this->db->affected_rows() > 0) {
@@ -97,6 +100,7 @@ class Dokter extends CI_Controller
 				'action' => site_url('Dokter/update_action'),
 				'id' => set_value('id', $row->id),
 				'nama' => set_value('nama', $row->nama),
+				'spesialis' => set_value('spesialis', $row->spesialis),
 				'img' => set_value('img', $row->img),
 			);
 			// $this->load->view('satuan/tb_satuan_form', $data);
@@ -133,6 +137,7 @@ class Dokter extends CI_Controller
 
 					$data = array(
 						'nama' => $this->input->post('nama', TRUE),
+						'spesialis' => $this->input->post('spesialis', TRUE),
 						'img' => $this->upload->data('file_name')
 					);
 					$this->Dokter_model->update($this->input->post('id', TRUE), $data);
@@ -148,6 +153,7 @@ class Dokter extends CI_Controller
 			} else {
 				$data = array(
 					'nama' => $this->input->post('nama', TRUE),
+					'spesialis' => $this->input->post('spesialis', TRUE),
 				);
 				$this->Dokter_model->update($this->input->post('id', TRUE), $data);
 				if ($this->db->affected_rows() > 0) {
@@ -175,6 +181,7 @@ class Dokter extends CI_Controller
 	public function _rules()
 	{
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_rules('spesialis', 'spesialis', 'trim|required');
 		$this->form_validation->set_rules('img', 'img', 'trim');
 
 		$this->form_validation->set_rules('id', 'id', 'trim');

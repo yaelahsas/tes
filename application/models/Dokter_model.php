@@ -18,7 +18,7 @@ class Dokter_model extends CI_Model
 	// datatables
 	function json()
 	{
-		$this->datatables->select('id,nama,img');
+		$this->datatables->select('id,nama,spesialis,img');
 		$this->datatables->from('dokter');
 		$this->datatables->add_column('action', anchor(site_url('Dokter/update/$1'), '<div class="badge badge-warning">Update</div>') .  anchor(site_url('Dokter/delete/$1'), '<div class="badge badge-danger">Delete</div>', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
 		return $this->datatables->generate();

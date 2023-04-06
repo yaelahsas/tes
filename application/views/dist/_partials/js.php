@@ -344,6 +344,9 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 					}, {
 						"data": "nama",
 						"className": "text-center"
+					}, {
+						"data": "spesialis",
+						"className": "text-center"
 					},
 					{
 						"data": "img",

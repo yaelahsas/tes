@@ -27,7 +27,7 @@ $this->load->view('dist/_partials/header');
                                 <?= $this->session->flashdata('message'); ?>
 
                                 <div class="form-group">
-                                    <label for="img_profil">Foto </label>
+                                    <label for="img_profil">Foto </label> <small>ukuran 3x4</small>
                                     <?php if ($img_profil != null) { ?>
                                         <br>
                                         <img src="<?= base_url('gambar/profil/' . $img_profil) ?>" style="width:300px">

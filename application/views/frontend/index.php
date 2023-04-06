@@ -609,26 +609,29 @@
 				</div>
 
 				<div class="row">
+					<?php foreach ($dokters as $key => $dokter) { ?>
 
-					<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-						<div class="member" data-aos="fade-up" data-aos-delay="100">
-							<div class="member-img">
-								<img src="assets/front/img/doctors/DR1.jpg" class="img-fluid" alt="">
-								<div class="social">
-									<a href=""><i class="bi bi-twitter"></i></a>
-									<a href=""><i class="bi bi-facebook"></i></a>
-									<a href=""><i class="bi bi-instagram"></i></a>
-									<a href=""><i class="bi bi-linkedin"></i></a>
+						<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+							<div class="member" data-aos="fade-up" data-aos-delay="100">
+								<div class="member-img">
+									<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid" alt="">
+									<div class="social">
+										<a href=""><i class="bi bi-twitter"></i></a>
+										<a href=""><i class="bi bi-facebook"></i></a>
+										<a href=""><i class="bi bi-instagram"></i></a>
+										<a href=""><i class="bi bi-linkedin"></i></a>
+									</div>
+								</div>
+								<div class="member-info">
+									<h4><?= $dokter->nama ?></h4>
+									<span><?= $dokter->spesialis ?></span>
 								</div>
 							</div>
-							<div class="member-info">
-								<h4>dr. RIEZKY JANUAR PARAMITHA, Sp.D.V</h4>
-								<span>Dermatovenereologi</span>
-							</div>
 						</div>
-					</div>
+					<?php } ?>
 
-					<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+
+					<!-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
 						<div class="member" data-aos="fade-up" data-aos-delay="200">
 							<div class="member-img">
 								<img src="assets/front/img/doctors/DR2.jpg" class="img-fluid" alt="">
@@ -680,7 +683,7 @@
 								<span>Patologi Anatomi</span>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 				</div>
 
