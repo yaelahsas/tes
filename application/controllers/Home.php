@@ -21,12 +21,15 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$artikel = $this->Artikel_model->get_new();
+
 		// $data['artikel'] = $artikel;
 		$data  = array(
 			'dokters' => $this->Home_model->get_dokter(),
 			'artikel' => $artikel,
+			'galeri' => $this->Home_model->get_galeri(),
+			'profil' => $this->Home_model->get_profil(),
 		);
-		// var_dump($data['dokter']);
+		// var_dump($data['galeri']);
 		// die;
 		$this->load->view('frontend/index', $data);
 	}
