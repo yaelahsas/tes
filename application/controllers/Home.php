@@ -28,6 +28,7 @@ class Home extends CI_Controller
 			'artikel' => $artikel,
 			'galeri' => $this->Home_model->get_galeri(),
 			'profil' => $this->Home_model->get_profil(),
+			'layanan' => $this->Home_model->get_layanan()
 		);
 		// var_dump($data['galeri']);
 		// die;

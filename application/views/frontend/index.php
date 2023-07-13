@@ -173,46 +173,47 @@
 
 				<div class="section-title">
 					<h2>Layanan Unggulan</h2>
-
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon"><img src="assets/front/img/icons/laparoscopy (2).png"></div>
-							<h4 class="title"><a href="">LAPAROSCOPI</a></h4>
-							<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-							<div class="btn-wrap">
-								<a href="#" class="btn-buy">Buy Now</a>
+					<?php
+					$count = 0;
+					do {
+
+						if (($count / 4) >= 1) {
+					?>
+
+							<div class="row"></div>
+							<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+								<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+									<div class="icon"><img src="gambar/layanan/<?= $lay->img ?>"></div>
+									<h4 class="title"><a href=""><?= $layanan[$count]->judul ?></a></h4>
+								</div>
 							</div>
-						</div>
-					</div>
 
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-							<div class="icon"><img src="assets/front/img/icons/cardio.png"></i></div>
-							<h4 class="title"><a href="">ECHOCARDIOGRAPY</a></h4>
-							<p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-						</div>
-					</div>
 
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-							<div class="icon"><img src="assets/front/img/icons/treadmill.png"></i></div>
-							<h4 class="title"><a href="">TREADMILL TEST</a></h4>
-							<p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-						</div>
-					</div>
+						<?php
+						} else {
 
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-							<div class="icon"><img src="assets/front/img/icons/eeg.png"></div>
-							<h4 class="title"><a href="">EEG</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
-					</div>
+						?>
+							<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+								<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+									<div class="icon"><img src="gambar/layanan/<?= $layanan[$count]->img ?>"></div>
+									<h4 class="title"><a href=""><?= $layanan[$count]->judul ?></a></h4>
+								</div>
+							</div>
+					<?php
+						}
+						$count++;
+					} while ($count < count($layanan))
 
+					?>
 				</div>
-				<br>
+
+
+
+
+
+
 
 				<div class="row">
 					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">

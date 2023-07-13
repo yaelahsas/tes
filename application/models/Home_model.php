@@ -24,4 +24,10 @@ class home_model extends CI_Model
 		$this->db->where('is_active', 1);
 		return $this->db->get('profil')->result();
 	}
+	function get_layanan()
+	{
+		$this->db->select('*');
+		$this->db->order_by('id', 'ASC');
+		return $this->db->get('layanan')->result();
+	}
 }
