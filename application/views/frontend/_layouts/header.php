@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -7,8 +10,9 @@
 	<meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<!-- <link href="assets/img/favicon.png" rel="icon">
-	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+	<link href="<?php echo base_url('assets/img/logo_bwi_small.png'); ?>" rel="icon">
+
+
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -33,4 +37,106 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+	<style>
+		/* Tambahkan di dalam tag <style> atau dalam file CSS terpisah */
+		.fixed-height {
+			height: 300px;
+			/* Ubah angka sesuai dengan ketinggian yang Anda inginkan */
+			object-fit: cover;
+			/* Gambar akan diatur untuk mengisi ruang dengan menjaga proporsi */
+			width: 100%;
+			/* Pastikan gambar mengisi lebar elemen parent */
+		}
+
+		.member {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			height: 400px !important;
+		}
+
+		.member-img {
+			width: 100%;
+			/* Pastikan gambar mengisi lebar elemen parent */
+		}
+
+		.member-info {
+			padding: 10px;
+			/* Atur jarak antara nama dokter dan gambar */
+		}
+
+		.iframe-wrapper {
+			position: relative;
+			padding-bottom: 56.25%;
+			/* Aspek rasio 16:9 */
+			height: 900px;
+			overflow: hidden;
+		}
+
+		.iframe-wrapper iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			/* Tetapkan tinggi iframe 100% */
+		}
+
+
+		/* Adjust the carousel height for mobile devices */
+		/* For screens smaller than 768px (tablets, phones) */
+		@media (max-width: 768px) {
+			#hero {
+				height: 57vh;
+				/* Set the height to 50% of the viewport height */
+			}
+		}
+
+		/* For screens smaller than 576px (small phones) */
+		@media (max-width: 576px) {
+			#hero {
+				height: 40vh;
+				/* Set the height to 40% of the viewport height */
+			}
+		}
+	</style>
 </head>
+
+<body>
+
+	<!-- ======= Top Bar ======= -->
+	<div id="topbar" class="d-flex align-items-center fixed-top">
+		<div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+			<div class="align-items-center d-none d-md-flex">
+				<i class="bi bi-clock"></i> Senin - Sabtu, 07.00 - 12.00, IGD 24 Jam
+			</div>
+			<div class="d-flex align-items-center">
+				<i class="bi bi-phone"></i> Hubungi Kami 08113439905
+			</div>
+		</div>
+	</div>
+
+	<!-- ======= Header ======= -->
+	<header id="header" class="fixed-top">
+		<div class="container d-flex align-items-center">
+
+			<a href<?= base_url() ?>"" class="logo me-auto"><img src="<?php echo base_url('assets/front/img/logo-dark.png') ?>" alt=""></a>
+			<!-- Uncomment below if you prefer to use an image logo -->
+			<!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+			<nav id="navbar" class="navbar order-last order-lg-0">
+				<ul>
+					<li><a class="nav-link scrollto " href="#hero">Home</a></li>
+					<li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+					<li><a class="nav-link scrollto" href="#services">Pelayanan</a></li>
+					<li><a class="nav-link scrollto" href="#departments">Poliklinik</a></li>
+					<li><a class="nav-link scrollto" href="#doctors">Dokter</a></li>
+					<li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav><!-- .navbar -->
+
+
+		</div>
+	</header><!-- End Header -->

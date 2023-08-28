@@ -1,417 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-	<title>RSUD Genteng</title>
-	<meta content="" name="description">
-	<meta content="" name="keywords">
-
-	<!-- Favicons -->
-	<link href="assets/img/logo_bwi_small.png" rel="icon">
-	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-	<!-- Vendor CSS Files -->
-	<link href="assets/front/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-	<link href="assets/front/vendor/animate.css/animate.min.css" rel="stylesheet">
-	<link href="assets/front/vendor/aos/aos.css" rel="stylesheet">
-	<link href="assets/front/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/front/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-	<link href="assets/front/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-	<link href="assets/front/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-	<link href="assets/front/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-	<!-- Template Main CSS File -->
-	<link href="assets/front/css/style.css" rel="stylesheet">
-
-	<!-- =======================================================
-  * Template Name: Medicio - v4.10.0
-  * Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-	<!-- ======= Top Bar ======= -->
-	<div id="topbar" class="d-flex align-items-center fixed-top">
-		<div class="container d-flex align-items-center justify-content-center justify-content-md-between">
-			<div class="align-items-center d-none d-md-flex">
-				<i class="bi bi-clock"></i> Senin - Sabtu, 07.00 - 12.00
-			</div>
-			<div class="d-flex align-items-center">
-				<i class="bi bi-phone"></i> Hubungi Kami +62 8385 3399 847
-			</div>
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+	<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+		<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+		<div class="carousel-inner" role="listbox">
+			<?php foreach ($profil as $key => $prof) { ?>
+				<div class="carousel-item <?= $key === 0 ? 'active' : '' ?>" style="background-image: url(gambar/profil/<?= $prof->img_profil ?>)">
+				</div>
+			<?php } ?>
 		</div>
+		<a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+		</a>
+		<a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+			<span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+		</a>
 	</div>
+</section><!-- End Hero -->
 
-	<!-- ======= Header ======= -->
-	<header id="header" class="fixed-top">
-		<div class="container d-flex align-items-center">
+<main id="main">
 
-			<a href="index.html" class="logo me-auto"><img src="assets/front/img/logo-dark.png" alt=""></a>
-			<!-- Uncomment below if you prefer to use an image logo -->
-			<!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
-
-			<nav id="navbar" class="navbar order-last order-lg-0">
-				<ul>
-					<li><a class="nav-link scrollto " href="#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-					<li><a class="nav-link scrollto" href="#services">Pelayanan</a></li>
-					<li><a class="nav-link scrollto" href="#departments">Poliklinik</a></li>
-					<li><a class="nav-link scrollto" href="#doctors">Dokter</a></li>
-					<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-						<ul>
-							<li><a href="#">Drop Down 1</a></li>
-							<li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-								<ul>
-									<li><a href="#">Deep Drop Down 1</a></li>
-									<li><a href="#">Deep Drop Down 2</a></li>
-									<li><a href="#">Deep Drop Down 3</a></li>
-									<li><a href="#">Deep Drop Down 4</a></li>
-									<li><a href="#">Deep Drop Down 5</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Drop Down 2</a></li>
-							<li><a href="#">Drop Down 3</a></li>
-							<li><a href="#">Drop Down 4</a></li>
-						</ul>
-					</li>
-					<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-				</ul>
-				<i class="bi bi-list mobile-nav-toggle"></i>
-			</nav><!-- .navbar -->
-
-			<a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span>
-				Appointment</a>
-
-		</div>
-	</header><!-- End Header -->
-
-	<!-- ======= Hero Section ======= -->
-	<section id="hero">
-		<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-			<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-			<div class="carousel-inner" role="listbox">
-				<?php foreach ($profil as $key => $prof) {
-				?>
-					<div class="carousel-item active" style="background-image: url(gambar/profil/<?= $prof->img_profil ?>)">
-					</div>
-
-				<?php } ?>
+	<section id="services" class="services services">
+		<div class="container" data-aos="fade-up">
 
 
+			<div class="row">
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
 
-			</div>
+					<div class="icon"><i class="fas fa-calendar-days"></i></div>
 
-			<a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-			</a>
+					<h4 class="title"><a href="<?php echo base_url('home/reg'); ?>">Pendaftaran Online</a></h4>
 
-			<a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-				<span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-			</a>
+				</div>
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+					<div class="icon"><i class="fas fa-user-doctor"></i></div>
+					<h4 class="title"><a href="#services">Jadwal Dokter</a></h4>
 
-		</div>
-	</section><!-- End Hero -->
+				</div>
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+					<div class="icon"><i class="fas fa-hospital"></i></div>
+					<h4 class="title"><a href="">Jadwal Poliklinik</a></h4>
 
-	<main id="main">
+				</div>
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+					<div class="icon"><i class="fas fa-bed-pulse"></i></div>
+					<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>">Ketersediaan Bed</a></h4>
 
-		<section id="services" class="services services">
-			<div class="container" data-aos="fade-up">
+				</div>
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="400">
+					<div class="icon"><i class="fas fa-envelope"></i></div>
+					<h4 class="title"><a href="<?php echo base_url('home/pengaduan'); ?>">Layanan Pengaduan</a></h4>
 
-
-				<div class="row">
-					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-
-						<div class="icon"><i class="fas fa-calendar-days"></i></div>
-
-						<h4 class="title"><a href="<?php echo base_url('home/reg'); ?>">Pendaftaran Online</a></h4>
-
-					</div>
-					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-						<div class="icon"><i class="fas fa-user-doctor"></i></div>
-						<h4 class="title"><a href="#services">Jadwal Dokter</a></h4>
-
-					</div>
-					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-						<div class="icon"><i class="fas fa-hospital"></i></div>
-						<h4 class="title"><a href="">Jadwal Poliklinik</a></h4>
-
-					</div>
-					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-						<div class="icon"><i class="fas fa-bed-pulse"></i></div>
-						<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>">Ketersediaan Bed</a></h4>
-
-					</div>
-					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="400">
-						<div class="icon"><i class="fas fa-envelope"></i></div>
-						<h4 class="title"><a href="<?php echo base_url('home/pengaduan'); ?>">Layanan Pengaduan</a></h4>
-
-					</div>
-					<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
-						<div class="icon"><i class="fas fa-hand"></i></div>
-						<h4 class="title"><a href="">Whistleblowing System</a></h4>
-
-					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
+					<div class="icon"><i class="fas fa-hand"></i></div>
+					<h4 class="title"><a href="">Whistleblowing System</a></h4>
 
 				</div>
 
 			</div>
-		</section><!-- End Services Section -->
-		<!-- ======= Featured Services Section ======= -->
-		<section class="featured-services">
-			<div class="container">
 
-				<div class="section-title">
-					<h2>Layanan Unggulan</h2>
-				</div>
+		</div>
+	</section><!-- End Services Section -->
+	<!-- ======= Featured Services Section ======= -->
+	<section class="featured-services">
+		<div class="container">
+
+			<div class="section-title">
+				<h2>Layanan Unggulan</h2>
+			</div>
+			<?php
+			$delay = 500; // Mulai dengan delay awal 500
+			foreach (array_chunk($layanan, 4) as $row_services) { ?>
 				<div class="row">
-					<?php
-					$count = 0;
-					do {
+					<?php foreach ($row_services as $service) { ?>
 
-						if (($count / 4) >= 1) {
-					?>
-
-							<div class="row"></div>
-							<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-								<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-									<div class="icon"><img src="gambar/layanan/<?= $lay->img ?>"></div>
-									<h4 class="title"><a href=""><?= $layanan[$count]->judul ?></a></h4>
-								</div>
+						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+							<div class="icon-box" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
+								<div class="icon"><img src="<?= base_url('/gambar/layanan/') . $service->img ?>"></div>
+								<h4 class="title"><a href=""><?= $service->judul ?></a></h4>
+								<p class="description"><?= $service->ket ?></p>
 							</div>
-
-
+						</div>
 						<?php
-						} else {
-
+						$delay += 100; // Tambahkan 100 ke delay setiap perulangan
 						?>
-							<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-								<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-									<div class="icon"><img src="gambar/layanan/<?= $layanan[$count]->img ?>"></div>
-									<h4 class="title"><a href=""><?= $layanan[$count]->judul ?></a></h4>
-								</div>
-							</div>
-					<?php
-						}
-						$count++;
-					} while ($count < count($layanan))
-
-					?>
+					<?php } ?>
 				</div>
-
-
-
-
-
-
-
-				<div class="row">
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="500">
-							<div class="icon"><img src="assets/front/img/icons/prostate.png"></div>
-							<h4 class="title"><a href="">TURP</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="600">
-							<div class="icon"><img src="assets/front/img/icons/microbiology.png"></div>
-							<h4 class="title"><a href="">MIKROBIOLOGI KLINIK</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
-
-					</div>
-
-
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="700">
-							<div class="icon"><img src="assets/front/img/icons/kidney.png"></i></div>
-							<h4 class="title"><a href="">LITHOTRIPSY</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
-
-					</div>
-
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="800">
-							<div class="icon"><img src="assets/front/img/icons/homecare.png"></div>
-							<h4 class="title"><a href="">HOME CARE GERIATRI</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-
-						</div>
-					</div>
-				</div>
-
 				<br>
+			<?php } ?>
 
-				<div class="row">
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="900">
-							<div class="icon"><img src="assets/front/img/icons/ultrasonography.png"></div>
-							<h4 class="title"><a href="">USG 4 DIMENSI</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
-					</div>
+		</div>
+	</section><!-- End Featured Services Section -->
 
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="1000">
-							<div class="icon"><img src="assets/front/img/icons/pregnancy.png"></div>
-							<h4 class="title"><a href="">PERSALINAN METODE ERACS</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
+	<!-- ======= Cta Section ======= -->
+	<section id="cta" class="cta">
+		<div class="container" data-aos="zoom-in">
 
-					</div>
-
-
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="1100">
-							<div class="icon"><img src="assets/front/img/icons/acupuncture.png"></i></div>
-							<h4 class="title"><a href="">POLI AKUPUNTUR</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-						</div>
-
-					</div>
-
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box" data-aos="fade-up" data-aos-delay="1200">
-							<div class="icon"><img src="assets/front/img/icons/knee.png"></div>
-							<h4 class="title"><a href="">TOTAL KNEE REPLACEMENT</a></h4>
-							<p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-
-						</div>
-					</div>
-				</div>
+			<div class="text-center">
+				<h3>Dalam keadaan darurat? Memerlukan bantuan sekarang?</h3>
+				<p>Layanan IGD RSUD Genteng tersedia 24 jam untuk memberikan perawatan dan bantuan medis yang diperlukan kapan saja. Tim kami siap melayani Anda dalam setiap situasi darurat dan keadaan yang membutuhkan perhatian segera. Keamanan dan kesejahteraan pasien adalah prioritas utama kami.</p>
+				<a class="cta-btn scrollto" href="https://wa.me/628113439904?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20IGD%20RSUD%20Genteng.
+">Hubungi Kami</a>
 			</div>
-		</section><!-- End Featured Services Section -->
 
-		<!-- ======= Cta Section ======= -->
-		<section id="cta" class="cta">
-			<div class="container" data-aos="zoom-in">
+		</div>
+	</section><!-- End Cta Section -->
 
-				<div class="text-center">
-					<h3>In an emergency? Need help now?</h3>
-					<p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-						laborum.</p>
-					<a class="cta-btn scrollto" href="#appointment">Make an Make an Appointment</a>
-				</div>
+	<!-- ======= About Us Section ======= -->
+	<section id="about" class="about">
+		<div class="container" data-aos="fade-up">
 
+			<div class="section-title">
+				<h2>Tentang Kami</h2>
+				<p>
+					RSUD Genteng dilengkapi dengan berbagai fasilitas medis dan peralatan modern yang mendukung penanganan
+					berbagai macam penyakit dan kondisi kesehatan. Selain itu, RSUD Genteng juga memiliki tenaga medis yang
+					terampil dan berpengalaman dalam memberikan pelayanan kesehatan.<br>
+
+					Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien. RSUD
+					Genteng berusaha untuk senantiasa meningkatkan kualitas pelayanan kesehatan dengan melakukan inovasi dan
+					pengembangan terbaru. RSUD Genteng menjadi pilihan utama masyarakat untuk mendapatkan pelayanan kesehatan
+					yang berkualitas dan terpercaya.</p>
 			</div>
-		</section><!-- End Cta Section -->
 
-		<!-- ======= About Us Section ======= -->
-		<section id="about" class="about">
-			<div class="container" data-aos="fade-up">
-
-				<div class="section-title">
-					<h2>Tentang Kami</h2>
-					<p>
-						RSUD Genteng dilengkapi dengan berbagai fasilitas medis dan peralatan modern yang mendukung penanganan
-						berbagai macam penyakit dan kondisi kesehatan. Selain itu, RSUD Genteng juga memiliki tenaga medis yang
-						terampil dan berpengalaman dalam memberikan pelayanan kesehatan.<br>
-
-						Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien. RSUD
-						Genteng berusaha untuk senantiasa meningkatkan kualitas pelayanan kesehatan dengan melakukan inovasi dan
-						pengembangan terbaru. RSUD Genteng menjadi pilihan utama masyarakat untuk mendapatkan pelayanan kesehatan
-						yang berkualitas dan terpercaya.</p>
+			<div class="row">
+				<div class="col-lg-6" data-aos="fade-right">
+					<img src="assets/front/img/rs_malam.jpg" class="img-fluid" alt="">
 				</div>
-
-				<div class="row">
-					<div class="col-lg-6" data-aos="fade-right">
-						<img src="assets/front/img/rs_malam.jpg" class="img-fluid" alt="">
-					</div>
-					<div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
-						<h3>Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien.
-						</h3>
-						<!-- <p class="fst-italic">
+				<div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+					<h3>Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien.
+					</h3>
+					<!-- <p class="fst-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore
               magna aliqua.
             </p> -->
-						<ul>
-							<li><i class="bi bi-check-circle"></i>Cepat.</li>
-							<li><i class="bi bi-check-circle"></i>Aman</li>
-							<li><i class="bi bi-check-circle"></i>Nyaman</li>
-							<li><i class="bi bi-check-circle"></i>Tepat</li>
-							<li><i class="bi bi-check-circle"></i>Informatif</li>
-							<li><i class="bi bi-check-circle"></i>Komunikatif</li>
+					<ul>
+						<li><i class="bi bi-check-circle"></i>Cepat.</li>
+						<li><i class="bi bi-check-circle"></i>Aman</li>
+						<li><i class="bi bi-check-circle"></i>Nyaman</li>
+						<li><i class="bi bi-check-circle"></i>Tepat</li>
+						<li><i class="bi bi-check-circle"></i>Informatif</li>
+						<li><i class="bi bi-check-circle"></i>Komunikatif</li>
 
-						</ul>
-						<p>
-							Terwujudnya Masyarakat Banyuwangi yang Semakin Sejahtera, Mandiri, dan Berakhlak Mulia Melalui Peningkatan
-							Perekonomian
-							dan Kualitas Sumber Daya Manusia Visi kami
-							Misi : Mewujudkan Aksesibilitas dan Kualitas Pelayanan Bidang Pendidikan, Kesehatan dan Kebutuhan Dasar
-							Lainnya
-						</p>
+					</ul>
+					<p>
+						Terwujudnya Masyarakat Banyuwangi yang Semakin Sejahtera, Mandiri, dan Berakhlak Mulia Melalui Peningkatan
+						Perekonomian
+						dan Kualitas Sumber Daya Manusia Visi kami
+						Misi : Mewujudkan Aksesibilitas dan Kualitas Pelayanan Bidang Pendidikan, Kesehatan dan Kebutuhan Dasar
+						Lainnya
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</section><!-- End About Us Section -->
+
+	<!-- ======= Counts Section ======= -->
+	<section id="counts" class="counts">
+		<div class="container" data-aos="fade-up">
+
+			<div class="row no-gutters">
+
+				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="count-box">
+						<i class="fas fa-user-md"></i>
+						<span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+
+						<p><strong>Dokter</strong> spesialis yang
+							terampil dan berpengalaman dalam memberikan pelayanan kesehatan</p>
+						<!-- <a href="#">Find out more &raquo;</a> -->
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="count-box">
+						<i class="far fa-hospital"></i>
+						<span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter"></span>
+						<p><strong>Poliklinik</strong> untuk melayani berbagai penyakit</p>
+
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="count-box">
+						<i class="fas fa-user-nurse"></i>
+						<span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
+						<p><strong>Tenaga Kesehatan</strong> dalam memberikan pelayanan kesehatan</p>
+
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="count-box">
+						<i class="fas fa-bed-pulse"></i>
+						<span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+						<p><strong>Tempat Tidur</strong> yang ada didalam rumah sakit</p>
+
 					</div>
 				</div>
 
 			</div>
-		</section><!-- End About Us Section -->
 
-		<!-- ======= Counts Section ======= -->
-		<section id="counts" class="counts">
-			<div class="container" data-aos="fade-up">
+		</div>
+	</section><!-- End Counts Section -->
 
-				<div class="row no-gutters">
-
-					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-						<div class="count-box">
-							<i class="fas fa-user-md"></i>
-							<span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
-
-							<p><strong>Dokter</strong> spesialis yang
-								terampil dan berpengalaman dalam memberikan pelayanan kesehatan</p>
-							<!-- <a href="#">Find out more &raquo;</a> -->
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-						<div class="count-box">
-							<i class="far fa-hospital"></i>
-							<span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter"></span>
-							<p><strong>Poliklinik</strong> untuk melayani berbagai penyakit</p>
-
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-						<div class="count-box">
-							<i class="fas fa-user-nurse"></i>
-							<span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
-							<p><strong>Tenaga Kesehatan</strong> dalam memberikan pelayanan kesehatan</p>
-
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-						<div class="count-box">
-							<i class="fas fa-bed-pulse"></i>
-							<span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
-							<p><strong>Tempat Tidur</strong> yang ada didalam rumah sakit</p>
-
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</section><!-- End Counts Section -->
-
-		<!-- ======= Features Section ======= -->
-		<!-- <section id="features" class="features">
+	<!-- ======= Features Section ======= -->
+	<!-- <section id="features" class="features">
 			<div class="container" data-aos="fade-up">
 
 				<div class="row">
@@ -443,142 +239,143 @@
 			</div>
 		</section>End Features Section -->
 
-		<!-- ======= Services Section ======= -->
+	<!-- ======= Services Section ======= -->
 
 
-		<!-- ======= Appointment Section ======= -->
-		<section id="appointment" class="appointment section-bg">
-			<div class="container" data-aos="fade-up">
+	<!-- ======= Appointment Section ======= -->
+	<section id="appointment" class="appointment section-bg">
+		<div class="container" data-aos="fade-up">
 
-				<div class="section-title">
-					<h2>Artikel</h2>
-				</div>
-				<div class="container">
-					<div class="row">
-						<?php foreach ($artikel as  $value) {
-						?>
-							<div class="col-sm-6 col-md-4">
-								<div class="card">
-									<img src="<?php echo base_url('gambar/artikel/') . $value->sampul ?>" class="card-img-top" style="height: 250px;" alt="...">
-									<div class="card-body">
-										<h5 class="card-title"><?php echo  $value->judul ?></h5>
+			<div class="section-title">
+				<h2>Artikel</h2>
+			</div>
+			<div class="container">
+				<div class="row">
+					<?php foreach ($artikel as  $value) {
+					?>
+						<div class="col-sm-6 col-md-4">
+							<div class="card">
+								<img src="<?php echo base_url('gambar/artikel/') . $value->sampul ?>" class="card-img-top" style="height: 250px;" alt="...">
+								<div class="card-body">
+									<h5 class="card-title"><?php echo  $value->judul ?></h5>
 
-										<a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
-									</div>
+									<a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
 								</div>
 							</div>
-						<?php } ?>
-					</div>
+						</div>
+					<?php } ?>
 				</div>
-
-
 			</div>
-		</section><!-- End Appointment Section -->
 
-		<!-- ======= Departments Section ======= -->
-		<section id="departments" class="departments">
-			<div class="container" data-aos="fade-up">
 
-				<div class="section-title">
-					<h2>Poliklinik</h2>
-					<p>unit pelayanan medis yang menyediakan layanan kesehatan bagi pasien yang tidak memerlukan rawat inap.</p>
+		</div>
+	</section><!-- End Appointment Section -->
+
+	<!-- ======= Departments Section ======= -->
+	<section id="departments" class="departments">
+		<div class="container" data-aos="fade-up">
+
+			<div class="section-title">
+				<h2>Poliklinik</h2>
+				<p>unit pelayanan medis yang menyediakan layanan kesehatan bagi pasien yang tidak memerlukan rawat inap.</p>
+			</div>
+
+			<div class="row" data-aos="fade-up" data-aos-delay="100">
+				<div class="col-lg-4 mb-5 mb-lg-0">
+					<ul class="nav nav-tabs flex-column">
+						<li class="nav-item">
+							<a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+								<h4>Kulit dan Kelamin</h4>
+								<p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
+							</a>
+						</li>
+						<li class="nav-item mt-2">
+							<a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+								<h4>Orthopedi</h4>
+								<p>Voluptas vel esse repudiandae quo excepturi.</p>
+							</a>
+						</li>
+						<li class="nav-item mt-2">
+							<a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+								<h4>Jantung</h4>
+								<p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
+							</a>
+						</li>
+						<li class="nav-item mt-2">
+							<a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+								<h4>Penyakit Dalam</h4>
+								<p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
+							</a>
+						</li>
+					</ul>
 				</div>
-
-				<div class="row" data-aos="fade-up" data-aos-delay="100">
-					<div class="col-lg-4 mb-5 mb-lg-0">
-						<ul class="nav nav-tabs flex-column">
-							<li class="nav-item">
-								<a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-									<h4>Kulit dan Kelamin</h4>
-									<p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
-								</a>
-							</li>
-							<li class="nav-item mt-2">
-								<a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-									<h4>Orthopedi</h4>
-									<p>Voluptas vel esse repudiandae quo excepturi.</p>
-								</a>
-							</li>
-							<li class="nav-item mt-2">
-								<a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-									<h4>Jantung</h4>
-									<p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
-								</a>
-							</li>
-							<li class="nav-item mt-2">
-								<a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-									<h4>Penyakit Dalam</h4>
-									<p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-lg-8">
-						<div class="tab-content">
-							<div class="tab-pane active show" id="tab-1">
-								<h3>Cardiology</h3>
-								<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
-									videna mareta paulona marka</p>
-								<img src="assets/front/img/departments-1.jpg" alt="" class="img-fluid">
-								<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
-									magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
-									Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-							</div>
-							<div class="tab-pane" id="tab-2">
-								<h3>Neurology</h3>
-								<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
-									videna mareta paulona marka</p>
-								<img src="assets/front/img/departments-2.jpg" alt="" class="img-fluid">
-								<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
-									magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
-									Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-							</div>
-							<div class="tab-pane" id="tab-3">
-								<h3>Hepatology</h3>
-								<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
-									videna mareta paulona marka</p>
-								<img src="assets/front/img/departments-3.jpg" alt="" class="img-fluid">
-								<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
-									magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
-									Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-							</div>
-							<div class="tab-pane" id="tab-4">
-								<h3>Pediatrics</h3>
-								<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
-									videna mareta paulona marka</p>
-								<img src="assets/front/img/departments-4.jpg" alt="" class="img-fluid">
-								<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
-									magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
-									Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-							</div>
+				<div class="col-lg-8">
+					<div class="tab-content">
+						<div class="tab-pane active show" id="tab-1">
+							<h3>Cardiology</h3>
+							<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
+								videna mareta paulona marka</p>
+							<img src="assets/front/img/departments-1.jpg" alt="" class="img-fluid">
+							<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
+								magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
+								Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+						</div>
+						<div class="tab-pane" id="tab-2">
+							<h3>Neurology</h3>
+							<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
+								videna mareta paulona marka</p>
+							<img src="assets/front/img/departments-2.jpg" alt="" class="img-fluid">
+							<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
+								magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
+								Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+						</div>
+						<div class="tab-pane" id="tab-3">
+							<h3>Hepatology</h3>
+							<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
+								videna mareta paulona marka</p>
+							<img src="assets/front/img/departments-3.jpg" alt="" class="img-fluid">
+							<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
+								magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
+								Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+						</div>
+						<div class="tab-pane" id="tab-4">
+							<h3>Pediatrics</h3>
+							<p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a
+								videna mareta paulona marka</p>
+							<img src="assets/front/img/departments-4.jpg" alt="" class="img-fluid">
+							<p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit
+								magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil.
+								Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
 						</div>
 					</div>
 				</div>
-
 			</div>
-		</section><!-- End Departments Section -->
+
+		</div>
+	</section><!-- End Departments Section -->
 
 
+	<!-- ======= Doctors Section ======= -->
+	<section id="doctors" class="doctors section-bg">
+		<div class="container" data-aos="fade-up">
 
-		<!-- ======= Doctors Section ======= -->
-		<section id="doctors" class="doctors section-bg">
-			<div class="container" data-aos="fade-up">
+			<div class="section-title">
+				<h2>Dokter</h2>
+				<p>Dokter spesialis rumah sakit memiliki pengetahuan yang luas dan mendalam tentang kondisi medis tertentu,
+					serta mampu melakukan prosedur dan teknik medis yang rumit dan kompleks. Mereka bekerja sama dengan tim
+					medis lainnya, seperti perawat, ahli terapi, dan farmasis, untuk memberikan perawatan yang terbaik dan
+					terintegrasi bagi pasien.</p>
+			</div>
 
-				<div class="section-title">
-					<h2>Dokter</h2>
-					<p>Dokter spesialis rumah sakit memiliki pengetahuan yang luas dan mendalam tentang kondisi medis tertentu,
-						serta mampu melakukan prosedur dan teknik medis yang rumit dan kompleks. Mereka bekerja sama dengan tim
-						medis lainnya, seperti perawat, ahli terapi, dan farmasis, untuk memberikan perawatan yang terbaik dan
-						terintegrasi bagi pasien.</p>
-				</div>
-
-				<div class="row">
+			<div class="gallery-slider swiper">
+				<div class="swiper-wrapper align-items-center">
 					<?php foreach ($dokters as $key => $dokter) { ?>
-
-						<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+						<div class="swiper-slide">
 							<div class="member" data-aos="fade-up" data-aos-delay="100">
 								<div class="member-img">
-									<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid" alt="">
+									<a class="gallery-lightbox" href="gambar/dokter/<?= $dokter->img ?>">
+										<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid member-image fixed-height" alt="">
+									</a>
 									<div class="social">
 										<a href=""><i class="bi bi-twitter"></i></a>
 										<a href=""><i class="bi bi-facebook"></i></a>
@@ -593,94 +390,40 @@
 							</div>
 						</div>
 					<?php } ?>
-
-
-					<!-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-						<div class="member" data-aos="fade-up" data-aos-delay="200">
-							<div class="member-img">
-								<img src="assets/front/img/doctors/DR2.jpg" class="img-fluid" alt="">
-								<div class="social">
-									<a href=""><i class="bi bi-twitter"></i></a>
-									<a href=""><i class="bi bi-facebook"></i></a>
-									<a href=""><i class="bi bi-instagram"></i></a>
-									<a href=""><i class="bi bi-linkedin"></i></a>
-								</div>
-							</div>
-							<div class="member-info">
-								<h4>dr. JULIOUS SUTANTO, Sp.PK</h4>
-								<span>Patologi Klinik</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-						<div class="member" data-aos="fade-up" data-aos-delay="300">
-							<div class="member-img">
-								<img src="assets/front/img/doctors/DR5.jpg" class="img-fluid" alt="">
-								<div class="social">
-									<a href=""><i class="bi bi-twitter"></i></a>
-									<a href=""><i class="bi bi-facebook"></i></a>
-									<a href=""><i class="bi bi-instagram"></i></a>
-									<a href=""><i class="bi bi-linkedin"></i></a>
-								</div>
-							</div>
-							<div class="member-info">
-								<h4>dr. RISANDI HARRI PRADIPTO, Sp. OT</h4>
-								<span>Orthopedi</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-						<div class="member" data-aos="fade-up" data-aos-delay="400">
-							<div class="member-img">
-								<img src="assets/front/img/doctors/DR4.jpg" class="img-fluid" alt="">
-								<div class="social">
-									<a href=""><i class="bi bi-twitter"></i></a>
-									<a href=""><i class="bi bi-facebook"></i></a>
-									<a href=""><i class="bi bi-instagram"></i></a>
-									<a href=""><i class="bi bi-linkedin"></i></a>
-								</div>
-							</div>
-							<div class="member-info">
-								<h4>dr. DIAN ESKANINGRUM, Sp.PA</h4>
-								<span>Patologi Anatomi</span>
-							</div>
-						</div>
-					</div> -->
-
 				</div>
-
+				<div class="swiper-pagination"></div>
 			</div>
-		</section><!-- End Doctors Section -->
 
-		<!-- ======= Gallery Section ======= -->
-		<section id="gallery" class="gallery">
-			<div class="container" data-aos="fade-up">
-
-				<div class="section-title">
-					<h2>Gallery</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-						consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-						in iste officiis commodi quidem hic quas.</p>
-				</div>
-
-				<div class="gallery-slider swiper">
-					<div class="swiper-wrapper align-items-center">
-						<?php foreach ($galeri as $key => $gal) { ?>
-							<div class="swiper-slide"><a class="gallery-lightbox" href="gambar/galeri/<?= $gal->img_galeri ?>"><img src="gambar/galeri/<?= $gal->img_galeri ?>" class="img-fluid" alt=""></a></div>
+		</div>
+	</section><!-- End Doctors Section -->
 
 
-						<?php } ?>
-					</div>
-					<div class="swiper-pagination"></div>
-				</div>
 
+	<!-- ======= Gallery Section ======= -->
+	<section id="gallery" class="gallery">
+		<div class="container" data-aos="fade-up">
+
+			<div class="section-title">
+				<h2>Gallery</h2>
+				<p>Beberapa foto kegiatan-kegiatan yang telah dilakukan RSUD Genteng</p>
 			</div>
-		</section><!-- End Gallery Section -->
 
-		<!-- ======= Pricing Section ======= -->
-		<section id="pricing" class="pricing">
+			<div class="gallery-slider swiper">
+				<div class="swiper-wrapper align-items-center">
+					<?php foreach ($galeri as $key => $gal) { ?>
+						<div class="swiper-slide"><a class="gallery-lightbox" href="gambar/galeri/<?= $gal->img_galeri ?>"><img src="gambar/galeri/<?= $gal->img_galeri ?>" class="img-fluid" alt=""></a></div>
+
+
+					<?php } ?>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+
+		</div>
+	</section><!-- End Gallery Section -->
+
+	<!-- ======= Pricing Section ======= -->
+	<!-- <section id="pricing" class="pricing">
 			<div class="container" data-aos="fade-up">
 
 				<div class="section-title">
@@ -764,265 +507,113 @@
 				</div>
 
 			</div>
-		</section><!-- End Pricing Section -->
+		</section> -->
+	<!-- End Pricing Section -->
 
-		<!-- ======= Frequently Asked Questioins Section ======= -->
-		<section id="faq" class="faq section-bg">
-			<div class="container" data-aos="fade-up">
+	<!-- ======= Frequently Asked Questioins Section ======= -->
+	<section id="faq" class="faq section-bg">
+		<div class="container" data-aos="fade-up">
 
-				<div class="section-title">
-					<h2>Frequently Asked Questioins</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-						consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-						in iste officiis commodi quidem hic quas.</p>
-				</div>
-
-				<ul class="faq-list">
-
-					<li>
-						<div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a erat nam at lectus
-							urna duis? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-						<div id="faq1" class="collapse" data-bs-parent=".faq-list">
-							<p>
-								Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
-								gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-							</p>
-						</div>
-					</li>
-
-					<li>
-						<div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque varius morbi enim
-							nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-						<div id="faq2" class="collapse" data-bs-parent=".faq-list">
-							<p>
-								Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-								donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
-								ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-							</p>
-						</div>
-					</li>
-
-					<li>
-						<div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing
-							elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-						<div id="faq3" class="collapse" data-bs-parent=".faq-list">
-							<p>
-								Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum
-								integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt.
-								Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-							</p>
-						</div>
-					</li>
-
-					<li>
-						<div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam
-							eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-						<div id="faq4" class="collapse" data-bs-parent=".faq-list">
-							<p>
-								Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-								donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
-								ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-							</p>
-						</div>
-					</li>
-
-					<li>
-						<div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam
-							aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-						<div id="faq5" class="collapse" data-bs-parent=".faq-list">
-							<p>
-								Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc
-								vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus
-								gravida quis blandit turpis cursus in
-							</p>
-						</div>
-					</li>
-
-					<li>
-						<div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare.
-							Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-						<div id="faq6" class="collapse" data-bs-parent=".faq-list">
-							<p>
-								Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada
-								nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis
-								tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas
-								fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-							</p>
-						</div>
-					</li>
-
-				</ul>
-
+			<div class="section-title">
+				<h2>Frequently Asked Questioins</h2>
+				<p>Berikut beberapa pertanyaan yang sering ditanyakan oleh pasien.</p>
 			</div>
-		</section><!-- End Frequently Asked Questioins Section -->
 
-		<!-- ======= Contact Section ======= -->
-		<section id="contact" class="contact">
-			<div class="container">
+			<ul class="faq-list">
 
-				<div class="section-title">
-					<h2>Alamat</h2>
+				<li>
+					<div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Apa yang harus saya lakukan jika saya membutuhkan perawatan medis di RSUD Genteng ? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+					<div id="faq1" class="collapse" data-bs-parent=".faq-list">
+						<p>
+							Anda dapat mengunjungi RSUD Genteng langsung atau menghubungi layanan informasi dan pendaftaran untuk mendapatkan petunjuk lebih lanjut tentang cara menerima perawatan medis.
+						</p>
+					</div>
+				</li>
 
-				</div>
+				<li>
+					<div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Bagaimana cara membuat janji dengan dokter spesialis di RSUD Genteng? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+					<div id="faq2" class="collapse" data-bs-parent=".faq-list">
+						<p>
+							Anda dapat membuat janji dengan dokter spesialis di RSUD Genteng dengan menghubungi layanan pendaftaran atau melalui sistem pendaftaran online yang tersedia.
+						</p>
+					</div>
+				</li>
+
+				<li>
+					<div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Bagaimana cara menghubungi layanan IGD RSUD Genteng dalam situasi darurat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+					<div id="faq3" class="collapse" data-bs-parent=".faq-list">
+						<p>
+							Anda dapat menghubungi nomor darurat RSUD Genteng di +628113439904 untuk mendapatkan bantuan segera.
+						</p>
+					</div>
+				</li>
+
+				<li>
+					<div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Apakah RSUD Genteng buka 24 jam? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+					<div id="faq4" class="collapse" data-bs-parent=".faq-list">
+						<p>
+							Ya, IGD RSUD Genteng melayani pasien selama 24 jam.
+						</p>
+					</div>
+				</li>
+
+			</ul>
+
+		</div>
+	</section><!-- End Frequently Asked Questioins Section -->
+
+	<!-- ======= Contact Section ======= -->
+	<section id="contact" class="contact">
+		<div class="container">
+
+			<div class="section-title">
+				<h2>Alamat</h2>
 
 			</div>
 
-			<div>
-				<iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.36612391686!2d114.16167411421677!3d-8.365597886634978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd155233b0568df%3A0xbdb65442f3878c9d!2sRumah+Sakit+Umum+Daerah+(RSUD)+Genteng!5e0!3m2!1sen!2sid!4v1503459515647" frameborder="0" allowfullscreen></iframe>
-			</div>
+		</div>
 
-			<div class="container">
-
-				<div class="row mt-5">
-
-					<div class="col-lg-6">
-
-						<div class="row">
-							<div class="col-md-12">
-								<div class="info-box">
-									<i class="bx bx-map"></i>
-									<h3>Alamat</h3>
-									<p>Jl. HASANUDIN 98 GENTENG - BANYUWANGI, 68465</p>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="info-box mt-4">
-									<i class="bx bx-envelope"></i>
-									<h3>Email</h3>
-									<p>rsudgenteng@banyuwangikab.go.id
-
-									</p>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="info-box mt-4">
-									<i class="bx bx-phone-call"></i>
-									<h3>Telepon</h3>
-									<p>(0333) 845839 </p>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-lg-6">
-						<form action="forms/contact.php" method="post" role="form" class="php-email-form">
-							<div class="row">
-								<div class="col-md-6 form-group">
-									<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-								</div>
-								<div class="col-md-6 form-group mt-3 mt-md-0">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-								</div>
-							</div>
-							<div class="form-group mt-3">
-								<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-							</div>
-							<div class="form-group mt-3">
-								<textarea class="form-control" name="message" rows="7" placeholder="Message" required=""></textarea>
-							</div>
-							<div class="my-3">
-								<div class="loading">Loading</div>
-								<div class="error-message"></div>
-								<div class="sent-message">Your message has been sent. Thank you!</div>
-							</div>
-							<div class="text-center"><button type="submit">Send Message</button></div>
-						</form>
-					</div>
-
-				</div>
-
-			</div>
-		</section><!-- End Contact Section -->
-
-	</main><!-- End #main -->
-
-	<!-- ======= Footer ======= -->
-	<footer id="footer">
-		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-info">
-							<h3>RSUD Genteng</h3>
-							<p>
-								Jl. Hasanudin No. 98 Genteng - Banyuwangi <br>
-								68465<br><br>
-								<strong>Phone:</strong> (0333) 845839 <br>
-								<strong>Email:</strong> rsudgenteng@banyuwangikab.go.id<br>
-							</p>
-							<div class="social-links mt-3">
-								<a href="https://twitter.com/rsudgenteng" class="twitter"><i class="bx bxl-twitter"></i></a>
-								<a href="https://www.facebook.com/rsudgenteng" class="facebook"><i class="bx bxl-facebook"></i></a>
-								<a href="https://www.instagram.com/rsudgenteng.bwi/" class="instagram"><i class="bx bxl-instagram"></i></a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-2 col-md-6 footer-links">
-						<h4>Useful Links</h4>
-						<ul>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-3 col-md-6 footer-links">
-						<h4>Our Services</h4>
-						<ul>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-4 col-md-6 footer-newsletter">
-						<h4>Our Newsletter</h4>
-						<p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-						<form action="" method="post">
-							<input type="email" name="email"><input type="submit" value="Subscribe">
-						</form>
-
-					</div>
-
-				</div>
-			</div>
+		<div>
+			<iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.36612391686!2d114.16167411421677!3d-8.365597886634978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd155233b0568df%3A0xbdb65442f3878c9d!2sRumah+Sakit+Umum+Daerah+(RSUD)+Genteng!5e0!3m2!1sen!2sid!4v1503459515647" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<div class="container">
-			<div class="copyright">
-				&copy; Copyright <strong><span>RSUD Genteng</span></strong>. All Rights Reserved
+
+			<div class="row mt-5">
+
+				<div class="col-lg-6">
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="info-box">
+								<i class="bx bx-map"></i>
+								<h3>Alamat</h3>
+								<p>Jl. HASANUDIN 98 GENTENG - BANYUWANGI, 68465</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="info-box mt-4">
+								<i class="bx bx-envelope"></i>
+								<h3>Email</h3>
+								<p>rsudgenteng@banyuwangikab.go.id
+
+								</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="info-box mt-4">
+								<i class="bx bx-phone-call"></i>
+								<h3>Telepon</h3>
+								<p>(0333) 845839 </p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
 			</div>
-			<div class="credits">
-				<!-- All the links in the footer should remain intact. -->
-				<!-- You can delete the links only if you purchased the pro version. -->
-				<!-- Licensing information: https://bootstrapmade.com/license/ -->
-				<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-				Designed by Aly</a>
-			</div>
+
 		</div>
-	</footer><!-- End Footer -->
+	</section><!-- End Contact Section -->
 
-	<div id="preloader"></div>
-	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-	<!-- Vendor JS Files -->
-	<script src="assets/front/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="assets/front/vendor/aos/aos.js"></script>
-	<script src="assets/front/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/front/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="assets/front/vendor/swiper/swiper-bundle.min.js"></script>
-	<script src="assets/front/vendor/php-email-form/validate.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="assets/front/js/main.js"></script>
-
-</body>
-
-</html>
+</main><!-- End #main -->
