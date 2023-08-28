@@ -642,12 +642,6 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 } ?>
 
 
-
-
-
-
-
-
 </body>
 
 </html>
