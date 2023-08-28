@@ -30,14 +30,18 @@ class Home extends CI_Controller
 			'profil' => $this->Home_model->get_profil(),
 			'layanan' => $this->Home_model->get_layanan()
 		);
-		// var_dump($data['galeri']);
+		// var_dump($data['layanan']);
 		// die;
+		$this->load->view('frontend/_layouts/header');
 		$this->load->view('frontend/index', $data);
+		$this->load->view('frontend/_layouts/footer');
 	}
 	public function reg()
 	{
+		$this->load->view('frontend/_layouts/header');
 
 		$this->load->view('frontend/regonline');
+		$this->load->view('frontend/_layouts/footer');
 	}
 
 	public function tempat_tidur()

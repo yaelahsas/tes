@@ -54,3 +54,6 @@
 	<!-- Template Main JS File -->
 
 	<script src="<?php echo base_url('assets/front/js/main.js'); ?>"></script>
+	</body>
+
+	</html>
