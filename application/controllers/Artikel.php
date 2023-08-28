@@ -31,13 +31,14 @@ class Artikel extends CI_Controller
 
 	public function read($id)
 	{
-		$row = $this->Stok_model->get_by_id($id);
+		$row = $this->Artikel_model->get_by_id($id);
 		if ($row) {
 			$data = array(
 				'id' => $row->id,
-				'kode_barang' => $row->kode_barang,
-				'stok' => $row->stok,
-				'id_ruang' => $row->id_ruang,
+				'nama' => $row->nama,
+				'judul' => $row->judul,
+				'isi' => $row->isi,
+				'sampul' => $row->sampul,
 			);
 			$this->load->view('stok/tb_stok_read', $data);
 		} else {
