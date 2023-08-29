@@ -29,23 +29,8 @@ class Artikel extends CI_Controller
 		echo $this->Artikel_model->json();
 	}
 
-	public function read($id)
-	{
-		$row = $this->Artikel_model->get_by_id($id);
-		if ($row) {
-			$data = array(
-				'id' => $row->id,
-				'nama' => $row->nama,
-				'judul' => $row->judul,
-				'isi' => $row->isi,
-				'sampul' => $row->sampul,
-			);
-			$this->load->view('stok/tb_stok_read', $data);
-		} else {
-			$this->session->set_flashdata('message', 'Record Not Found');
-			redirect(site_url('Stok'));
-		}
-	}
+
+	// Buat fungsi ini dalam file helper (misal: application/helpers/MY_date_helper.php)
 
 	public function create()
 	{

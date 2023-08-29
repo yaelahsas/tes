@@ -4,11 +4,12 @@
 		<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 		<div class="carousel-inner" role="listbox">
 			<?php foreach ($profil as $key => $prof) { ?>
-				<div class="carousel-item <?= $key === 0 ? 'active' : '' ?>" style="background-image: url(gambar/profil/<?= $prof->img_profil ?>)">
+				<div class="d-block w-100 carousel-item <?= $key === 0 ? 'active' : '' ?>">
+					<img class="d-block w-100 h-100" src="<?= base_url('gambar/profil/') . $prof->img_profil ?>">
 				</div>
 			<?php } ?>
 		</div>
-		<a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+		<a class=" carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
 		</a>
 		<a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
@@ -28,32 +29,32 @@
 
 					<div class="icon"><i class="fas fa-calendar-days"></i></div>
 
-					<h4 class="title"><a href="<?php echo base_url('home/reg'); ?>">Pendaftaran Online</a></h4>
+					<h4 class="title"><a href="https://rsudgenteng.id:8888/e-reservasi/" target="_blank">Pendaftaran Online</a></h4>
 
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
 					<div class="icon"><i class="fas fa-user-doctor"></i></div>
-					<h4 class="title"><a href="#services">Jadwal Dokter</a></h4>
+					<h4 class="title"><a href="#">Jadwal Dokter</a></h4>
 
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
 					<div class="icon"><i class="fas fa-hospital"></i></div>
-					<h4 class="title"><a href="">Jadwal Poliklinik</a></h4>
+					<h4 class="title"><a href="#">Jadwal Poliklinik</a></h4>
 
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
 					<div class="icon"><i class="fas fa-bed-pulse"></i></div>
-					<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>">Ketersediaan Bed</a></h4>
+					<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>" target="_blank">Ketersediaan Bed</a></h4>
 
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="400">
 					<div class="icon"><i class="fas fa-envelope"></i></div>
-					<h4 class="title"><a href="<?php echo base_url('home/pengaduan'); ?>">Layanan Pengaduan</a></h4>
+					<h4 class="title"><a href="<?php echo base_url('home/pengaduan'); ?>" target="_blank">Layanan Pengaduan</a></h4>
 
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
 					<div class="icon"><i class="fas fa-hand"></i></div>
-					<h4 class="title"><a href="">Whistleblowing System</a></h4>
+					<h4 class="title"><a href="#">Whistleblowing System</a></h4>
 
 				</div>
 
@@ -99,7 +100,7 @@
 			<div class="text-center">
 				<h3>Dalam keadaan darurat? Memerlukan bantuan sekarang?</h3>
 				<p>Layanan IGD RSUD Genteng tersedia 24 jam untuk memberikan perawatan dan bantuan medis yang diperlukan kapan saja. Tim kami siap melayani Anda dalam setiap situasi darurat dan keadaan yang membutuhkan perhatian segera. Keamanan dan kesejahteraan pasien adalah prioritas utama kami.</p>
-				<a class="cta-btn scrollto" href="https://wa.me/628113439904?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20IGD%20RSUD%20Genteng.
+				<a class="cta-btn scrollto" target="_blank" href="https://wa.me/628113439904?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20IGD%20RSUD%20Genteng.
 ">Hubungi Kami</a>
 			</div>
 
@@ -125,7 +126,7 @@
 
 			<div class="row">
 				<div class="col-lg-6" data-aos="fade-right">
-					<img src="assets/front/img/rs_malam.jpg" class="img-fluid" alt="">
+					<img src="<?= base_url('assets/front/img/rs_malam.jpg'); ?>" class="img-fluid" alt="">
 				</div>
 				<div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
 					<h3>Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien.
@@ -195,7 +196,7 @@
 				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 					<div class="count-box">
 						<i class="fas fa-bed-pulse"></i>
-						<span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="166" data-purecounter-duration="1" class="purecounter"></span>
 						<p><strong>Tempat Tidur</strong> yang ada didalam rumah sakit</p>
 
 					</div>
@@ -205,43 +206,6 @@
 
 		</div>
 	</section><!-- End Counts Section -->
-
-	<!-- ======= Features Section ======= -->
-	<!-- <section id="features" class="features">
-			<div class="container" data-aos="fade-up">
-
-				<div class="row">
-					<div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-						<div class="icon-box mt-5 mt-lg-0">
-							<i class="bx bx-receipt"></i>
-							<h4>Est labore ad</h4>
-							<p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-						</div>
-						<div class="icon-box mt-5">
-							<i class="bx bx-cube-alt"></i>
-							<h4>Harum esse qui</h4>
-							<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-						</div>
-						<div class="icon-box mt-5">
-							<i class="bx bx-images"></i>
-							<h4>Aut occaecati</h4>
-							<p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-						</div>
-						<div class="icon-box mt-5">
-							<i class="bx bx-shield"></i>
-							<h4>Beatae veritatis</h4>
-							<p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-						</div>
-					</div>
-					<div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/features.jpg");' data-aos="zoom-in"></div>
-				</div>
-
-			</div>
-		</section>End Features Section -->
-
-	<!-- ======= Services Section ======= -->
-
-
 	<!-- ======= Appointment Section ======= -->
 	<section id="appointment" class="appointment section-bg">
 		<div class="container" data-aos="fade-up">
@@ -254,12 +218,12 @@
 					<?php foreach ($artikel as  $value) {
 					?>
 						<div class="col-sm-6 col-md-4">
-							<div class="card">
+							<div class="card fixed-artikel">
 								<img src="<?php echo base_url('gambar/artikel/') . $value->sampul ?>" class="card-img-top" style="height: 250px;" alt="...">
 								<div class="card-body">
 									<h5 class="card-title"><?php echo  $value->judul ?></h5>
 
-									<a href="#" class="btn btn-primary">Lihat Selengkapnya</a>
+									<a href="<?= base_url('home/read/') . $value->id ?>" target="_blank" class="btn btn-primary">Lihat Selengkapnya</a>
 								</div>
 							</div>
 						</div>
@@ -376,12 +340,7 @@
 									<a class="gallery-lightbox" href="gambar/dokter/<?= $dokter->img ?>">
 										<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid member-image fixed-height" alt="">
 									</a>
-									<div class="social">
-										<a href=""><i class="bi bi-twitter"></i></a>
-										<a href=""><i class="bi bi-facebook"></i></a>
-										<a href=""><i class="bi bi-instagram"></i></a>
-										<a href=""><i class="bi bi-linkedin"></i></a>
-									</div>
+
 								</div>
 								<div class="member-info">
 									<h4><?= $dokter->nama ?></h4>
@@ -422,93 +381,7 @@
 		</div>
 	</section><!-- End Gallery Section -->
 
-	<!-- ======= Pricing Section ======= -->
-	<!-- <section id="pricing" class="pricing">
-			<div class="container" data-aos="fade-up">
 
-				<div class="section-title">
-					<h2>Pricing</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-						consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-						in iste officiis commodi quidem hic quas.</p>
-				</div>
-
-				<div class="row">
-
-					<div class="col-lg-3 col-md-6">
-						<div class="box" data-aos="fade-up" data-aos-delay="100">
-							<h3>Free</h3>
-							<h4><sup>$</sup>0<span> / month</span></h4>
-							<ul>
-								<li>Aida dere</li>
-								<li>Nec feugiat nisl</li>
-								<li>Nulla at volutpat dola</li>
-								<li class="na">Pharetra massa</li>
-								<li class="na">Massa ultricies mi</li>
-							</ul>
-							<div class="btn-wrap">
-								<a href="#" class="btn-buy">Buy Now</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-						<div class="box featured" data-aos="fade-up" data-aos-delay="200">
-							<h3>Business</h3>
-							<h4><sup>$</sup>19<span> / month</span></h4>
-							<ul>
-								<li>Aida dere</li>
-								<li>Nec feugiat nisl</li>
-								<li>Nulla at volutpat dola</li>
-								<li>Pharetra massa</li>
-								<li class="na">Massa ultricies mi</li>
-							</ul>
-							<div class="btn-wrap">
-								<a href="#" class="btn-buy">Buy Now</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-						<div class="box" data-aos="fade-up" data-aos-delay="300">
-							<h3>Developer</h3>
-							<h4><sup>$</sup>29<span> / month</span></h4>
-							<ul>
-								<li>Aida dere</li>
-								<li>Nec feugiat nisl</li>
-								<li>Nulla at volutpat dola</li>
-								<li>Pharetra massa</li>
-								<li>Massa ultricies mi</li>
-							</ul>
-							<div class="btn-wrap">
-								<a href="#" class="btn-buy">Buy Now</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-						<div class="box" data-aos="fade-up" data-aos-delay="400">
-							<span class="advanced">Advanced</span>
-							<h3>Ultimate</h3>
-							<h4><sup>$</sup>49<span> / month</span></h4>
-							<ul>
-								<li>Aida dere</li>
-								<li>Nec feugiat nisl</li>
-								<li>Nulla at volutpat dola</li>
-								<li>Pharetra massa</li>
-								<li>Massa ultricies mi</li>
-							</ul>
-							<div class="btn-wrap">
-								<a href="#" class="btn-buy">Buy Now</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</section> -->
-	<!-- End Pricing Section -->
 
 	<!-- ======= Frequently Asked Questioins Section ======= -->
 	<section id="faq" class="faq section-bg">

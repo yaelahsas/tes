@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<title>Inner Page - Medicio Bootstrap Template</title>
+	<title>RSUD Genteng</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
 
@@ -48,6 +48,15 @@
 			/* Pastikan gambar mengisi lebar elemen parent */
 		}
 
+		.fixed-artikel {
+			height: 400px;
+			/* Ubah angka sesuai dengan ketinggian yang Anda inginkan */
+			object-fit: cover;
+			/* Gambar akan diatur untuk mengisi ruang dengan menjaga proporsi */
+			width: 100%;
+			/* Pastikan gambar mengisi lebar elemen parent */
+		}
+
 		.member {
 			display: flex;
 			flex-direction: column;
@@ -81,6 +90,15 @@
 			width: 100%;
 			height: 100%;
 			/* Tetapkan tinggi iframe 100% */
+		}
+
+		@media (min-width: 768px) and (max-width: 1023px) {
+
+			/* Gaya untuk layar antara 768px dan 1023px */
+			#hero {
+				height: 67vh;
+				/* Set the height to 50% of the viewport height */
+			}
 		}
 
 
@@ -127,12 +145,12 @@
 
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
-					<li><a class="nav-link scrollto " href="#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-					<li><a class="nav-link scrollto" href="#services">Pelayanan</a></li>
-					<li><a class="nav-link scrollto" href="#departments">Poliklinik</a></li>
-					<li><a class="nav-link scrollto" href="#doctors">Dokter</a></li>
-					<li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
+					<li><a class="nav-link scrollto " href="<?= base_url() ?>#hero">Home</a></li>
+					<li><a class="nav-link scrollto" href="<?= base_url() ?>#about">Tentang</a></li>
+					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
+					<li><a class="nav-link scrollto" href="<?= base_url() ?>#departments">Poliklinik</a></li>
+					<li><a class="nav-link scrollto" href="<?= base_url() ?>#doctors">Dokter</a></li>
+					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav><!-- .navbar -->

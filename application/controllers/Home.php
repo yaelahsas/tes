@@ -43,7 +43,45 @@ class Home extends CI_Controller
 		$this->load->view('frontend/regonline');
 		$this->load->view('frontend/_layouts/footer');
 	}
+	function formatDate($date)
+	{
+		$timestamp = strtotime($date);
 
+		// Ubah format ke "dd mm yyyy"
+		$formatted_date = date('d m Y', $timestamp);
+
+		$months = array(
+			'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+			'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+		);
+
+		$dateParts = explode(' ', $formatted_date);
+		$formattedDate = $dateParts[0] . ' ' . $months[(int)$dateParts[1] - 1] . ' ' . $dateParts[2];
+
+		return $formattedDate;
+	}
+
+	public function read()
+	{
+		$id = $this->uri->segment(3);
+		$row = $this->Artikel_model->get_by_id($id);
+		if ($row) {
+			$data = array(
+				'id' => $row->id,
+				'nama' => $row->nama,
+				'judul' => $row->judul,
+				'isi' => $row->isi,
+				'sampul' => $row->sampul,
+				'tanggal' =>  $this->formatDate($row->created_at),
+			);
+			$this->load->view('frontend/_layouts/header');
+			$this->load->view('frontend/artikel/detail', $data);
+			$this->load->view('frontend/_layouts/footer');
+		} else {
+			$this->session->set_flashdata('message', 'Record Not Found');
+			redirect(site_url('home'));
+		}
+	}
 	public function tempat_tidur()
 	{
 		$data['isi'] = $this->aw();
@@ -51,7 +89,10 @@ class Home extends CI_Controller
 	}
 	public function pengaduan()
 	{
+		$this->load->view('frontend/_layouts/header');
+
 		$this->load->view('frontend/pengaduan');
+		$this->load->view('frontend/_layouts/footer');
 	}
 	public function jadwal_dokter()
 	{
