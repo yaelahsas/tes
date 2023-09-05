@@ -96,7 +96,9 @@ class Home extends CI_Controller
 	}
 	public function jadwal_dokter()
 	{
+		$this->load->view('frontend/_layouts/header');
 		$this->load->view('frontend/jadwal_dokter');
+		$this->load->view('frontend/_layouts/footer');
 	}
 	public function wbs()
 	{

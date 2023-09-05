@@ -34,14 +34,10 @@
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
 					<div class="icon"><i class="fas fa-user-doctor"></i></div>
-					<h4 class="title"><a href="#">Jadwal Dokter</a></h4>
+					<h4 class="title"><a href="<?= base_url('home/jadwal_dokter') ?>">Jadwal Dokter & Poliklinik</a></h4>
 
 				</div>
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-					<div class="icon"><i class="fas fa-hospital"></i></div>
-					<h4 class="title"><a href="#">Jadwal Poliklinik</a></h4>
 
-				</div>
 				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
 					<div class="icon"><i class="fas fa-bed-pulse"></i></div>
 					<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>" target="_blank">Ketersediaan Bed</a></h4>
