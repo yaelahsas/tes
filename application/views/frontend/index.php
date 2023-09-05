@@ -1,4 +1,4 @@
-<section id="hero" style="height: 720px;">
+<section id="hero">
 	<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 		<div class="carousel-inner" role="listbox">
@@ -162,7 +162,7 @@
 				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 					<div class="count-box">
 						<i class="fas fa-user-md"></i>
-						<span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
 
 						<p><strong>Dokter</strong> spesialis yang
 							terampil dan berpengalaman dalam memberikan pelayanan kesehatan</p>
@@ -173,7 +173,7 @@
 				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 					<div class="count-box">
 						<i class="far fa-hospital"></i>
-						<span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="22" data-purecounter-duration="1" class="purecounter"></span>
 						<p><strong>Poliklinik</strong> untuk melayani berbagai penyakit</p>
 
 					</div>
@@ -182,8 +182,8 @@
 				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 					<div class="count-box">
 						<i class="fas fa-user-nurse"></i>
-						<span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
-						<p><strong>Tenaga Kesehatan</strong> dalam memberikan pelayanan kesehatan</p>
+						<span data-purecounter-start="0" data-purecounter-end="189" data-purecounter-duration="1" class="purecounter"></span>
+						<p><strong>Paramedis</strong> dalam memberikan pelayanan kesehatan</p>
 
 					</div>
 				</div>
@@ -191,7 +191,7 @@
 				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 					<div class="count-box">
 						<i class="fas fa-bed-pulse"></i>
-						<span data-purecounter-start="0" data-purecounter-end="166" data-purecounter-duration="1" class="purecounter"></span>
+						<span data-purecounter-start="0" data-purecounter-end="165" data-purecounter-duration="1" class="purecounter"></span>
 						<p><strong>Tempat Tidur</strong> yang ada didalam rumah sakit</p>
 
 					</div>

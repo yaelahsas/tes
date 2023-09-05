@@ -92,6 +92,17 @@
 			/* Tetapkan tinggi iframe 100% */
 		}
 
+
+
+		@media (min-width: 1023px) {
+
+			/* Gaya untuk layar antara 768px dan 1023px */
+			#hero {
+				height: 720px !important;
+				/* Set the height to 50% of the viewport height */
+			}
+		}
+
 		@media (min-width: 768px) and (max-width: 1023px) {
 
 			/* Gaya untuk layar antara 768px dan 1023px */
