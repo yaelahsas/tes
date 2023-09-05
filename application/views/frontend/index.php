@@ -1,4 +1,4 @@
-<section id="hero" style="width: 1920px; height: 680px;">
+<section id="hero" style="height: 720px;">
 	<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 		<div class="carousel-inner" role="listbox">
@@ -16,6 +16,7 @@
 		</a>
 	</div>
 </section>
+<div id="preloader"></div>
 <main id="main">
 
 	<section id="services" class="services services">
@@ -252,7 +253,7 @@
 							<div class="member" data-aos="fade-up" data-aos-delay="100">
 								<div class="member-img">
 									<a class="gallery-lightbox" href="gambar/dokter/<?= $dokter->img ?>">
-										<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid member-image fixed-height" alt="">
+										<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid member-image fixed-height lozad" alt="">
 									</a>
 
 								</div>
@@ -284,7 +285,7 @@
 			<div class="gallery-slider swiper">
 				<div class="swiper-wrapper align-items-center">
 					<?php foreach ($galeri as $key => $gal) { ?>
-						<div class="swiper-slide"><a class="gallery-lightbox" href="gambar/galeri/<?= $gal->img_galeri ?>"><img src="gambar/galeri/<?= $gal->img_galeri ?>" class="img-fluid" alt=""></a></div>
+						<div class="swiper-slide"><a class="gallery-lightbox" href="gambar/galeri/<?= $gal->img_galeri ?>"><img src="gambar/galeri/<?= $gal->img_galeri ?>" class="img-fluid lozad" alt=""></a></div>
 
 
 					<?php } ?>
