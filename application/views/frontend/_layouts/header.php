@@ -148,7 +148,6 @@
 					<li><a class="nav-link scrollto " href="<?= base_url() ?>#hero">Home</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#about">Tentang</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
-					<li><a class="nav-link scrollto" href="<?= base_url() ?>#departments">Poliklinik</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#doctors">Dokter</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>
 				</ul>

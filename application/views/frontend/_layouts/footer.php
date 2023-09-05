@@ -49,7 +49,7 @@
 	<script src="<?php echo base_url('assets/front/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/front/vendor/php-email-form/validate.js'); ?>"></script>
-
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 	<!-- Template Main JS File -->
 
 	<script src="<?php echo base_url('assets/front/js/main.js'); ?>"></script>
