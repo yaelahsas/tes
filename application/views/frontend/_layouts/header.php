@@ -157,7 +157,11 @@
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
 					<li><a class="nav-link scrollto " href="<?= base_url() ?>#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="<?= base_url() ?>#about">Tentang</a></li>
+					<li class="dropdown"><a href="#"><span>Tentang</span> <i class="bi bi-chevron-down"></i></a>
+						<ul>
+							<li><a href="<?= base_url('tentang/struktur_organisasi') ?>">Struktur Organisasi</a></li>
+						</ul>
+					</li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#doctors">Dokter</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>

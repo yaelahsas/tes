@@ -16,7 +16,7 @@
 		</a>
 	</div>
 </section>
-<div id="preloader"></div>
+
 <main id="main">
 
 	<section id="services" class="services services">
