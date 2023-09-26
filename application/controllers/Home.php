@@ -133,11 +133,4 @@ class Home extends CI_Controller
 		curl_close($curl);
 		return $response;
 	}
-
-	public function inovasi()
-	{
-		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/index');
-		$this->load->view('frontend/_layouts/footer');
-	}
 }
