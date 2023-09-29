@@ -56,22 +56,13 @@
 			</div>
 		</div>
 		<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
-			<div class="col-md-4">
-				<div class="card custom-card">
-					<div class="card-body">
-						<h5 class="card-title">SEMBUH CERIA</h5>
-						<p class="card-text">Konsultasi perawatan rawat inap kelas 1</p>
-						<button class="btn btn-primary"><a href="https://wa.me/6281131194118?text=Halo,%20saya%20pasien%20pasca%20rawat%20inap%20Ruang%20Kelas%201" style="color: white;">Hubungi Kami</a>
-						</button>
-					</div>
-				</div>
-			</div>
+
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">SI DIA BERKESAN</h5>
 						<p class="card-text">Konsultasi pola kepatuhan cairan pasien HD</p>
-						<button class="btn btn-primary">Klik</button>
+						<button class="btn btn-primary"><a href="<?= base_url("home/hd") ?>" style="color: white;">Hubungi Kami</a></button>
 					</div>
 				</div>
 			</div>
