@@ -38,7 +38,7 @@
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">PIOFAR</h5>
-						<p class="card-text">Pelayanan informasi obat instalasi farmasi</p>
+						<p class="card-text">Inovasi terbaru kami, Piofar, menggabungkan teknologi dengan pelayanan informasi obat di instalasi farmasi. Piofar membantu pasien memahami obat mereka dengan lebih baik, menyediakan informasi dosis, interaksi obat, dan panduan penggunaan yang tepat, menjadikan perawatan kesehatan lebih terjangkau dan aman.</p>
 						<button class="btn btn-primary">
 							<a href="https://wa.me/6281235117253?text=Saya%20ingin%20bertanya%20tentang%20obat" style="color: white;">Hubungi Kami</a>
 						</button>
@@ -49,7 +49,7 @@
 				<div class="card custom-card">
 					<div class="card-body">
 						<h5 class="card-title">GERAKPOL KANGMAS</h5>
-						<p class="card-text">Konsultasi layanan poliklinik</p>
+						<p class="card-text">Inovasi terbaru kami, GERAKPOL KANGMAS, adalah solusi revolusioner yang memudahkan pasien dalam menanyakan tentang layanan poliklinik, jadwal poliklinik, dan jadwal dokter. Dengan GERAKPOL KANGMAS, pasien dapat dengan mudah mengakses informasi terkini mengenai poliklinik.</p>
 						<button class="btn btn-primary"><a href="https://wa.me/6282228748899?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20poliklinik" style="color: white;">Hubungi Kami</a></button>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">SI DIA BERKESAN</h5>
-						<p class="card-text">Konsultasi pola kepatuhan cairan pasien HD</p>
+						<p class="card-text">Kalkulasi dan edukasi pola kepatuhan cairan pasien Hemodialisa</p>
 						<button class="btn btn-primary"><a href="<?= base_url("home/hd") ?>" style="color: white;">Hubungi Kami</a></button>
 					</div>
 				</div>
