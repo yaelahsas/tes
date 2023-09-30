@@ -30,7 +30,7 @@
 </section><!-- End Breadcrumbs Section -->
 <section class="inner-page">
 	<div class="img-cus">
-		<img src="<?= base_url('gambar/benefit.jpg') ?>" class="card-img-top img-fluid" alt="Gambar 3" width="1000" height="700">
+		<img src="<?= base_url('gambar/fix.jpg') ?>" class="card-img-top img-fluid" alt="Gambar 3" width="1000" height="700">
 	</div>
 	<div class="container">
 		<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
@@ -54,9 +54,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
-
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-body">
@@ -66,6 +63,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="row justify-content-center">
+
 		</div>
 	</div>
 	<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
