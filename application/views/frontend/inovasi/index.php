@@ -6,20 +6,29 @@
 	.img-cus {
 		text-align: center;
 		margin-bottom: 20px;
-
 	}
 
 	.img-cus img {
-		display: inline-block;
-		/* Menggunakan inline-block untuk mengatur margin auto */
-		max-width: 50%;
-		/* Lebar maksimum 70% dari container */
+		display: block;
+		max-width: 1000px;
+		/* Lebar maksimum pada layar normal (desktop) */
+		max-height: 700px;
+		/* Tinggi maksimum pada layar normal (desktop) */
+		width: auto;
 		height: auto;
-		/* Gambar tetap proporsional */
 		margin: 0 auto;
-		/* Mengatur margin auto secara horizontal akan membuat gambar berada di tengah */
+	}
+
+	/* Media query untuk perangkat seluler dengan lebar maksimum 768px */
+	@media (max-width: 768px) {
+		.img-cus img {
+			max-width: 80%;
+			/* Mengurangi lebar maksimum gambar untuk perangkat seluler */
+		}
 	}
 </style>
+
+
 <section class="breadcrumbs">
 	<div class="container">
 
@@ -64,9 +73,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row justify-content-center">
 
-		</div>
 	</div>
 	<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
 		<div class="col-md-1">
