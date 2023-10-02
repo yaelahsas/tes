@@ -1,3 +1,11 @@
+<style>
+	.pdf-button {
+		width: 250px;
+		/* Set lebar semua tombol menjadi 500px */
+		margin-bottom: 10px;
+		/* Berikan sedikit margin antara tombol */
+	}
+</style>
 <section class="breadcrumbs">
 
 </section><!-- End Breadcrumbs Section -->
@@ -34,6 +42,44 @@
 			</form>
 			<h4 class="mt-4">Hasil Perhitungan Cairan:</h4>
 			<div id="hasil-cairan"></div>
+			<br /><br />
+			<line></line>
+			<h5 class="mt-4">Edukasi Pola Kepatuhan Cairan</h5>
+
+			<div class="mt-4">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/BERAT_BADAN_KERING.pdf') ?>')">Berat Badan Kering</button>
+					</div>
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/CAIRAN_TUBUH.pdf') ?>')">Cairan Tubuh</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/DIET_RENDAH_GARAM.pdf') ?>')">Diet Rendah Garam</button>
+					</div>
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/IDWG.pdf') ?>')">IDWG</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/KESEIMBANGAN.pdf') ?>')">Keseimbangan</button>
+					</div>
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/PERAWATAN_AV_SHUNT.pdf') ?>')">Perawatan AV Shunt</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-block pdf-button" onclick="bukaPDF('<?= base_url('gambar/pdf/PERAWATAN_CDL.pdf') ?>')">Perawatan CDL</button>
+					</div>
+					<!-- Tambahkan tombol PDF lainnya di sini sesuai kebutuhan -->
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 
@@ -41,6 +87,29 @@
 
 
 <script>
+	window.onload = function() {
+		// Ambil semua tombol PDF
+		var pdfButtons = document.querySelectorAll('.pdf-button');
+
+		// Temukan lebar tombol terpanjang
+		var maxWidth = 0;
+		pdfButtons.forEach(function(button) {
+			var buttonWidth = button.offsetWidth;
+			if (buttonWidth > maxWidth) {
+				maxWidth = buttonWidth;
+			}
+		});
+
+		// Atur lebar semua tombol sesuai dengan tombol terpanjang
+		pdfButtons.forEach(function(button) {
+			button.style.width = maxWidth + 'px';
+		});
+	};
+
+	function bukaPDF(url) {
+		window.open(url, '_blank');
+	}
+
 	function hitungCairan() {
 		// Ambil nilai dari input
 		var nama = document.getElementById("nama").value;
