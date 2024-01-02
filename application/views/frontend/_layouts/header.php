@@ -141,7 +141,7 @@
 				<i class="bi bi-clock"></i> Senin - Sabtu, 07.00 - 12.00, IGD 24 Jam
 			</div>
 			<div class="d-flex align-items-center">
-				<i class="bi bi-phone"></i> Hubungi Kami 08113439905
+				<i class="bi bi-phone"></i> Hubungi Kami 081329651321
 			</div>
 		</div>
 	</div>
