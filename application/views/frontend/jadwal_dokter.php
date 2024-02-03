@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-center">
-				<img src="<?= base_url('gambar/') ?>jadwal.jpg" class="img-fluid" alt="Jadwal Dokter & Poliklinik">
+				<img src="<?= base_url('gambar/') ?>new.jpg" class="img-fluid" alt="Jadwal Dokter & Poliklinik">
 			</div>
 		</div>
 	</div>
