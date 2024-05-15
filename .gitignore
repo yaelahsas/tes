@@ -1,0 +1,7 @@
+# Mengabaikan folder harviahcode dan isinya
+/harviahcode/
+
+# Contoh lain dari file dan direktori yang diabaikan
+/node_modules/
+/dist/
+/.env
