@@ -107,7 +107,7 @@
 						<img src="<?= base_url('gambar/kartini.jpg') ?>" class="card-img-top img-fluid" alt="Kartini">
 						<br />
 						<br />
-						<button class="btn btn-primary"><a href="<?= base_url("home/inovasi") ?>" style="color: white;">Hubungi Kami</a></button>
+						<button class="btn btn-primary"><a href="<?= base_url("home/kartini") ?>" style="color: white;">Selengkapnya</a></button>
 					</div>
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 						<img src="<?= base_url('gambar/hostren.jpg') ?>" class="card-img-top img-fluid" alt="Hostren">
 						<br />
 						<br />
-						<button class="btn btn-primary"><a href="<?= base_url("home/hd") ?>" style="color: white;">Hubungi Kami</a></button>
+						<button class="btn btn-primary"><a href="<?= base_url("home/hostren") ?>" style="color: white;">Selengkapnya</a></button>
 					</div>
 				</div>
 			</div>

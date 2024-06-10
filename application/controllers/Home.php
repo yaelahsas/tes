@@ -139,6 +139,18 @@ class Home extends CI_Controller
 		$this->load->view('frontend/inovasi/index');
 		$this->load->view('frontend/_layouts/footer');
 	}
+	public function kartini()
+	{
+		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/inovasi/kartini');
+		$this->load->view('frontend/_layouts/footer');
+	}
+	public function hostren()
+	{
+		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/inovasi/hostren');
+		$this->load->view('frontend/_layouts/footer');
+	}
 	public function hd()
 	{
 		$this->load->view('frontend/_layouts/header');
