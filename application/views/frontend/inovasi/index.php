@@ -26,6 +26,50 @@
 			/* Mengurangi lebar maksimum gambar untuk perangkat seluler */
 		}
 	}
+
+	.page-view-card {
+		background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+		color: white;
+		border: none;
+		border-radius: 1rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.page-view-card:hover {
+		transform: translateY(-10px);
+	}
+
+	.page-view-card .card-body {
+		padding: 2rem;
+	}
+
+	.page-view-card .card-title {
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+
+	.page-view-card .card-text {
+		font-size: 2.5rem;
+		font-weight: bold;
+	}
+
+	/* Responsiveness */
+	@media (max-width: 767.98px) {
+		.page-view-card .card-body {
+			padding: 1.5rem;
+		}
+
+		.page-view-card .card-title {
+			font-size: 1rem;
+		}
+
+		.page-view-card .card-text {
+			font-size: 2rem;
+		}
+	}
 </style>
 
 
@@ -127,22 +171,15 @@
 
 	</div>
 	<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
-		<div class="col-md-1">
-			<div class="card custom-card">
-				<div class="card-body">
-					<a href='http://www.freevisitorcounters.com'>at Freevisitorcounters.com</a>
-					<script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=bdf3fe564d5a0b284c2b63bd9a19a06c396007ba'></script>
-					<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1079940/t/7"></script>
-				</div>
-			</div>
-			<div class="card custom-card">
-				<div class="card-body">
-					<!-- Histats.com  START (html only)-->
-					<a href="/" alt="page hit counter" target="_blank">
-						<embed src="https//s10.histats.com/202.swf" flashvars="jver=1&acsid=4866126&domi=4" quality="high" width="118" height="45" name="202.swf" align="middle" type="application/x-shockwave-flash" pluginspage="//www.macromedia.com/go/getflashplayer" wmode="transparent" /></a>
-					<img src="https//sstatic1.histats.com/0.gif?4866126&101" alt="web stats" border="0">
-					<!-- Histats.com  END  -->
-					<!-- Histats.com  END  -->
+		<div class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="col-md-4">
+					<div class="card page-view-card text-center">
+						<div class="card-body">
+							<h5 class="card-title">Telah Dilihat</h5>
+							<p class="card-text">6238</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
