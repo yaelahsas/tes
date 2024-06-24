@@ -177,7 +177,7 @@
 					<div class="card page-view-card text-center">
 						<div class="card-body">
 							<h5 class="card-title">Telah Dilihat</h5>
-							<p class="card-text">6238</p>
+							<p class="card-text">6234</p>
 						</div>
 					</div>
 				</div>
