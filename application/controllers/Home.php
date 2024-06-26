@@ -13,7 +13,7 @@ class Home extends CI_Controller
 		$this->load->model('User_model');
 		$this->load->model('Artikel_model');
 		$this->load->model('Home_model');
-		$this->load->model('PageView_model');
+		// $this->load->model('PageView_model');
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
 	}
