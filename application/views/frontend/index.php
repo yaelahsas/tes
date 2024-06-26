@@ -52,6 +52,11 @@
 					<h4 class="title"><a href="#">Whistleblowing System</a></h4>
 
 				</div>
+				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
+					<div class="icon"><i class="fas fa-bullhorn"></i></div>
+					<h4 class="title"><a href="<?php echo base_url('gambar/maklumat.jpg'); ?>" target="_blank">Maklumat</a></h4>
+
+				</div>
 
 			</div>
 
