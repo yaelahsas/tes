@@ -13,6 +13,7 @@ class Home extends CI_Controller
 		$this->load->model('User_model');
 		$this->load->model('Artikel_model');
 		$this->load->model('Home_model');
+		$this->load->model('PageView_model');
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
 	}
@@ -98,6 +99,12 @@ class Home extends CI_Controller
 	{
 		$this->load->view('frontend/_layouts/header');
 		$this->load->view('frontend/jadwal_dokter');
+		$this->load->view('frontend/_layouts/footer');
+	}
+	public function maklumat()
+	{
+		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/maklumat');
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function wbs()
