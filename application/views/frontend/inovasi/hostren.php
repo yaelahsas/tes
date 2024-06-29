@@ -93,6 +93,8 @@
 					</ul>
 					<a class="btn btn-primary" target="_blank" href="https://wa.me/6281329651321?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20HOSTREN%20RSUD%20Genteng.
 ">Hubungi Kami</a>
+					<a class="btn btn-primary" href="<?php echo base_url('dokumen/pedoman_hostren.pdf'); ?>
+">Pedoman</a>
 				</div>
 			</div>
 
