@@ -15,6 +15,7 @@ class Home extends CI_Controller
 		$this->load->model('Home_model');
 		// $this->load->model('PageView_model');
 		$this->load->library('form_validation');
+		$this->load->model('Pengunjung_model');
 		$this->load->library('datatables');
 	}
 
@@ -142,8 +143,22 @@ class Home extends CI_Controller
 	}
 	public function inovasi()
 	{
+		$totalnya = $this->Pengunjung_model->get_total_views();
+		$data['total'] = $totalnya;
+
+		$date = date('Y-m-d');
+		$view_data = $this->Pengunjung_model->get_pengunjung_by_date($date);
+
+		if ($view_data) {
+			// Jika data sudah ada, tambahkan count
+			$this->Pengunjung_model->update_pengunjung($date);
+		} else {
+			// Jika belum ada data, buat data baru dengan count = 1
+			$this->Pengunjung_model->insert_pengunjung($date);
+		}
+
 		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/index');
+		$this->load->view('frontend/inovasi/index', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function kartini()
