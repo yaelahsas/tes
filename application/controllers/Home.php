@@ -144,23 +144,23 @@ class Home extends CI_Controller
 	public function inovasi()
 	{
 
-		$date = date('Y-m-d');
-		$view_data = $this->Pengunjung_model->get_pengunjung_by_date($date);
+		// $date = date('Y-m-d');
+		// $view_data = $this->Pengunjung_model->get_pengunjung_by_date($date);
 
-		if ($view_data) {
-			// Jika data sudah ada, tambahkan count
-			$this->Pengunjung_model->update_pengunjung($date);
-		} else {
-			// Jika belum ada data, buat data baru dengan count = 1
-			$this->Pengunjung_model->insert_pengunjung($date);
-		}
-		$totalnya = $this->Pengunjung_model->get_total_views();
-		$data = array(
-			'totalnya' => $totalnya,
-		);
+		// if ($view_data) {
+		// 	// Jika data sudah ada, tambahkan count
+		// 	$this->Pengunjung_model->update_pengunjung($date);
+		// } else {
+		// 	// Jika belum ada data, buat data baru dengan count = 1
+		// 	$this->Pengunjung_model->insert_pengunjung($date);
+		// }
+		// $totalnya = $this->Pengunjung_model->get_total_views();
+		// $data = array(
+		// 	'totalnya' => $totalnya,
+		// );
 
 		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/index', $data);
+		$this->load->view('frontend/inovasi/index');
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function kartini()
