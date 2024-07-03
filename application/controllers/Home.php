@@ -143,8 +143,6 @@ class Home extends CI_Controller
 	}
 	public function inovasi()
 	{
-		$totalnya = $this->Pengunjung_model->get_total_views();
-		$data['total'] = $totalnya;
 
 		$date = date('Y-m-d');
 		$view_data = $this->Pengunjung_model->get_pengunjung_by_date($date);
@@ -156,6 +154,10 @@ class Home extends CI_Controller
 			// Jika belum ada data, buat data baru dengan count = 1
 			$this->Pengunjung_model->insert_pengunjung($date);
 		}
+		$totalnya = $this->Pengunjung_model->get_total_views();
+		$data = array(
+			'totalnya' => $totalnya,
+		);
 
 		$this->load->view('frontend/_layouts/header');
 		$this->load->view('frontend/inovasi/index', $data);
