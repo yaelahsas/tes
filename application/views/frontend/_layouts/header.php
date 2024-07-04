@@ -10,7 +10,7 @@
 	<meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="<?php echo base_url('assets/img/logo_bwi_small.png'); ?>" rel="icon">
+	<link href="<?php echo base_url('assets/img/logo_bwi_small.png'); ?>" rel="shortcut icon">
 
 
 
@@ -156,7 +156,7 @@
 
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
-					<li><a class="nav-link scrollto " href="<?= base_url() ?>#hero">Home</a></li>
+					<li><a class="nav-link scrollto " href="<?= base_url() ?>">Home</a></li>
 					<li class="dropdown"><a href="#"><span>Tentang</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="<?= base_url('tentang/struktur_organisasi') ?>">Struktur Organisasi</a></li>
@@ -165,6 +165,7 @@
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#doctors">Dokter</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>
+					<li><a class="nav-link " href="<?= base_url('home/inovasi') ?>">Inovasi</a></li>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav><!-- .navbar -->

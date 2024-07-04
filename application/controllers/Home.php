@@ -13,7 +13,7 @@ class Home extends CI_Controller
 		$this->load->model('User_model');
 		$this->load->model('Artikel_model');
 		$this->load->model('Home_model');
-		// $this->load->model('PageView_model');
+		$this->load->model('Review_model');
 		$this->load->library('form_validation');
 		$this->load->model('Pengunjung_model');
 		$this->load->library('datatables');
@@ -175,10 +175,44 @@ class Home extends CI_Controller
 		$this->load->view('frontend/inovasi/hostren');
 		$this->load->view('frontend/_layouts/footer');
 	}
+	public function panah()
+	{
+		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/inovasi/panah');
+		$this->load->view('frontend/_layouts/footer');
+	}
 	public function hd()
 	{
 		$this->load->view('frontend/_layouts/header');
 		$this->load->view('frontend/inovasi/hd');
 		$this->load->view('frontend/_layouts/footer');
+	}
+
+	public function tambah_review()
+	{
+		header('Content-Type: application/json');
+		$tulisan = $this->input->post('tulisan');
+		$bintang = $this->input->post('bintang');
+		$inovasi = $this->input->post('inovasi');
+		$tanggal = $this->input->post('tanggal');
+
+		// Cek apakah semua parameter sudah diisi
+		if (empty($tulisan) || empty($bintang) || empty($inovasi) || empty($tanggal)) {
+			echo json_encode(['message' => 'Incomplete parameters']);
+			return;
+		}
+
+		$this->Review_model->add_review($tulisan, $bintang, $inovasi, $tanggal);
+
+		echo json_encode(['message' => 'Review added successfully']);
+	}
+
+
+	public function ambil_review()
+	{
+		header('Content-Type: application/json');
+
+		$reviews = $this->Review_model->get_reviews();
+		echo json_encode($reviews);
 	}
 }

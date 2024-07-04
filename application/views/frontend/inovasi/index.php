@@ -70,6 +70,155 @@
 			font-size: 2rem;
 		}
 	}
+
+	.rating {
+		font-size: 20px;
+		margin: 10px 0;
+	}
+
+	.stars {
+		font-size: 30px;
+		margin: 10px 0;
+	}
+
+	.star {
+		cursor: pointer;
+		margin: 0 5px;
+	}
+
+	.one {
+		color: rgb(255, 0, 0);
+	}
+
+	.two {
+		color: #ff9800;
+	}
+
+	.three {
+		color: rgb(251, 255, 120);
+	}
+
+	.four {
+		color: rgb(255, 255, 0);
+	}
+
+	.five {
+		color: #04AA6D;
+	}
+
+	textarea {
+		width: 90%;
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+	button {
+		background-color: #007BFF;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: #0056b3;
+	}
+
+	.reviews {
+		margin-top: 20px;
+		text-align: left;
+	}
+
+	.review {
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		padding: 10px;
+		margin: 10px 0;
+	}
+
+	.review p {
+		margin: 0;
+	}
+
+	/* Three column layout */
+	.side {
+		float: left;
+		width: 15%;
+		margin-top: 10px;
+	}
+
+	.middle {
+		float: left;
+		width: 70%;
+		margin-top: 10px;
+	}
+
+	/* Place text to the right */
+	.right {
+		text-align: right;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	/* The bar container */
+	.bar-container {
+		width: 100%;
+		background-color: #f1f1f1;
+		text-align: center;
+		color: white;
+	}
+
+	/* Individual bars */
+	.bar-5 {
+		width: 60%;
+		height: 18px;
+		background-color: #04AA6D;
+	}
+
+	.bar-4 {
+		width: 30%;
+		height: 18px;
+		background-color: rgb(255, 255, 0);
+	}
+
+	.bar-3 {
+		width: 10%;
+		height: 18px;
+		background-color: rgb(251, 255, 120);
+	}
+
+	.bar-2 {
+		width: 4%;
+		height: 18px;
+		background-color: #ff9800;
+	}
+
+	.bar-1 {
+		width: 15%;
+		height: 18px;
+		background-color: rgb(255, 0, 0);
+	}
+
+	/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+	@media (max-width: 400px) {
+
+		.side,
+		.middle {
+			width: 100%;
+		}
+
+		/* Hide the right column on small screens */
+		.right {
+			display: none;
+		}
+	}
 </style>
 
 
@@ -166,22 +315,125 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-4">
+				<div class="card custom-card">
+					<div class="card-body">
+						<h5 class="card-title">PANAH</h5>
+						<img src="<?= base_url('gambar/panah.jpg') ?>" class="card-img-top img-fluid" alt="Panah">
+						<br />
+						<br />
+						<button class="btn btn-primary"><a href="<?= base_url("home/panah") ?>" style="color: white;">Selengkapnya</a></button>
+					</div>
+				</div>
+			</div>
 
 		</div>
 
 	</div>
-	<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
-		<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="container mt-2">
 			<div class="row justify-content-center">
 				<div class="col-md-4">
-					<div class="card page-view-card text-center">
-						<div class="card-body">
-							<h5 class="card-title">Telah Dilihat</h5>
-							<p class="card-text"><?php echo $totalnya;  ?></p>
+					<div class="card page-view-card text-center mb-3">
+						<div class="card-body p-1">
+							<h6 class="card-title mb-1">Telah Dilihat</h6>
+							<p class="card-text m-0"><?php echo $totalnya; ?></p>
 						</div>
 					</div>
+					<div class="card page-view-card text-center">
+						<div class="card-body">
+							<h3>Berikan penilaian kepada BENEFIT</h3>
+							<div class="rating">
+								<span id="rating">0</span>/5
+							</div>
+							<div class="stars" id="stars">
+								<span class="fa fa-star star" data-value="1"></span>
+								<span class="fa fa-star star" data-value="2"></span>
+								<span class="fa fa-star star" data-value="3"></span>
+								<span class="fa fa-star star" data-value="4"></span>
+								<span class="fa fa-star star" data-value="5"></span>
+							</div>
+							<p>Tulis pesan anda:</p>
+							<textarea id="tulisan" placeholder="Tulis pesan disini"></textarea>
+							<button id="submit">Simpan</button>
+							<div class="reviews" id="reviews"></div>
+
+							<!-- Indikator loading -->
+							<div id="loading-indicator" style="display: none;">
+								<div class="spinner-border text-primary" role="status">
+									<span class="visually-hidden">Loading...</span>
+								</div>
+								<p>Loading...</p>
+							</div>
+							<p id="average-rating"> rata-rata dari review.</p>
+							<hr style="border:3px solid #f1f1f1">
+
+							<div class="row">
+								<div class="side">
+									<div>5 star</div>
+								</div>
+								<div class="middle">
+									<div class="bar-container">
+										<div class="bar-5"></div>
+									</div>
+								</div>
+								<div class="side right">
+									<div id="count-5"></div>
+								</div>
+								<div class="side">
+									<div>4 star</div>
+								</div>
+								<div class="middle">
+									<div class="bar-container">
+										<div class="bar-4"></div>
+									</div>
+								</div>
+								<div class="side right">
+									<div id="count-4"></div>
+								</div>
+								<div class="side">
+									<div>3 star</div>
+								</div>
+								<div class="middle">
+									<div class="bar-container">
+										<div class="bar-3"></div>
+									</div>
+								</div>
+								<div class="side right">
+									<div id="count-3"></div>
+								</div>
+								<div class="side">
+									<div>2 star</div>
+								</div>
+								<div class="middle">
+									<div class="bar-container">
+										<div class="bar-2"></div>
+									</div>
+								</div>
+								<div class="side right">
+									<div id="count-2"></div>
+								</div>
+								<div class="side">
+									<div>1 star</div>
+								</div>
+								<div class="middle">
+									<div class="bar-container">
+										<div class="bar-1"></div>
+									</div>
+								</div>
+								<div class="side right">
+									<div id="count-1"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+
 </section>
+
+
+<script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
