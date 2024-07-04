@@ -29,7 +29,7 @@ let ratingsCount = {
 
 function getReviews() {
 	showLoading();
-	fetch('http://localhost/rsud/home/ambil_review')
+	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review')
 		.then(response => response.json())
 		.then(data => {
 
@@ -102,7 +102,7 @@ submitBtn.addEventListener("click", () => {
 	}
 
 	showLoading();
-	fetch('http://localhost/rsud/home/tambah_review', {
+	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/tambah_review', {
 		method: 'POST',
 		body: formData
 	})
