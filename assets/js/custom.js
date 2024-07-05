@@ -117,7 +117,7 @@ submitBtn.addEventListener("click", () => {
 			reviewElement.innerHTML = `
             <p><strong>Rating: ${userRating}/5</strong></p>
             <p>${tulisan}</p>
-            <p>Inovasi: ${inovasi}</p>
+            <p>Inovasi: ${inovasinya}</p>
             <p>Tanggal: ${tanggal}</p>`;
 			reviewsContainer.appendChild(reviewElement);
 
