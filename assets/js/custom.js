@@ -7,7 +7,7 @@ const tulisanText = document.getElementById("tulisan");
 const submitBtn = document.getElementById("submit");
 const reviewsContainer = document.getElementById("reviews");
 const loadingIndicator = document.getElementById('loading-indicator');
-
+var inovasinya = '<?php echo $inovasi; ?>';
 function showLoading() {
 	loadingIndicator.style.display = 'block';
 }
@@ -29,7 +29,7 @@ let ratingsCount = {
 
 function getReviews() {
 	showLoading();
-	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review')
+	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review?inovasi='.inovasinya)
 		.then(response => response.json())
 		.then(data => {
 
@@ -78,11 +78,11 @@ stars.forEach((star) => {
 
 submitBtn.addEventListener("click", () => {
 	const tulisan = tulisanText.value;
-	const inovasi = 'benefit';
+
 	const userRating = parseInt(rating.innerText);
 	const tanggal = new Date().toISOString().split('T')[0];
 
-	if (!userRating || !tulisan || !inovasi) {
+	if (!userRating || !tulisan || !inovasinya) {
 		alert("Please select a rating and provide a review and innovation before submitting.");
 		return;
 	}
@@ -90,7 +90,7 @@ submitBtn.addEventListener("click", () => {
 	const data = {
 		tulisan: tulisan,
 		bintang: userRating,
-		inovasi: inovasi,
+		inovasi: inovasinya,
 		tanggal: tanggal
 	};
 

@@ -165,20 +165,29 @@ class Home extends CI_Controller
 	}
 	public function kartini()
 	{
+		$data = array(
+			'inovasi' => "kartini",
+		);
 		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/kartini');
+		$this->load->view('frontend/inovasi/kartini', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function hostren()
 	{
+		$data = array(
+			'inovasi' => "hostren",
+		);
 		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/hostren');
+		$this->load->view('frontend/inovasi/hostren' . $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function panah()
 	{
+		$data = array(
+			'inovasi' => "panah",
+		);
 		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/panah');
+		$this->load->view('frontend/inovasi/panah', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function hd()
@@ -211,8 +220,9 @@ class Home extends CI_Controller
 	public function ambil_review()
 	{
 		header('Content-Type: application/json');
+		$inovasi = $this->input->get('inovasi');
 
-		$reviews = $this->Review_model->get_reviews();
+		$reviews = $this->Review_model->get_reviews($inovasi);
 		echo json_encode($reviews);
 	}
 }

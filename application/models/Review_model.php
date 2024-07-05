@@ -7,9 +7,12 @@ class Review_model extends CI_Model
 		$this->load->database();
 	}
 
-	public function get_reviews()
+	public function get_reviews($inovasi)
 	{
 		$this->db->order_by('id', 'DESC');
+		if ($inovasi !== null) {
+			$this->db->where('inovasi', $inovasi);
+		}
 		$query = $this->db->get('review');
 		return $query->result_array();
 	}
