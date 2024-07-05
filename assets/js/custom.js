@@ -7,7 +7,7 @@ const tulisanText = document.getElementById("tulisan");
 const submitBtn = document.getElementById("submit");
 const reviewsContainer = document.getElementById("reviews");
 const loadingIndicator = document.getElementById('loading-indicator');
-var inovasinya = '<?php echo $inovasi; ?>';
+
 function showLoading() {
 	loadingIndicator.style.display = 'block';
 }
@@ -28,8 +28,10 @@ let ratingsCount = {
 };
 
 function getReviews() {
+
+	console.log(inovasinya);
 	showLoading();
-	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review?inovasi='.inovasinya)
+	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review?inovasi=' + encodeURIComponent(inovasinya))
 		.then(response => response.json())
 		.then(data => {
 

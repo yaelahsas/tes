@@ -157,6 +157,7 @@ class Home extends CI_Controller
 		$totalnya = $this->Pengunjung_model->get_total_views();
 		$data = array(
 			'totalnya' => $totalnya,
+			'inovasi' => 'benefit'
 		);
 
 		$this->load->view('frontend/_layouts/header');
@@ -178,7 +179,7 @@ class Home extends CI_Controller
 			'inovasi' => "hostren",
 		);
 		$this->load->view('frontend/_layouts/header');
-		$this->load->view('frontend/inovasi/hostren' . $data);
+		$this->load->view('frontend/inovasi/hostren', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function panah()

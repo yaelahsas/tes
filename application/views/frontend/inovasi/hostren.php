@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Shimmer Effect Photos</title>
+	<title>Hostren</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 	<style>
@@ -40,6 +37,199 @@
 
 		.hidden {
 			display: none;
+		}
+
+		.page-view-card {
+			background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+			color: white;
+			border: none;
+			border-radius: 1rem;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease-in-out;
+		}
+
+		.page-view-card:hover {
+			transform: translateY(-10px);
+		}
+
+		.page-view-card .card-body {
+			padding: 2rem;
+		}
+
+		.page-view-card .card-title {
+			font-size: 1.2rem;
+			margin-bottom: 1rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.page-view-card .card-text {
+			font-size: 2.5rem;
+			font-weight: bold;
+		}
+
+		/* Responsiveness */
+		@media (max-width: 767.98px) {
+			.page-view-card .card-body {
+				padding: 1.5rem;
+			}
+
+			.page-view-card .card-title {
+				font-size: 1rem;
+			}
+
+			.page-view-card .card-text {
+				font-size: 2rem;
+			}
+		}
+
+		.rating {
+			font-size: 20px;
+			margin: 10px 0;
+		}
+
+		.stars {
+			font-size: 30px;
+			margin: 10px 0;
+		}
+
+		.star {
+			cursor: pointer;
+			margin: 0 5px;
+		}
+
+		.one {
+			color: rgb(255, 0, 0);
+		}
+
+		.two {
+			color: #ff9800;
+		}
+
+		.three {
+			color: rgb(251, 255, 120);
+		}
+
+		.four {
+			color: rgb(255, 255, 0);
+		}
+
+		.five {
+			color: #04AA6D;
+		}
+
+		textarea {
+			width: 90%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		button {
+			background-color: #007BFF;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #0056b3;
+		}
+
+		.reviews {
+			margin-top: 20px;
+			text-align: left;
+		}
+
+		.review {
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 10px;
+			margin: 10px 0;
+		}
+
+		.review p {
+			margin: 0;
+		}
+
+		/* Three column layout */
+		.side {
+			float: left;
+			width: 15%;
+			margin-top: 10px;
+		}
+
+		.middle {
+			float: left;
+			width: 70%;
+			margin-top: 10px;
+		}
+
+		/* Place text to the right */
+		.right {
+			text-align: right;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		/* The bar container */
+		.bar-container {
+			width: 100%;
+			background-color: #f1f1f1;
+			text-align: center;
+			color: white;
+		}
+
+		/* Individual bars */
+		.bar-5 {
+			width: 60%;
+			height: 18px;
+			background-color: #04AA6D;
+		}
+
+		.bar-4 {
+			width: 30%;
+			height: 18px;
+			background-color: rgb(255, 255, 0);
+		}
+
+		.bar-3 {
+			width: 10%;
+			height: 18px;
+			background-color: rgb(251, 255, 120);
+		}
+
+		.bar-2 {
+			width: 4%;
+			height: 18px;
+			background-color: #ff9800;
+		}
+
+		.bar-1 {
+			width: 15%;
+			height: 18px;
+			background-color: rgb(255, 0, 0);
+		}
+
+		/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+		@media (max-width: 400px) {
+
+			.side,
+			.middle {
+				width: 100%;
+			}
+
+			/* Hide the right column on small screens */
+			.right {
+				display: none;
+			}
 		}
 	</style>
 </head>
@@ -123,12 +313,112 @@
 				<div class="swiper-pagination"></div>
 			</div>
 		</div>
+
+		<div class="row justify-content-center">
+			<div class="container mt-2">
+				<div class="row justify-content-center">
+					<div class="col-md-4">
+						<div class="card page-view-card text-center mb-3">
+
+						</div>
+						<div class="card page-view-card text-center">
+							<div class="card-body">
+								<h3>Berikan penilaian kepada HOSTREN</h3>
+								<div class="rating">
+									<span id="rating">0</span>/5
+								</div>
+								<div class="stars" id="stars">
+									<span class="fa fa-star star" data-value="1"></span>
+									<span class="fa fa-star star" data-value="2"></span>
+									<span class="fa fa-star star" data-value="3"></span>
+									<span class="fa fa-star star" data-value="4"></span>
+									<span class="fa fa-star star" data-value="5"></span>
+								</div>
+								<p>Tulis pesan anda:</p>
+								<textarea id="tulisan" placeholder="Tulis pesan disini"></textarea>
+								<button id="submit">Simpan</button>
+								<div class="reviews" id="reviews"></div>
+
+								<!-- Indikator loading -->
+								<div id="loading-indicator" style="display: none;">
+									<div class="spinner-border text-primary" role="status">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+									<p>Loading...</p>
+								</div>
+								<p id="average-rating"> rata-rata dari review.</p>
+								<hr style="border:3px solid #f1f1f1">
+
+								<div class="row">
+									<div class="side">
+										<div>5 star</div>
+									</div>
+									<div class="middle">
+										<div class="bar-container">
+											<div class="bar-5"></div>
+										</div>
+									</div>
+									<div class="side right">
+										<div id="count-5"></div>
+									</div>
+									<div class="side">
+										<div>4 star</div>
+									</div>
+									<div class="middle">
+										<div class="bar-container">
+											<div class="bar-4"></div>
+										</div>
+									</div>
+									<div class="side right">
+										<div id="count-4"></div>
+									</div>
+									<div class="side">
+										<div>3 star</div>
+									</div>
+									<div class="middle">
+										<div class="bar-container">
+											<div class="bar-3"></div>
+										</div>
+									</div>
+									<div class="side right">
+										<div id="count-3"></div>
+									</div>
+									<div class="side">
+										<div>2 star</div>
+									</div>
+									<div class="middle">
+										<div class="bar-container">
+											<div class="bar-2"></div>
+										</div>
+									</div>
+									<div class="side right">
+										<div id="count-2"></div>
+									</div>
+									<div class="side">
+										<div>1 star</div>
+									</div>
+									<div class="middle">
+										<div class="bar-container">
+											<div class="bar-1"></div>
+										</div>
+									</div>
+									<div class="side right">
+										<div id="count-1"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section><!-- End Gallery Section -->
 
+	<script>
+		var inovasinya = '<?php echo $inovasi; ?>';
+	</script>
+	<script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
 
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
