@@ -231,8 +231,10 @@
 		</div>
 </section><!-- End Breadcrumbs Section -->
 <section class="inner-page">
+
 	<div class="img-cus">
 		<img src="<?= base_url('gambar/1.svg') ?>" class="card-img-top img-fluid" alt="Gambar 3" width="1000" height="700">
+		<button class="btn btn-primary"><a href="<?php echo base_url('dokumen/pedoman_benefit.pdf'); ?>" style="color: white;">Pedoman Benefit</a></button>
 	</div>
 	<div class="container">
 		<div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk tengah horizontal -->
