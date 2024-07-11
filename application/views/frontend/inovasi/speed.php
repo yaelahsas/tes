@@ -317,7 +317,7 @@
 		<div class="container" data-aos="fade-up">
 			<div class="section-title">
 				<h2>Gallery</h2>
-				<p>Beberapa foto kegiatan-kegiatan yang telah dilakukan Inovasi Kartini</p>
+				<p>Beberapa foto kegiatan-kegiatan yang telah dilakukan Inovasi SPEED</p>
 			</div>
 
 			<div class="gallery-slider swiper">
