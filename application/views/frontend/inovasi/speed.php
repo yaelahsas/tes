@@ -234,6 +234,26 @@
 				font-size: 2rem;
 			}
 		}
+
+		.video-container {
+			position: relative;
+			width: 100%;
+			max-width: 800px;
+			padding-bottom: 56.25%;
+			/* 16:9 aspect ratio */
+			height: 0;
+			overflow: hidden;
+			background: #000;
+		}
+
+		.video-container iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
 	</style>
 </head>
 
@@ -319,7 +339,9 @@
 					<div class="col-md-4">
 						<div class="card custom-card">
 							<div class="card-body">
-								<iframe src="https://drive.google.com/file/d/1rwlDC7MhKzUQPdIIfvYdkXCecGUNt_O5/preview" width="590" height="518" allow="autoplay"></iframe>
+								<div class="video-container">
+									<iframe src="https://drive.google.com/file/d/1rwlDC7MhKzUQPdIIfvYdkXCecGUNt_O5/preview" allow="autoplay"></iframe>
+								</div>
 							</div>
 						</div>
 					</div>
