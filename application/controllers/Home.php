@@ -173,6 +173,15 @@ class Home extends CI_Controller
 		$this->load->view('frontend/inovasi/kartini', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
+	public function speed()
+	{
+		$data = array(
+			'inovasi' => "speed",
+		);
+		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/inovasi/speed', $data);
+		$this->load->view('frontend/_layouts/footer');
+	}
 	public function hostren()
 	{
 		$data = array(
