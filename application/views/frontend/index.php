@@ -1,3 +1,35 @@
+<style>
+	.card {
+		border: none;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	.card-img-top {
+		border-bottom: 1px solid #ddd;
+	}
+
+	.member-info {
+		padding: 15px;
+	}
+
+	.member-info h4 {
+		font-size: 1.2rem;
+		margin-bottom: 5px;
+	}
+
+	.member-info span {
+		color: #6c757d;
+		font-size: 0.9rem;
+	}
+</style>
 <section id="hero">
 	<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
@@ -250,29 +282,43 @@
 					medis lainnya, seperti perawat, ahli terapi, dan farmasis, untuk memberikan perawatan yang terbaik dan
 					terintegrasi bagi pasien.</p>
 			</div>
-
-			<div class="gallery-slider swiper">
-				<div class="swiper-wrapper align-items-center">
-					<?php foreach ($dokters as $key => $dokter) { ?>
-						<div class="swiper-slide">
-							<div class="member" data-aos="fade-up" data-aos-delay="100">
-								<div class="member-img">
-									<a class="gallery-lightbox" href="gambar/dokter/<?= $dokter->img ?>">
-										<img src="gambar/dokter/<?= $dokter->img ?>" class="img-fluid member-image fixed-height lozad" alt="">
-									</a>
-
-								</div>
-								<div class="member-info">
-									<h4><?= $dokter->nama ?></h4>
-									<span><?= $dokter->spesialis ?></span>
-								</div>
+			<div class="container mt-5">
+				<div class="row">
+					<div class="col-md-4 mb-4">
+						<div class="card">
+							<img src="<?= base_url("gambar/dokter/") ?>dokter-240722-91988d636c.jpg" class="card-img-top " alt="dr.  RIEZKY JANUAR PARAMITHA, Sp.D.V">
+							<div class="card-body member-info">
+								<h4 class="card-title">dr. RIEZKY JANUAR PARAMITHA, Sp.D.V</h4>
+								<p class="card-text">Spesialis Kulit dan Kelamin</p>
 							</div>
 						</div>
-					<?php } ?>
+					</div>
+					<div class="col-md-4 mb-4">
+						<div class="card">
+							<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-80f97dcfab.jpg" class="card-img-top " alt="dr. Nurul Huda, Sp. B">
+
+							<div class="card-body member-info">
+								<h4 class="card-title">dr. Nurul Huda D.P, Sp. B</h4>
+								<p class="card-text">Spesialis Bedah</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 mb-4">
+						<div class="card">
+							<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-bc5c749a95.jpg" class="card-img-top " alt="dr. Yuni Purwanti, Sp.A">
+
+							<div class="card-body member-info">
+								<h4 class="card-title">dr. Yuni Purwanti, Sp.A</h4>
+								<p class="card-text">Spesialis Anak</p>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="swiper-pagination"></div>
 			</div>
 
+		</div>
+		<div class="section-title">
+			<a href="<?= base_url("detail/dokter") ?>" class="btn btn-primary">Lihat Semua</a>
 		</div>
 	</section><!-- End Doctors Section -->
 
