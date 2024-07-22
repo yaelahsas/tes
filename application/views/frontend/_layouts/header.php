@@ -6,8 +6,8 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 	<title>RSUD Genteng - Rumah Sakit Umum Daerah Terbaik</title>
-	<meta content="RSUD Genteng adalah rumah sakit umum daerah yang menyediakan pelayanan kesehatan terbaik dengan berbagai fasilitas medis dan dokter spesialis." name="description">
-	<meta content="RSUD Genteng, rumah sakit, pelayanan kesehatan, dokter spesialis, fasilitas medis, rumah sakit umum daerah" name="keywords">
+	<meta content="Rumah Sakit Umum Daerah Genteng adalah rumah sakit umum daerah yang menyediakan pelayanan kesehatan terbaik dengan berbagai fasilitas medis dan dokter spesialis." name="description">
+	<meta content="Rumah Sakit Umum Daerah Genteng, RSUD Genteng, rumah sakit, pelayanan kesehatan, dokter spesialis, fasilitas medis, rumah sakit umum daerah" name="keywords">
 
 	<!-- Favicons -->
 	<link href="<?php echo base_url('assets/img/logo_bwi_small.png'); ?>" rel="shortcut icon">
