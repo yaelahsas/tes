@@ -3,10 +3,11 @@
 const stars = document.querySelectorAll(".star");
 const rating = document.getElementById("rating");
 const tulisanText = document.getElementById("tulisan");
-// const inovasiText = document.getElementById("inovasi");
 const submitBtn = document.getElementById("submit");
 const reviewsContainer = document.getElementById("reviews");
 const loadingIndicator = document.getElementById('loading-indicator');
+
+const allowedChars = /^[a-zA-Z0-9 .,?!-]*$/;
 
 function showLoading() {
 	loadingIndicator.style.display = 'block';
@@ -15,8 +16,6 @@ function showLoading() {
 function hideLoading() {
 	loadingIndicator.style.display = 'none';
 }
-
-
 
 let totalRatings = 0;
 let ratingsCount = {
@@ -27,39 +26,45 @@ let ratingsCount = {
 	5: 0
 };
 
-function getReviews() {
+function sanitizeHTML(str) {
+	const tempDiv = document.createElement('div');
+	tempDiv.textContent = str;
+	return tempDiv.innerHTML; S
+}
 
-	console.log(inovasinya);
+function getReviews() {
 	showLoading();
 	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review?inovasi=' + encodeURIComponent(inovasinya))
 		.then(response => response.json())
 		.then(data => {
-
-
 			// Iterate through all reviews to calculate total ratings
 			data.forEach(review => {
 				ratingsCount[review.bintang]++;
 				totalRatings++;
 			});
 
-
 			data.slice(0, 3).forEach(review => {
-				reviewsContainer.innerHTML += `
-                    <div class="review">
-                        <p><strong>Rating: ${review.bintang}/5</strong></p>
-                        <p>${review.tulisan}</p>
-                        <p>Inovasi: ${review.inovasi}</p>
-                        <p>Tanggal: ${review.tanggal}</p>
-                    </div>`;
+				const reviewElement = document.createElement("div");
+				reviewElement.classList.add("review");
+				reviewElement.innerHTML = `
+                    <p><strong>Rating: ${sanitizeHTML(review.bintang.toString())}/5</strong></p>
+                    <p>${sanitizeHTML(review.tulisan)}</p>
+                    <p>Inovasi: ${sanitizeHTML(review.inovasi)}</p>
+                    <p>Tanggal: ${sanitizeHTML(review.tanggal)}</p>`;
+				reviewsContainer.appendChild(reviewElement);
 			});
 			updateBars();
+		})
+		.catch(error => {
+			console.error('Error:', error);
+			hideLoading();
 		});
 }
 
 stars.forEach((star) => {
 	star.addEventListener("click", () => {
 		const value = parseInt(star.getAttribute("data-value"));
-		rating.innerText = value;
+		rating.textContent = value;
 
 		// Remove all existing classes from stars
 		stars.forEach((s) => s.classList.remove("one", "two", "three", "four", "five"));
@@ -81,11 +86,16 @@ stars.forEach((star) => {
 submitBtn.addEventListener("click", () => {
 	const tulisan = tulisanText.value;
 
-	const userRating = parseInt(rating.innerText);
+	const userRating = parseInt(rating.textContent);
 	const tanggal = new Date().toISOString().split('T')[0];
 
 	if (!userRating || !tulisan || !inovasinya) {
 		alert("Please select a rating and provide a review and innovation before submitting.");
+		return;
+	}
+
+	if (!allowedChars.test(tulisan)) {
+		alert("Review contains invalid characters. Please remove any special characters.");
 		return;
 	}
 
@@ -115,10 +125,10 @@ submitBtn.addEventListener("click", () => {
 			const reviewElement = document.createElement("div");
 			reviewElement.classList.add("review");
 			reviewElement.innerHTML = `
-            <p><strong>Rating: ${userRating}/5</strong></p>
-            <p>${tulisan}</p>
-            <p>Inovasi: ${inovasinya}</p>
-            <p>Tanggal: ${tanggal}</p>`;
+                <p><strong>Rating: ${sanitizeHTML(userRating.toString())}/5</strong></p>
+                <p>${sanitizeHTML(tulisan)}</p>
+                <p>Inovasi: ${sanitizeHTML(inovasinya)}</p>
+                <p>Tanggal: ${sanitizeHTML(tanggal)}</p>`;
 			reviewsContainer.appendChild(reviewElement);
 
 			// Update the rating bars
@@ -128,7 +138,7 @@ submitBtn.addEventListener("click", () => {
 
 			// Reset styles after submitting
 			tulisanText.value = "";
-			rating.innerText = "0";
+			rating.textContent = "0";
 			stars.forEach((s) => s.classList.remove("one", "two", "three", "four", "five", "selected"));
 		})
 		.catch(error => {
