@@ -3,14 +3,21 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<title>RSUD Genteng - Rumah Sakit Umum Daerah Terbaik</title>
-	<meta content="Rumah Sakit Umum Daerah Genteng adalah rumah sakit umum daerah yang menyediakan pelayanan kesehatan terbaik dengan berbagai fasilitas medis dan dokter spesialis." name="description">
-	<meta content="Rumah Sakit Umum Daerah Genteng, RSUD Genteng, rumah sakit, pelayanan kesehatan, dokter spesialis, fasilitas medis, rumah sakit umum daerah" name="keywords">
+	<meta name="description" content="Rumah Sakit Umum Daerah Genteng adalah rumah sakit umum daerah yang menyediakan pelayanan kesehatan terbaik dengan berbagai fasilitas medis dan dokter spesialis." />
+	<meta name="keywords" content="Rumah Sakit Umum Daerah Genteng, RSUD Genteng, rumah sakit, pelayanan kesehatan, dokter spesialis, fasilitas medis, rumah sakit umum daerah" />
+
+	<meta property="og:title" content="RSUD Genteng - Rumah Sakit Umum Daerah Terbaik" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://rsudgenteng.banyuwangikab.go.id" />
+	<meta property="og:image" content="https://rsudgenteng.banyuwangikab.go.id/assets/img/logo_bwi_small.png" />
+	<meta name="author" content="RSUD Genteng" />
 
 	<!-- Favicons -->
 	<link href="<?php echo base_url('assets/img/logo_bwi_small.png'); ?>" rel="shortcut icon">
+
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -20,7 +27,7 @@
 	<link href="<?php echo base_url('assets/front/vendor/animate.css/animate.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/aos/aos.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
@@ -29,73 +36,7 @@
 	<link href="<?php echo base_url('assets/front/css/style.css'); ?>" rel="stylesheet">
 
 	<style>
-		/* Tambahkan di dalam tag <style> atau dalam file CSS terpisah */
-		.fixed-height {
-			height: 300px;
-			object-fit: cover;
-			width: 100%;
-		}
-
-		.fixed-artikel {
-			height: 400px;
-			object-fit: cover;
-			width: 100%;
-		}
-
-		.member {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-			height: 400px !important;
-		}
-
-		.member-img {
-			width: 100%;
-		}
-
-		.member-info {
-			padding: 10px;
-		}
-
-		.iframe-wrapper {
-			position: relative;
-			padding-bottom: 56.25%;
-			height: 900px;
-			overflow: hidden;
-		}
-
-		.iframe-wrapper iframe {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-
-		@media (min-width: 1023px) {
-			#hero {
-				height: 720px !important;
-			}
-		}
-
-		@media (min-width: 768px) and (max-width: 1023px) {
-			#hero {
-				height: 67vh;
-			}
-		}
-
-		@media (max-width: 768px) {
-			#hero {
-				height: 57vh;
-			}
-		}
-
-		@media (max-width: 576px) {
-			#hero {
-				height: 40vh;
-			}
-		}
+		.fixed-height{height:300px;object-fit:cover;width:100%}.fixed-artikel{height:400px;object-fit:cover;width:100%}.member{display:flex;flex-direction:column;align-items:center;text-align:center;height:400px!important}.member-img{width:100%}.member-info{padding:10px}.iframe-wrapper{position:relative;padding-bottom:56.25%;height:900px;overflow:hidden}.iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}@media(min-width:1023px){#hero{height:720px!important}}@media(min-width:768px) and (max-width:1023px){#hero{height:67vh}}@media(max-width:768px){#hero{height:57vh}}@media(max-width:576px){#hero{height:40vh}}
 	</style>
 </head>
 
