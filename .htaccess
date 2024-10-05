@@ -3,7 +3,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
 
-Redirect 301 /web/home/inovasi https://rsudgenteng.banyuwangikab.go.id/home/inovasi
+# Redirect 301 /web/home/inovasi https://rsudgenteng.banyuwangikab.go.id/home/inovasi
+RewriteRule ^web/(.*)$ /$1 [R=301,L]
 
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php74” package as the default “PHP” programming language.
