@@ -1,16 +1,13 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
 
-    RewriteCond %{REQUEST_URI} ^system.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
+Redirect 301 /web/home/inovasi https://rsudgenteng.banyuwangikab.go.id/home/inovasi
 
-    RewriteCond %{REQUEST_URI} ^application.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-    RewriteCond %{REQUEST_URI} ^asset.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php/$1 [L]
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
 </IfModule>
+# php -- END cPanel-generated handler, do not edit
