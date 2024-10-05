@@ -34,7 +34,7 @@ function sanitizeHTML(str) {
 
 function getReviews() {
 	showLoading();
-	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/ambil_review?inovasi=' + encodeURIComponent(inovasinya))
+	fetch('https://rsudgenteng.banyuwangikab.go.id/home/ambil_review?inovasi=' + encodeURIComponent(inovasinya))
 		.then(response => response.json())
 		.then(data => {
 			// Iterate through all reviews to calculate total ratings
@@ -114,7 +114,7 @@ submitBtn.addEventListener("click", () => {
 	}
 
 	showLoading();
-	fetch('https://rsudgenteng.banyuwangikab.go.id/web/home/tambah_review', {
+	fetch('https://rsudgenteng.banyuwangikab.go.id/home/tambah_review', {
 		method: 'POST',
 		body: formData
 	})
