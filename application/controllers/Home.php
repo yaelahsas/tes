@@ -207,6 +207,13 @@ class Home extends CI_Controller
 		$this->load->view('frontend/_layouts/footer');
 	}
 
+	public function kelas_butik()
+	{
+		$data['redirect_url'] = 'https://www.example.com'; // URL tujuan
+		$this->load->view('frontend/redirect',$data);
+
+	}
+
 	public function tambah_review()
 	{
 		header('Content-Type: application/json');
