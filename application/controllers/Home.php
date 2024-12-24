@@ -209,7 +209,7 @@ class Home extends CI_Controller
 
 	public function kelas_butik()
 	{
-		$data['redirect_url'] = 'https://www.example.com'; // URL tujuan
+		$data['redirect_url'] = 'https://linktr.ee/KelasButik'; // URL tujuan
 		$this->load->view('frontend/redirect',$data);
 
 	}
