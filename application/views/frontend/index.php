@@ -29,6 +29,36 @@
 		color: #6c757d;
 		font-size: 0.9rem;
 	}
+
+	.whatsapp-float, .emergency-float {
+            position: fixed;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+			z-index: 998;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .whatsapp-float {
+            bottom: 150px;
+            background-color: #25D366;
+        }
+        .emergency-float {
+            bottom: 80px;
+            background-color: #FF0000;
+        }
+        .whatsapp-float img, .emergency-float img {
+            width: 40px;
+            height: 40px;
+        }
+        .whatsapp-float:hover {
+            background-color: #4CE4DDFF;
+        }
+        .emergency-float:hover {
+            background-color: #CC0000;
+        }
 </style>
 <section id="hero">
 	<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">

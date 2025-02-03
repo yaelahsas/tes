@@ -29,7 +29,7 @@
 	<link href="<?php echo base_url('assets/front/vendor/animate.css/animate.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/aos/aos.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.min.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
@@ -47,12 +47,12 @@
 	<!-- ======= Top Bar ======= -->
 	<div id="topbar" class="d-flex align-items-center fixed-top">
 		<div class="container d-flex align-items-center justify-content-center justify-content-md-between">
-			<div class="align-items-center d-none d-md-flex">
-				<i class="bi bi-clock"></i>Loket Pendaftaran : Senin - Kamis 07.00 - 12.00, Jumat 07.00 - 10.00, Sabtu 07.00 - 11.00 & IGD 24 Jam
+			<div class="align-items-center d-flex">
+				<i class="bi bi-clock"></i><marquee>Loket Pendaftaran : Senin - Kamis 07.00 - 12.00, Jumat 07.00 - 10.00, Sabtu 07.00 - 11.00 & IGD 24 Jam</marquee>
 			</div>
-			<div class="d-flex align-items-center">
+			<!-- <div class="d-flex align-items-center">
 				<i class="bi bi-phone"></i> Hubungi Kami 081329651321
-			</div>
+			</div> -->
 		</div>
 	</div>
 

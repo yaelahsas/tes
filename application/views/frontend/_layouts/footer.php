@@ -38,7 +38,12 @@
 			</div>
 		</div>
 	</footer><!-- End Footer -->
-
+	<a href="https://wa.me/6281329651321?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20RSUD%20Genteng" target="_blank" class="whatsapp-float d-flex align-items-center justify-content-center">
+		<img src="<?= base_url('gambar/customer-service.png'); ?>" alt="Pengaduan WhatsApp">
+	</a>
+	<a href="https://wa.me/628113439904?text=Halo IGD RSUD Genteng,%20Saya%20ingin%20bertanya" target="_blank" class="emergency-float d-flex align-items-center justify-content-center">
+		<img src="<?= base_url('gambar/ambulance.png'); ?>" alt="Layanan Darurat WhatsApp">
+	</a>
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
