@@ -48,7 +48,7 @@
 	<div id="topbar" class="d-flex align-items-center fixed-top">
 		<div class="container d-flex align-items-center justify-content-center justify-content-md-between">
 			<div class="align-items-center d-none d-md-flex">
-				<i class="bi bi-clock"></i> Senin - Sabtu, 07.00 - 12.00, IGD 24 Jam
+				<i class="bi bi-clock"></i>Loket Pendaftaran : Senin - Kamis 07.00 - 12.00, Jumat 07.00 - 10.00, Sabtu 07.00 - 11.00 & IGD 24 Jam
 			</div>
 			<div class="d-flex align-items-center">
 				<i class="bi bi-phone"></i> Hubungi Kami 081329651321

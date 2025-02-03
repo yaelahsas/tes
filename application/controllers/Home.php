@@ -3,8 +3,11 @@
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
+use LZCompressor\LZString;
+
 class Home extends CI_Controller
 {
+
 	function __construct()
 	{
 		parent::__construct();
@@ -17,6 +20,7 @@ class Home extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->model('Pengunjung_model');
 		$this->load->library('datatables');
+		$this->load->library('bpjs');
 	}
 
 
@@ -53,8 +57,18 @@ class Home extends CI_Controller
 		$formatted_date = date('d m Y', $timestamp);
 
 		$months = array(
-			'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-			'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+			'Januari',
+			'Februari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
 		);
 
 		$dateParts = explode(' ', $formatted_date);
@@ -102,6 +116,7 @@ class Home extends CI_Controller
 		$this->load->view('frontend/jadwal_dokter');
 		$this->load->view('frontend/_layouts/footer');
 	}
+
 	public function maklumat()
 	{
 		$this->load->view('frontend/_layouts/header');
