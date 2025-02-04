@@ -38,6 +38,9 @@
 			</div>
 		</div>
 	</footer><!-- End Footer -->
+	<a href="https://wa.me/628113439905?text=Halo,%20saya%20ingin%20mendaftar%20poliklinik%20RSUD%20Genteng" target="_blank" class="daftar-float d-flex align-items-center justify-content-center">
+		<img src="<?= base_url('gambar/date.png'); ?>" alt="Pendaftaran Online WhatsApp">
+	</a>
 	<a href="https://wa.me/6281329651321?text=Halo,%20saya%20ingin%20bertanya%20tentang%20layanan%20RSUD%20Genteng" target="_blank" class="whatsapp-float d-flex align-items-center justify-content-center">
 		<img src="<?= base_url('gambar/customer-service.png'); ?>" alt="Pengaduan WhatsApp">
 	</a>
@@ -57,6 +60,7 @@
 	<!-- Template Main JS File -->
 
 	<script src="<?php echo base_url('assets/front/js/main.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/front/js/custom.js'); ?>"></script>
 	</body>
 
 	</html>

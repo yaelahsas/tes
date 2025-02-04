@@ -10,12 +10,15 @@
 
 		// Set URL berdasarkan deteksi
 		if (strpos($visitorIP, $localIP) === 0) {
-			$iframeUrl = 'https://10.46.1.5/e-reservasi';
+			$iframeUrl = 'https://10.46.1.6/e-reservasi';
 		} else {
 			$iframeUrl = 'https://rsudgenteng.id:8888/e-reservasi/';
 		}
 		?>
-		<iframe src="<?php echo $iframeUrl; ?>" width="1500" height="900" frameborder="0" allowfullscreen></iframe>
+		<iframe loading="lazy"
+			frameborder="0"
+			scrolling="no"
+			allowtransparency="true" src="<?php echo $iframeUrl; ?>" width="1500" height="900" frameborder="0" allowfullscreen></iframe>
 
 	</div>
 

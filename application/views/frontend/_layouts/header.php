@@ -33,12 +33,52 @@
 	<link href="<?php echo base_url('assets/front/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
+	<script async src="//www.instagram.com/embed.js"></script>
 
 	<!-- Template Main CSS File -->
 	<link href="<?php echo base_url('assets/front/css/style.css'); ?>" rel="stylesheet">
 
 	<style>
 		.fixed-height{height:300px;object-fit:cover;width:100%}.fixed-artikel{height:400px;object-fit:cover;width:100%}.member{display:flex;flex-direction:column;align-items:center;text-align:center;height:400px!important}.member-img{width:100%}.member-info{padding:10px}.iframe-wrapper{position:relative;padding-bottom:56.25%;height:900px;overflow:hidden}.iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}@media(min-width:1023px){#hero{height:720px!important}}@media(min-width:768px) and (max-width:1023px){#hero{height:67vh}}@media(max-width:768px){#hero{height:57vh}}@media(max-width:576px){#hero{height:40vh}}
+		
+	.whatsapp-float, .emergency-float, .daftar-float {
+            position: fixed;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+			z-index: 998;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .daftar-float {
+            bottom: 220px;
+            background-color:rgb(37, 191, 211);
+        }
+        .whatsapp-float {
+            bottom: 150px;
+            background-color: #25D366;
+        }
+        .emergency-float {
+            bottom: 80px;
+            background-color: #FF0000;
+        }
+        .whatsapp-float img, .emergency-float img, .daftar-float img {
+            width: 40px;
+            height: 40px;
+        }
+        .daftar-float:hover {
+            background-color:rgb(76, 147, 228);
+        }
+        .whatsapp-float:hover {
+            background-color: #4CE4DDFF;
+        }
+        .emergency-float:hover {
+            background-color: #CC0000;
+        }
+
+		.fixed-ig{height:100%;object-fit:cover;width:100%}
 	</style>
 </head>
 
@@ -46,7 +86,7 @@
 
 	<!-- ======= Top Bar ======= -->
 	<div id="topbar" class="d-flex align-items-center fixed-top">
-		<div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+		<div id="topbar-container" class="container align-items-center justify-content-center justify-content-md-between">
 			<div class="align-items-center d-flex">
 				<i class="bi bi-clock"></i><marquee>Loket Pendaftaran : Senin - Kamis 07.00 - 12.00, Jumat 07.00 - 10.00, Sabtu 07.00 - 11.00 & IGD 24 Jam</marquee>
 			</div>
