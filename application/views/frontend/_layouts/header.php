@@ -27,7 +27,6 @@
 	<!-- Vendor CSS Files -->
 	<link href="<?php echo base_url('assets/front/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/animate.css/animate.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/front/vendor/aos/aos.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
