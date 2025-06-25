@@ -94,6 +94,7 @@ if ($this->uri->segment(2) == "layout_transparent") {
 	|| $this->uri->segment(1) == "Profil"
 	|| $this->uri->segment(1) == "Galeri"
 	|| $this->uri->segment(1) == "Inovasi"
+	|| $this->uri->segment(1) == "Jadwal_dokter"
 ) {
 	$this->load->view('dist/_partials/layout');
 	$this->load->view('dist/_partials/sidebar');

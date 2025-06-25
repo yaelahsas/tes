@@ -27,6 +27,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<li class="<?php echo $this->uri->segment(1) == 'Dokter' ? 'active' : ''; ?>">
 				<a href="<?= site_url('Dokter') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dokter</span></a>
 			</li>
+			<li class="<?php echo $this->uri->segment(1) == 'Jadwal_dokter' ? 'active' : ''; ?>">
+				<a href="<?= site_url('Jadwal_dokter') ?>" class="nav-link"><i class="fas fa-calendar-alt"></i><span>Jadwal Dokter</span></a>
+			</li>
 			<li class="<?php echo $this->uri->segment(1) == 'Artikel' ? 'active' : ''; ?>">
 				<a href="<?= site_url('Artikel') ?>" class="nav-link"><i class="fas fa-sitemap"></i><span>Artikel</span></a>
 			</li>

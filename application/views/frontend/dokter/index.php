@@ -11,7 +11,7 @@
     <section class="breadcrumbs">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Tim Dokter Spesialis</h2>
+                <h2>Tim Dokter Spesialis dan Umum</h2>
                 <ol>
                     <li><a href="<?= base_url() ?>">Beranda</a></li>
                     <li>Tim Dokter</li>

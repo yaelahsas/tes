@@ -449,8 +449,8 @@
 	<section id="doctors" class="doctors section-bg" aria-label="Tim Dokter">
 		<div class="container">
 			<div class="section-title">
-				<h2>Tim Dokter Spesialis</h2>
-				<p>Tim dokter spesialis kami memiliki pengalaman dan keahlian dalam berbagai bidang medis untuk memberikan pelayanan kesehatan terbaik.</p>
+				<h2>Tim Dokter </h2>
+				<p>Tim dokter kami memiliki pengalaman dan keahlian dalam berbagai bidang medis untuk memberikan pelayanan kesehatan terbaik.</p>
 			</div>
 
 			<div class="row">
