@@ -1,16 +1,95 @@
-<style>
-	.card {
-		border: none;
-		border-radius: 10px;
-		overflow: hidden;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-	}
+<!-- SEO Meta Tags -->
+<meta name="description" content="RSUD Genteng Banyuwangi - Rumah sakit umum daerah yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
+<meta name="keywords" content="RSUD Genteng, rumah sakit Banyuwangi, dokter spesialis, IGD 24 jam, pelayanan kesehatan Genteng">
+<meta property="og:title" content="RSUD Genteng Banyuwangi - Pelayanan Kesehatan Terpadu">
+<meta property="og:description" content="Rumah sakit umum daerah yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
+<meta property="og:image" content="<?= base_url('assets/front/img/rs_malam.jpg') ?>">
+<meta property="og:url" content="<?= current_url() ?>">
+<link rel="canonical" href="<?= current_url() ?>">
 
-	.card:hover {
-		transform: translateY(-10px);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
+<!-- Schema.org markup for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hospital",
+  "name": "RSUD Genteng Banyuwangi",
+  "image": "<?= base_url('assets/front/img/rs_malam.jpg') ?>",
+  "description": "Rumah sakit umum daerah yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. HASANUDIN 98",
+    "addressLocality": "Genteng",
+    "addressRegion": "Banyuwangi",
+    "postalCode": "68465",
+    "addressCountry": "ID"
+  },
+  "telephone": "+623338458390",
+  "openingHours": "Mo-Su 00:00-24:00",
+  "hasMap": "https://goo.gl/maps/YOUR-MAPS-URL"
+}
+</script>
+
+<style>
+    /* Performance Optimizations */
+    .card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        will-change: transform;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        contain: content;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Optimize Images */
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Optimize Layout Shifts */
+    .carousel-item img {
+        aspect-ratio: 16/9;
+    }
+
+    .doctor-card img {
+        aspect-ratio: 4/3;
+    }
+
+    /* Optimize Animations */
+    @media (prefers-reduced-motion: reduce) {
+        .card {
+            transition: none;
+        }
+    }
+
+    /* Critical CSS */
+    .section-title {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #2c4964;
+        margin-bottom: 1rem;
+    }
+
+    .lazy {
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .lazy.loaded {
+        opacity: 1;
+    }
 
 	.card-img-top {
 		border-bottom: 1px solid #ddd;
@@ -30,13 +109,22 @@
 		font-size: 0.9rem;
 	}
 </style>
+<!-- Hero Section -->
 <section id="hero">
 	<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 		<div class="carousel-inner" role="listbox">
 			<?php foreach ($profil as $key => $prof) { ?>
 				<div class="d-block w-100 carousel-item <?= $key === 0 ? 'active' : '' ?>">
-					<img class="d-block w-100 h-100 lozad" data-src="<?= base_url('gambar/profil/') . $prof->img_profil ?>">
+					<img class="d-block w-100 h-100 lazy" 
+						 data-src="<?= base_url('gambar/profil/') . $prof->img_profil ?>"
+						 src="<?= base_url('assets/front/img/placeholder.jpg') ?>"
+						 alt="<?= htmlspecialchars($prof->judul ?? 'RSUD Genteng Slide') ?>"
+						 width="1920" height="1080">
+					<div class="carousel-caption d-none d-md-block">
+						<h2 class="animate__animated animate__fadeInDown"><?= htmlspecialchars($prof->judul ?? '') ?></h2>
+						<p class="animate__animated animate__fadeInUp"><?= htmlspecialchars($prof->deskripsi ?? '') ?></p>
+					</div>
 				</div>
 			<?php } ?>
 		</div>
@@ -51,75 +139,88 @@
 
 <main id="main">
 
-	<section id="services" class="services services">
-		<div class="container" data-aos="fade-up">
+	<!-- Services Section -->
+	<section id="services" class="services services" aria-label="Layanan Utama">
+		<div class="container">
 
+
+			<div class="section-title">
+				<h2>Layanan Utama</h2>
+				<p>Layanan kesehatan terpadu RSUD Genteng untuk masyarakat</p>
+			</div>
 
 			<div class="row">
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+				<div class="col-lg-4 col-md-6 icon-box">
 
-					<div class="icon"><i class="fas fa-calendar-days"></i></div>
-
-					<h4 class="title"><a href="https://rsudgenteng.id:8888/e-reservasi/" target="_blank">Pendaftaran Online</a></h4>
-
-				</div>
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-					<div class="icon"><i class="fas fa-user-doctor"></i></div>
-					<h4 class="title"><a href="<?= base_url('home/jadwal_dokter') ?>">Jadwal Dokter & Poliklinik</a></h4>
+					<div class="icon" aria-hidden="true"><i class="fas fa-calendar-days"></i></div>
+					<h3 class="title"><a href="https://rsudgenteng.id:8888/e-reservasi/" target="_blank" rel="noopener">Pendaftaran Online</a></h3>
+					<p>Daftar kunjungan rumah sakit secara online tanpa antrian</p>
 
 				</div>
-
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-					<div class="icon"><i class="fas fa-bed-pulse"></i></div>
-					<h4 class="title"><a href="<?php echo base_url('home/tempat_tidur'); ?>" target="_blank">Ketersediaan Bed</a></h4>
-
+				<div class="col-lg-4 col-md-6 icon-box">
+					<div class="icon" aria-hidden="true"><i class="fas fa-user-doctor"></i></div>
+					<h3 class="title"><a href="<?= base_url('home/jadwal_dokter') ?>">Jadwal Dokter & Poliklinik</a></h3>
+					<p>Informasi jadwal praktik dokter dan layanan poliklinik</p>
 				</div>
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="400">
-					<div class="icon"><i class="fas fa-envelope"></i></div>
-					<h4 class="title"><a href="<?php echo base_url('home/pengaduan'); ?>" target="_blank">Layanan Pengaduan</a></h4>
 
+				<div class="col-lg-4 col-md-6 icon-box">
+					<div class="icon" aria-hidden="true"><i class="fas fa-bed-pulse"></i></div>
+					<h3 class="title"><a href="<?= base_url('home/tempat_tidur') ?>" target="_blank" rel="noopener">Ketersediaan Bed</a></h3>
+					<p>Informasi ketersediaan tempat tidur secara real-time</p>
 				</div>
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
-					<div class="icon"><i class="fas fa-hand"></i></div>
-					<h4 class="title"><a href="#">Whistleblowing System</a></h4>
 
+				<div class="col-lg-4 col-md-6 icon-box">
+					<div class="icon" aria-hidden="true"><i class="fas fa-envelope"></i></div>
+					<h3 class="title"><a href="<?= base_url('home/pengaduan') ?>" target="_blank" rel="noopener">Layanan Pengaduan</a></h3>
+					<p>Sampaikan keluhan dan saran untuk pelayanan lebih baik</p>
 				</div>
-				<div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="500">
-					<div class="icon"><i class="fas fa-bullhorn"></i></div>
-					<h4 class="title"><a href="<?php echo base_url('home/maklumat'); ?>" target="_blank">Maklumat</a></h4>
 
+				<div class="col-lg-4 col-md-6 icon-box">
+					<div class="icon" aria-hidden="true"><i class="fas fa-hand"></i></div>
+					<h3 class="title"><a href="#" rel="noopener">Whistleblowing System</a></h3>
+					<p>Sistem pelaporan pelanggaran secara anonim</p>
+				</div>
+
+				<div class="col-lg-4 col-md-6 icon-box">
+					<div class="icon" aria-hidden="true"><i class="fas fa-bullhorn"></i></div>
+					<h3 class="title"><a href="<?= base_url('home/maklumat') ?>" target="_blank" rel="noopener">Maklumat</a></h3>
+					<p>Informasi dan pengumuman resmi RSUD Genteng</p>
 				</div>
 
 			</div>
 
 		</div>
-	</section><!-- End Services Section -->
-	<!-- ======= Featured Services Section ======= -->
-	<section class="featured-services">
-		<div class="container">
+	</section>
 
+	<!-- Featured Services Section -->
+	<section class="featured-services" aria-label="Layanan Unggulan">
+		<div class="container">
 			<div class="section-title">
 				<h2>Layanan Unggulan</h2>
+				<p>Berbagai layanan spesialis unggulan RSUD Genteng</p>
 			</div>
-			<?php
-			$delay = 500; // Mulai dengan delay awal 500
-			foreach (array_chunk($layanan, 4) as $row_services) { ?>
+
+			<?php foreach (array_chunk($layanan, 4) as $row_services) { ?>
 				<div class="row">
 					<?php foreach ($row_services as $service) { ?>
-
 						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-							<div class="icon-box" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
-								<div class="icon"><img src="<?= base_url('/gambar/layanan/') . $service->img ?>"></div>
-								<h4 class="title"><a href=""><?= $service->judul ?></a></h4>
-								<p class="description"><?= $service->ket ?></p>
+							<div class="icon-box">
+								<div class="icon">
+									<img src="<?= base_url('/gambar/layanan/') . $service->img ?>" 
+										 alt="<?= htmlspecialchars($service->judul) ?>"
+										 width="64" height="64"
+										 loading="lazy">
+								</div>
+								<h3 class="title">
+									<a href="<?= base_url('layanan/detail/' . ($service->id ?? '')) ?>">
+										<?= htmlspecialchars($service->judul) ?>
+									</a>
+								</h3>
+								<p class="description"><?= htmlspecialchars($service->ket) ?></p>
 							</div>
 						</div>
-						<?php
-						$delay += 100; // Tambahkan 100 ke delay setiap perulangan
-						?>
 					<?php } ?>
 				</div>
-				<br>
 			<?php } ?>
 
 		</div>
@@ -247,23 +348,30 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<?php foreach ($artikel as  $value) {
-					?>
+					<?php foreach ($artikel as $value) { ?>
 						<div class="col-sm-6 col-md-4">
 							<div class="card fixed-artikel">
-								<img src="<?php echo base_url('gambar/artikel/') . $value->sampul ?>" class="card-img-top" style="height: 250px;" alt="...">
+								<img src="<?= base_url('gambar/artikel/') . $value->sampul ?>" 
+									 class="card-img-top lazy" 
+									 data-src="<?= base_url('gambar/artikel/') . $value->sampul ?>"
+									 style="height: 250px;" 
+									 alt="<?= htmlspecialchars($value->judul) ?>">
 								<div class="card-body">
-									<h5 class="card-title"><?php echo  $value->judul ?></h5>
-
-									<a href="<?= base_url('home/read/') . $value->id ?>" target="_blank" class="btn btn-primary">Lihat Selengkapnya</a>
+									<h5 class="card-title"><?= htmlspecialchars($value->judul) ?></h5>
+									<a href="<?= base_url('berita/read/') . $value->id ?>" class="btn btn-primary">Lihat Selengkapnya</a>
 								</div>
 							</div>
 						</div>
 					<?php } ?>
 				</div>
+				
+				<div class="text-center mt-4">
+					<a href="<?= base_url('berita') ?>" class="btn btn-primary btn-lg">
+						Lihat Semua Artikel
+						<i class="fas fa-arrow-right ms-2"></i>
+					</a>
+				</div>
 			</div>
-
-
 		</div>
 	</section><!-- End Appointment Section -->
 	<section id="appointment" class="appointment section-bg">
@@ -337,187 +445,302 @@
 	<!-- ======= Departments Section ======= -->
 
 	<!-- ======= Doctors Section ======= -->
-	<section id="doctors" class="doctors section-bg">
-		<div class="container" data-aos="fade-up">
-
+	<!-- Doctors Section -->
+	<section id="doctors" class="doctors section-bg" aria-label="Tim Dokter">
+		<div class="container">
 			<div class="section-title">
-				<h2>Dokter</h2>
-				<p>Dokter spesialis rumah sakit memiliki pengetahuan yang luas dan mendalam tentang kondisi medis tertentu,
-					serta mampu melakukan prosedur dan teknik medis yang rumit dan kompleks. Mereka bekerja sama dengan tim
-					medis lainnya, seperti perawat, ahli terapi, dan farmasis, untuk memberikan perawatan yang terbaik dan
-					terintegrasi bagi pasien.</p>
+				<h2>Tim Dokter Spesialis</h2>
+				<p>Tim dokter spesialis kami memiliki pengalaman dan keahlian dalam berbagai bidang medis untuk memberikan pelayanan kesehatan terbaik.</p>
 			</div>
-			<div class="container mt-5">
-				<div class="row">
-					<div class="col-md-4 mb-4">
-						<div class="card">
-							<img src="<?= base_url("gambar/dokter/") ?>dokter-240722-91988d636c.jpg" class="card-img-top " alt="dr.  RIEZKY JANUAR PARAMITHA, Sp.D.V">
-							<div class="card-body member-info">
-								<h4 class="card-title">dr. RIEZKY JANUAR PARAMITHA, Sp.D.V</h4>
-								<p class="card-text">Spesialis Kulit dan Kelamin</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 mb-4">
-						<div class="card">
-							<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-80f97dcfab.jpg" class="card-img-top " alt="dr. Nurul Huda, Sp. B">
 
-							<div class="card-body member-info">
-								<h4 class="card-title">dr. Nurul Huda D.P, Sp. B</h4>
-								<p class="card-text">Spesialis Bedah</p>
-							</div>
+			<div class="row">
+				<div class="col-md-4 mb-4">
+					<article class="card h-100 doctor-card">
+						<img src="<?= base_url("gambar/dokter/") ?>dokter-240722-91988d636c.jpg" 
+							 class="card-img-top" 
+							 alt="dr. RIEZKY JANUAR PARAMITHA, Sp.D.V"
+							 width="400" height="300"
+							 loading="lazy">
+						<div class="card-body member-info">
+							<h3 class="card-title h5">dr. RIEZKY JANUAR PARAMITHA, Sp.D.V</h3>
+							<p class="card-text">Spesialis Kulit dan Kelamin</p>
+							<a href="#" class="btn btn-outline-primary btn-sm">Lihat Jadwal</a>
 						</div>
-					</div>
-					<div class="col-md-4 mb-4">
-						<div class="card">
-							<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-bc5c749a95.jpg" class="card-img-top " alt="dr. Yuni Purwanti, Sp.A">
+					</article>
+				</div>
 
-							<div class="card-body member-info">
-								<h4 class="card-title">dr. Yuni Purwanti, Sp.A</h4>
-								<p class="card-text">Spesialis Anak</p>
-							</div>
+				<div class="col-md-4 mb-4">
+					<article class="card h-100 doctor-card">
+						<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-80f97dcfab.jpg" 
+							 class="card-img-top" 
+							 alt="dr. Nurul Huda D.P, Sp. B"
+							 width="400" height="300"
+							 loading="lazy">
+						<div class="card-body member-info">
+							<h3 class="card-title h5">dr. Nurul Huda D.P, Sp. B</h3>
+							<p class="card-text">Spesialis Bedah</p>
+							<a href="#" class="btn btn-outline-primary btn-sm">Lihat Jadwal</a>
 						</div>
-					</div>
+					</article>
+				</div>
+
+				<div class="col-md-4 mb-4">
+					<article class="card h-100 doctor-card">
+						<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-bc5c749a95.jpg" 
+							 class="card-img-top" 
+							 alt="dr. Yuni Purwanti, Sp.A"
+							 width="400" height="300"
+							 loading="lazy">
+						<div class="card-body member-info">
+							<h3 class="card-title h5">dr. Yuni Purwanti, Sp.A</h3>
+							<p class="card-text">Spesialis Anak</p>
+							<a href="#" class="btn btn-outline-primary btn-sm">Lihat Jadwal</a>
+						</div>
+					</article>
 				</div>
 			</div>
 
+			<div class="text-center mt-4">
+				<a href="<?= base_url("medis") ?>" class="btn btn-primary">
+					Lihat Semua Dokter
+					<i class="fas fa-arrow-right ms-2"></i>
+				</a>
+			</div>
 		</div>
-		<div class="section-title">
-			<a href="<?= base_url("detail/dokter") ?>" class="btn btn-primary">Lihat Semua</a>
-		</div>
-	</section><!-- End Doctors Section -->
+	</section>
 
 
 
-	<!-- ======= Gallery Section ======= -->
-	<section id="gallery" class="gallery">
-		<div class="container" data-aos="fade-up">
-
+	<!-- Gallery Section -->
+	<section id="gallery" class="gallery" aria-label="Galeri Kegiatan">
+		<div class="container">
 			<div class="section-title">
-				<h2>Gallery</h2>
-				<p>Beberapa foto kegiatan-kegiatan yang telah dilakukan RSUD Genteng</p>
+				<h2>Galeri Kegiatan</h2>
+				<p>Dokumentasi kegiatan dan pelayanan RSUD Genteng</p>
 			</div>
 
 			<div class="gallery-slider swiper">
 				<div class="swiper-wrapper align-items-center">
 					<?php foreach ($galeri as $key => $gal) { ?>
-						<div class="swiper-slide"><a class="gallery-lightbox" href="gambar/galeri/<?= $gal->img_galeri ?>"><img src="gambar/galeri/<?= $gal->img_galeri ?>" class="img-fluid lozad" alt=""></a></div>
-
-
+						<div class="swiper-slide">
+							<a class="gallery-lightbox" 
+							   href="<?= base_url('gambar/galeri/' . $gal->img_galeri) ?>" 
+							   title="<?= htmlspecialchars($gal->judul ?? 'Kegiatan RSUD Genteng') ?>">
+								<img src="<?= base_url('assets/front/img/placeholder-gallery.jpg') ?>" 
+									 data-src="<?= base_url('gambar/galeri/' . $gal->img_galeri) ?>"
+									 class="img-fluid lazy"
+									 alt="<?= htmlspecialchars($gal->judul ?? 'Kegiatan RSUD Genteng') ?>"
+									 width="800" height="600">
+							</a>
+						</div>
 					<?php } ?>
 				</div>
 				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
 			</div>
-
 		</div>
-	</section><!-- End Gallery Section -->
+	</section>
 
 
 
-	<!-- ======= Frequently Asked Questioins Section ======= -->
-	<section id="faq" class="faq section-bg">
-		<div class="container" data-aos="fade-up">
-
-			<div class="section-title">
-				<h2>Frequently Asked Questioins</h2>
-				<p>Berikut beberapa pertanyaan yang sering ditanyakan oleh pasien.</p>
-			</div>
-
-			<ul class="faq-list">
-
-				<li>
-					<div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Apa yang harus saya lakukan jika saya membutuhkan perawatan medis di RSUD Genteng ? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-					<div id="faq1" class="collapse" data-bs-parent=".faq-list">
-						<p>
-							Anda dapat mengunjungi RSUD Genteng langsung atau menghubungi layanan informasi dan pendaftaran untuk mendapatkan petunjuk lebih lanjut tentang cara menerima perawatan medis.
-						</p>
-					</div>
-				</li>
-
-				<li>
-					<div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Bagaimana cara membuat janji dengan dokter spesialis di RSUD Genteng? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-					<div id="faq2" class="collapse" data-bs-parent=".faq-list">
-						<p>
-							Anda dapat membuat janji dengan dokter spesialis di RSUD Genteng dengan menghubungi layanan pendaftaran atau melalui sistem pendaftaran online yang tersedia.
-						</p>
-					</div>
-				</li>
-
-				<li>
-					<div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Bagaimana cara menghubungi layanan IGD RSUD Genteng dalam situasi darurat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-					<div id="faq3" class="collapse" data-bs-parent=".faq-list">
-						<p>
-							Anda dapat menghubungi nomor darurat RSUD Genteng di +628113439904 untuk mendapatkan bantuan segera.
-						</p>
-					</div>
-				</li>
-
-				<li>
-					<div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Apakah RSUD Genteng buka 24 jam? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-					<div id="faq4" class="collapse" data-bs-parent=".faq-list">
-						<p>
-							Ya, IGD RSUD Genteng melayani pasien selama 24 jam.
-						</p>
-					</div>
-				</li>
-
-			</ul>
-
-		</div>
-	</section><!-- End Frequently Asked Questioins Section -->
-
-	<!-- ======= Contact Section ======= -->
-	<section id="contact" class="contact">
+	<!-- FAQ Section -->
+	<section id="faq" class="faq section-bg" aria-label="Pertanyaan Umum">
 		<div class="container">
-
 			<div class="section-title">
-				<h2>Alamat</h2>
-
+				<h2>Pertanyaan yang Sering Diajukan</h2>
+				<p>Informasi umum yang sering ditanyakan oleh pasien RSUD Genteng</p>
 			</div>
 
-		</div>
+			<div class="accordion" id="faqAccordion">
+				<div class="accordion-item">
+					<h3 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+							Apa yang harus saya lakukan jika membutuhkan perawatan medis di RSUD Genteng?
+						</button>
+					</h3>
+					<div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+						<div class="accordion-body">
+							<p>Anda dapat mengunjungi RSUD Genteng langsung atau menghubungi layanan informasi dan pendaftaran untuk mendapatkan petunjuk lebih lanjut tentang cara menerima perawatan medis.</p>
+						</div>
+					</div>
+				</div>
 
-		<div>
-			<iframe loading="lazy" allowtransparency="true" style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.36612391686!2d114.16167411421677!3d-8.365597886634978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd155233b0568df%3A0xbdb65442f3878c9d!2sRumah+Sakit+Umum+Daerah+(RSUD)+Genteng!5e0!3m2!1sen!2sid!4v1503459515647" frameborder="0" allowfullscreen></iframe>
-		</div>
+				<div class="accordion-item">
+					<h3 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+							Bagaimana cara membuat janji dengan dokter spesialis?
+						</button>
+					</h3>
+					<div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+						<div class="accordion-body">
+							<p>Anda dapat membuat janji dengan dokter spesialis melalui:</p>
+							<ul>
+								<li>Sistem pendaftaran online di <a href="https://rsudgenteng.id:8888/e-reservasi/">e-reservasi RSUD Genteng</a></li>
+								<li>Menghubungi layanan pendaftaran di (0333) 845839</li>
+								<li>Datang langsung ke loket pendaftaran RSUD Genteng</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
+				<div class="accordion-item">
+					<h3 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+							Bagaimana cara menghubungi layanan IGD dalam situasi darurat?
+						</button>
+					</h3>
+					<div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+						<div class="accordion-body">
+							<p>Untuk situasi darurat, Anda dapat:</p>
+							<ul>
+								<li>Menghubungi hotline IGD: <a href="tel:+628113439904">+62 811-3439-904</a></li>
+								<li>Langsung menuju IGD RSUD Genteng yang buka 24 jam</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="accordion-item">
+					<h3 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+							Apakah RSUD Genteng buka 24 jam?
+						</button>
+					</h3>
+					<div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+						<div class="accordion-body">
+							<p>Ya, IGD RSUD Genteng beroperasi 24 jam setiap hari termasuk hari libur untuk menangani kasus darurat.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="contact" aria-label="Kontak dan Lokasi">
 		<div class="container">
+			<div class="section-title">
+				<h2>Lokasi dan Kontak</h2>
+				<p>Temukan kami di pusat kota Genteng, Banyuwangi</p>
+			</div>
 
-			<div class="row mt-5">
+			<div class="row gy-4">
+				<div class="col-lg-6">
+					<div class="map-container">
+						<iframe 
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.36612391686!2d114.16167411421677!3d-8.365597886634978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd155233b0568df%3A0xbdb65442f3878c9d!2sRumah+Sakit+Umum+Daerah+(RSUD)+Genteng!5e0!3m2!1sen!2sid!4v1503459515647"
+							style="border:0; width: 100%; height: 350px;"
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							title="Lokasi RSUD Genteng di Google Maps"
+							allowfullscreen>
+						</iframe>
+					</div>
+				</div>
 
 				<div class="col-lg-6">
-
-					<div class="row">
-						<div class="col-md-12">
-							<div class="info-box">
-								<i class="bx bx-map"></i>
+					<div class="contact-info">
+						<div class="info-item">
+							<i class="fas fa-map-marker-alt"></i>
+							<div>
 								<h3>Alamat</h3>
-								<p>Jl. HASANUDIN 98 GENTENG - BANYUWANGI, 68465</p>
+								<p>Jl. HASANUDIN 98<br>GENTENG - BANYUWANGI, 68465</p>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="info-box mt-4">
-								<i class="bx bx-envelope"></i>
-								<h3>Email</h3>
-								<p>rsudgenteng@banyuwangikab.go.id
 
+						<div class="info-item">
+							<i class="fas fa-envelope"></i>
+							<div>
+								<h3>Email</h3>
+								<p><a href="mailto:rsudgenteng@banyuwangikab.go.id">rsudgenteng@banyuwangikab.go.id</a></p>
+							</div>
+						</div>
+
+						<div class="info-item">
+							<i class="fas fa-phone-alt"></i>
+							<div>
+								<h3>Telepon</h3>
+								<p>
+									<a href="tel:+623338458390">(0333) 845839</a><br>
+									IGD: <a href="tel:+628113439904">+62 811-3439-904</a>
 								</p>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="info-box mt-4">
-								<i class="bx bx-phone-call"></i>
-								<h3>Telepon</h3>
-								<p>(0333) 845839 </p>
-							</div>
-						</div>
 					</div>
-
 				</div>
-
 			</div>
-
 		</div>
-	</section><!-- End Contact Section -->
+	</section>
 
-</main><!-- End #main -->
+</main>
+
+<!-- Performance Optimization Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Lazy loading for images
+    const lazyImages = document.querySelectorAll('img.lazy');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+
+    // Preload critical images
+    const criticalImages = [
+        '<?= base_url("assets/front/img/rs_malam.jpg") ?>',
+        '<?= base_url("assets/front/img/placeholder.jpg") ?>'
+    ];
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+
+    // Remove AOS animations on mobile for better performance
+    if (window.innerWidth < 768) {
+        const aosElements = document.querySelectorAll('[data-aos]');
+        aosElements.forEach(el => el.removeAttribute('data-aos'));
+    }
+
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// Optimize third-party script loading
+function loadScript(src, async = true) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = async;
+    document.body.appendChild(script);
+}
+
+// Load non-critical scripts after page load
+window.addEventListener('load', function() {
+    // Load Instagram embed script only if needed
+    if (document.querySelector('.instagram-media')) {
+        loadScript('//www.instagram.com/embed.js');
+    }
+});
+</script>
+
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://maps.googleapis.com">

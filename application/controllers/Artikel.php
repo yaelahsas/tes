@@ -23,6 +23,7 @@ class Artikel extends CI_Controller
 		$this->load->view('artikel/artikel_data', $data);
 	}
 
+
 	public function json()
 	{
 		header('Content-Type: application/json');
