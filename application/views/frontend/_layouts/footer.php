@@ -49,17 +49,62 @@
 	</a>
 	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-	<!-- Vendor JS Files -->
-	<script src="<?php echo base_url('assets/front/vendor/purecounter/purecounter_vanilla.js'); ?>"></script>
+	<!-- Essential Scripts -->
 	<script src="<?php echo base_url('assets/front/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/front/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/front/vendor/php-email-form/validate.js'); ?>"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-	<!-- Template Main JS File -->
+	<script src="<?php echo base_url('assets/front/js/main.min.js'); ?>"></script>
 
-	<script src="<?php echo base_url('assets/front/js/main.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/front/js/custom.js'); ?>"></script>
+	<?php
+	$uri = $this->uri->segment(1);
+	$uri2 = $this->uri->segment(2);
+
+	// Homepage specific scripts
+	if (!$uri || $uri === 'home' && !$uri2) {
+		?>
+		<script src="<?php echo base_url('assets/front/vendor/purecounter/purecounter_vanilla.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/front/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
+		<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// Initialize Swiper
+			new Swiper('.gallery-slider', {
+				slidesPerView: 1,
+				spaceBetween: 20,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				breakpoints: {
+					768: {
+						slidesPerView: 2,
+					},
+					992: {
+						slidesPerView: 3,
+					}
+				}
+			});
+
+			// Initialize GLightbox
+			GLightbox({
+				selector: '.gallery-lightbox'
+			});
+
+			// Initialize PureCounter
+			new PureCounter();
+		});
+		</script>
+		<?php
+	}
+
+	// Inovasi page specific scripts
+	if ($uri === 'inovasi') {
+		echo '<script src="' . base_url('assets/js/custom.js') . '"></script>';
+	}
+	?>
 	</body>
 
 	</html>

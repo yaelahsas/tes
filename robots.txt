@@ -1,0 +1,69 @@
+User-agent: *
+Allow: /
+Allow: /home/
+Allow: /tentang/
+Allow: /berita/
+Allow: /medis/
+Allow: /dokumen/
+
+# Allow specific public pages
+Allow: /home/inovasi
+Allow: /home/jadwal_dokter
+Allow: /home/tempat_tidur
+Allow: /home/pengaduan
+Allow: /home/maklumat
+Allow: /home/hd
+Allow: /home/kartini
+Allow: /home/hostren
+Allow: /home/panah
+Allow: /home/speed
+
+# Prevent indexing of admin areas and protected routes
+Disallow: /Auth/
+Disallow: /User/
+Disallow: /Stok/
+Disallow: /Profil/
+Disallow: /Poli/
+Disallow: /Layanan/
+Disallow: /Kategori/
+Disallow: /Jadwal_dokter/
+Disallow: /Inovasi/
+Disallow: /Galeri/
+Disallow: /Dokter/
+Disallow: /Artikel/
+
+# Prevent indexing of system files
+Disallow: /application/
+Disallow: /system/
+Disallow: /assets/admin/
+Disallow: /dist/
+Disallow: /harviacode/
+Disallow: /Auth/
+Disallow: /User/
+Disallow: /*.php$
+Disallow: /*?*
+Disallow: /*/config/
+Disallow: /*/logs/
+Disallow: /*/cache/
+
+# Allow specific file types
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.png$
+Allow: /*.svg$
+
+# Crawl delay to prevent server overload
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://rsud.banyuwangikab.go.id/sitemap.xml
+
+# Additional SEO-friendly directives
+Allow: /gambar/dokter/
+Allow: /gambar/artikel/
+Allow: /gambar/galeri/
+Allow: /gambar/layanan/
+Allow: /gambar/profil/

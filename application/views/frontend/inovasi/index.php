@@ -460,4 +460,4 @@
 <script>
 	var inovasinya = '<?php echo $inovasi; ?>';
 </script>
-<script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
+<!-- Removed custom.js script from here to move to footer.php for conditional loading -->

@@ -5,11 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>RSUD Genteng - Rumah Sakit Umum Daerah Terbaik</title>
-	<meta name="description" content="Rumah Sakit Umum Daerah Genteng adalah rumah sakit umum daerah yang menyediakan pelayanan kesehatan terbaik dengan berbagai fasilitas medis dan dokter spesialis." />
-	<meta name="keywords" content="Rumah Sakit Umum Daerah Genteng, RSUD Genteng, rumah sakit, pelayanan kesehatan, dokter spesialis, fasilitas medis, rumah sakit umum daerah" />
+	<title>RSUD Genteng Banyuwangi - Rumah Sakit Umum Daerah Terbaik di Banyuwangi</title>
+	<meta name="description" content="RSUD Genteng Banyuwangi adalah rumah sakit umum daerah terbaik di Banyuwangi yang menyediakan pelayanan kesehatan lengkap dengan fasilitas medis modern dan dokter spesialis berpengalaman." />
+	<meta name="keywords" content="RSUD Genteng Banyuwangi, Rumah Sakit Banyuwangi, rumah sakit umum daerah banyuwangi, RSUD Banyuwangi, pelayanan kesehatan banyuwangi, dokter spesialis banyuwangi, fasilitas medis banyuwangi, rumah sakit terbaik banyuwangi" />
 
-	<meta property="og:title" content="RSUD Genteng - Rumah Sakit Umum Daerah Terbaik" />
+	<meta property="og:title" content="RSUD Genteng Banyuwangi - Rumah Sakit Umum Daerah Terbaik di Banyuwangi" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://rsudgenteng.banyuwangikab.go.id" />
 	<meta property="og:image" content="https://rsudgenteng.banyuwangikab.go.id/assets/img/logo_bwi_small.png" />
