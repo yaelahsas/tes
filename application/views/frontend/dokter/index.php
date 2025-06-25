@@ -53,11 +53,13 @@
                         <div class="card h-100">
                             <div class="card-img-wrapper">
                                 <!-- Lazy loading with blur-up technique -->
-                                <img src="<?= base_url('assets/img/placeholder-doctor.jpg') ?>" 
-                                     data-src="<?= base_url('gambar/dokter/') . $d->img ?>" 
-                                     class="card-img-top lazy" 
-                                     alt="<?= $d->nama ?>"
-                                     width="400" height="400">
+                                <div class="doctor-image-wrapper">
+                                    <img src="<?= base_url('assets/img/placeholder-doctor.jpg') ?>"
+                                         class="card-img-top lazy"
+                                         data-src="<?= base_url('gambar/dokter/') . $d->img ?>"
+                                         alt="<?= htmlspecialchars($d->nama) ?>"
+                                         style="width: 100%; height: auto; display: block;">
+                                </div>
                                 <div class="img-overlay">
                                     <a href="#" 
                                        class="btn btn-primary">Lihat Detail</a>
@@ -105,19 +107,16 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
-    .card-img-wrapper {
+    .doctor-image-wrapper {
         position: relative;
-        padding-top: 100%; /* 1:1 Aspect Ratio */
         overflow: hidden;
+        border-radius: 10px;
     }
 
-    .card-img-wrapper img {
-        position: absolute;
-        top: 0;
-        left: 0;
+    .doctor-image-wrapper img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
+        display: block;
         transition: transform 0.3s ease;
     }
 

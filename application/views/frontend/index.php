@@ -457,11 +457,18 @@
 				<?php foreach ($dokters as $dokter) : ?>
 					<div class="col-md-4 mb-4">
 						<article class="card h-100 doctor-card">
-							<img src="<?= base_url("gambar/dokter/") . $dokter->img ?>" 
-								 class="card-img-top lazy" 
-								 data-src="<?= base_url("gambar/dokter/") . $dokter->img ?>"
-								 alt="<?= htmlspecialchars($dokter->nama) ?>"
-								 width="400" height="300">
+							<div class="doctor-image-wrapper" style="position: relative; width: 100%; height: 300px; overflow: hidden; border-radius: 10px;">
+								<img src="<?= base_url("gambar/dokter/") . $dokter->img ?>" 
+									 class="doctor-image-blur lazy" 
+									 data-src="<?= base_url("gambar/dokter/") . $dokter->img ?>"
+									 alt="<?= htmlspecialchars($dokter->nama) ?>"
+									 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(15px); transform: scale(1.1); z-index: 1;">
+								<img src="<?= base_url("gambar/dokter/") . $dokter->img ?>" 
+									 class="doctor-image-main lazy" 
+									 data-src="<?= base_url("gambar/dokter/") . $dokter->img ?>"
+									 alt="<?= htmlspecialchars($dokter->nama) ?>"
+									 style="position: relative; width: 100%; height: 300px; object-fit: contain; z-index: 2;">
+							</div>
 							<div class="card-body member-info">
 								<h3 class="card-title h5"><?= htmlspecialchars($dokter->nama) ?></h3>
 								<p class="card-text"><?= htmlspecialchars($dokter->spesialis) ?></p>
