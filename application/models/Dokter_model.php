@@ -78,4 +78,22 @@ class Dokter_model extends CI_Model
 		$this->db->where($this->id, $id);
 		$this->db->delete($this->table);
 	}
+
+	// get all spesialisasi
+	function get_all_spesialisasi()
+	{
+		$this->db->select('DISTINCT(spesialis) as spesialis');
+		$this->db->from($this->table);
+		$this->db->where('spesialis IS NOT NULL');
+		$this->db->order_by('spesialis', 'ASC');
+		return $this->db->get()->result();
+	}
+
+	// get dokter by spesialisasi
+	function get_by_spesialisasi($spesialis)
+	{
+		$this->db->where('spesialis', $spesialis);
+		$this->db->order_by('nama', 'ASC');
+		return $this->db->get($this->table)->result();
+	}
 }

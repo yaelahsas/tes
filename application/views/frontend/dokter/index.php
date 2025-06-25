@@ -1,101 +1,229 @@
+<!-- SEO Meta Tags -->
+<meta name="description" content="<?= $description ?>">
+<meta name="keywords" content="<?= $keywords ?>">
+<meta property="og:title" content="<?= $title ?>">
+<meta property="og:description" content="<?= $description ?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?= base_url('assets/img/doctors-team.jpg') ?>">
+
+<main id="main">
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Tim Dokter Spesialis</h2>
+                <ol>
+                    <li><a href="<?= base_url() ?>">Beranda</a></li>
+                    <li>Tim Dokter</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="doctors">
+        <div class="container">
+            <!-- Filter Section -->
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="filterSpesialisasi">Filter berdasarkan Spesialisasi:</label>
+                        <select class="form-control" id="filterSpesialisasi">
+                            <option value="">Semua Spesialisasi</option>
+                            <?php foreach ($spesialisasi as $s) : ?>
+                                <option value="<?= $s->spesialis ?>"><?= $s->spesialis ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="searchDokter">Cari Dokter:</label>
+                        <input type="text" class="form-control" id="searchDokter" placeholder="Masukkan nama dokter...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctors Grid -->
+            <div class="row" id="doctorsGrid">
+                <?php foreach ($dokter as $d) : ?>
+                    <div class="col-lg-4 col-md-6 mb-4 doctor-card" 
+                         data-spesialisasi="<?= $d->spesialis ?>" 
+                         data-nama="<?= $d->nama ?>">
+                        <div class="card h-100">
+                            <div class="card-img-wrapper">
+                                <!-- Lazy loading with blur-up technique -->
+                                <img src="<?= base_url('assets/img/placeholder-doctor.jpg') ?>" 
+                                     data-src="<?= base_url('gambar/dokter/') . $d->img ?>" 
+                                     class="card-img-top lazy" 
+                                     alt="<?= $d->nama ?>"
+                                     width="400" height="400">
+                                <div class="img-overlay">
+                                    <a href="#" 
+                                       class="btn btn-primary">Lihat Detail</a>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title h5"><?= $d->nama ?></h3>
+                                <p class="card-text text-muted"><?= $d->spesialis ?></p>
+                                <div class="doctor-schedule">
+                                    <small class="d-block mb-2">
+                                        <i class="fas fa-calendar-alt"></i> 
+                                        <!-- Jadwal Praktik: <?= $d->hari_praktik ?> -->
+                                    </small>
+                                    <small>
+                                        <i class="fas fa-clock"></i>
+                                        <!-- <?= $d->jam_mulai ?> - <?= $d->jam_selesai ?> -->
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center py-5 d-none">
+                <h3>Tidak ada dokter yang ditemukan</h3>
+                <p>Silakan coba dengan kata kunci lain</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Custom Styles -->
 <style>
-	.card {
-		border: none;
-		border-radius: 10px;
-		overflow: hidden;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-	}
+    .doctor-card .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+    }
 
-	.card:hover {
-		transform: translateY(-10px);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
+    .doctor-card .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
 
-	.card-img-top {
-		border-bottom: 1px solid #ddd;
-	}
+    .card-img-wrapper {
+        position: relative;
+        padding-top: 100%; /* 1:1 Aspect Ratio */
+        overflow: hidden;
+    }
 
-	.member-info {
-		padding: 15px;
-	}
+    .card-img-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
 
-	.member-info h4 {
-		font-size: 1.2rem;
-		margin-bottom: 5px;
-	}
+    .card-img-wrapper:hover img {
+        transform: scale(1.05);
+    }
 
-	.member-info span {
-		color: #6c757d;
-		font-size: 0.9rem;
-	}
+    .img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 
-	/* Shimmer effect */
-	.shimmer {
-		background: linear-gradient(to right,
-				#f6f7f8 0%,
-				#edeef1 20%,
-				#f6f7f8 40%,
-				#f6f7f8 100%);
-		background-size: 200% 100%;
-		animation: shimmer 1.5s infinite linear;
-	}
+    .card-img-wrapper:hover .img-overlay {
+        opacity: 1;
+    }
 
-	@keyframes shimmer {
-		0% {
-			background-position: 200% 0;
-		}
+    .doctor-schedule {
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        margin-top: 1rem;
+    }
 
-		100% {
-			background-position: -200% 0;
-		}
-	}
+    /* Lazy Loading Styles */
+    .lazy {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+    }
 
-	.lozad {
-		display: block;
-		width: 100%;
-		object-fit: cover;
-	}
+    .lazy.loaded {
+        opacity: 1;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .doctor-card {
+            margin-bottom: 2rem;
+        }
+    }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/lozad@1.14.0/dist/lozad.min.js"></script>
 
-<section class="breadcrumbs">
-	<div class="container">
-
-		<div class="d-flex justify-content-between align-items-center">
-
-
-		</div>
-</section><!-- End Breadcrumbs Section -->
-<section class="inner-page">
-	<div class="section-title">
-		<h2>Dokter Kami</h2>
-
-	</div>
-	<div class="container mt-5">
-		<div class="row">
-
-			<?php foreach ($dokters as $key => $dokter) { ?>
-				<div class="col-md-4 mb-4">
-					<div class="card">
-						<img src="<?= base_url("assets/img/avatar/avatar-5.png") ?>" data-src="<?= base_url("gambar/dokter/") . $dokter->img ?>" class="card-img-top lozad shimmer" alt="<?= $dokter->nama ?>">
-						<div class="card-body member-info">
-							<h4 class="card-title"><?= $dokter->nama ?></h4>
-							<p class="card-text"><?= $dokter->spesialis ?></p>
-						</div>
-					</div>
-				</div>
-			<?php } ?>
-		</div>
-	</div>
-</section>
+<!-- Custom Scripts -->
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		const observer = lozad('.lozad', {
-			loaded: function(el) {
-				el.classList.remove('shimmer');
-			}
-		});
-		observer.observe();
-	});
+document.addEventListener('DOMContentLoaded', function() {
+    // Lazy Loading Implementation
+    const lazyImages = document.querySelectorAll('img.lazy');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+
+    // Filter and Search Implementation
+    const doctorCards = document.querySelectorAll('.doctor-card');
+    const filterSelect = document.getElementById('filterSpesialisasi');
+    const searchInput = document.getElementById('searchDokter');
+    const noResults = document.getElementById('noResults');
+
+    function filterDoctors() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedSpesialisasi = filterSelect.value.toLowerCase();
+        let hasResults = false;
+
+        doctorCards.forEach(card => {
+            const nama = card.dataset.nama.toLowerCase();
+            const spesialisasi = card.dataset.spesialisasi.toLowerCase();
+            
+            const matchesSearch = nama.includes(searchTerm);
+            const matchesFilter = !selectedSpesialisasi || spesialisasi === selectedSpesialisasi;
+
+            if (matchesSearch && matchesFilter) {
+                card.style.display = '';
+                hasResults = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.classList.toggle('d-none', hasResults);
+    }
+
+    filterSelect.addEventListener('change', filterDoctors);
+    searchInput.addEventListener('input', filterDoctors);
+
+    // Preload critical images
+    const criticalImages = [
+        '<?= base_url("assets/img/placeholder-doctor.jpg") ?>'
+    ];
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+});
 </script>
