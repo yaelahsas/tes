@@ -1,8 +1,8 @@
 <!-- SEO Meta Tags -->
-<meta name="description" content="RSUD Genteng Banyuwangi - Rumah sakit umum daerah yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
-<meta name="keywords" content="RSUD Genteng Banyuwangi, rumah sakit Banyuwangi, dokter spesialis banyuwangi, IGD 24 jam, pelayanan kesehatan Genteng banyuwangi">
-<meta property="og:title" content="RSUD Genteng Banyuwangi - Pelayanan Kesehatan Terpadu">
-<meta property="og:description" content="Rumah sakit umum daerah banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
+<meta name="description" content="RSUD Genteng Banyuwangi - Rumah sakit umum daerah terbaik di Banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
+<meta name="keywords" content="RSUD Genteng Banyuwangi, rumah sakit Banyuwangi, rumah sakit umum daerah Banyuwangi, dokter spesialis Banyuwangi, IGD 24 jam, pelayanan kesehatan Genteng Banyuwangi, RSUD Genteng">
+<meta property="og:title" content="RSUD Genteng Banyuwangi - Pelayanan Kesehatan Terpadu dan Terbaik di Banyuwangi">
+<meta property="og:description" content="Rumah sakit umum daerah terbaik di Banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
 <meta property="og:image" content="<?= base_url('assets/front/img/rs_malam.jpg') ?>">
 <meta property="og:url" content="<?= current_url() ?>">
 <link rel="canonical" href="<?= current_url() ?>">
@@ -30,6 +30,37 @@
 </script>
 
 <style>
+    /* Back to top button */
+    .back-to-top {
+        position: fixed;
+        visibility: hidden;
+        opacity: 0;
+        right: 15px;
+        bottom: 15px;
+        z-index: 996;
+        background: #1977cc;
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        transition: all 0.4s;
+    }
+
+    .back-to-top i {
+        font-size: 28px;
+        color: #fff;
+        line-height: 0;
+    }
+
+    .back-to-top:hover {
+        background: #298ce5;
+        color: #fff;
+    }
+
+    .back-to-top.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
     /* Performance Optimizations */
     .card {
         border: none;
@@ -145,8 +176,8 @@
 
 
 			<div class="section-title">
-				<h2>Layanan Utama</h2>
-				<p>Layanan kesehatan terpadu RSUD Genteng untuk masyarakat</p>
+				<h2>Layanan Utama RSUD Genteng Banyuwangi</h2>
+				<p>Layanan kesehatan terpadu dan modern untuk masyarakat Banyuwangi dan sekitarnya</p>
 			</div>
 
 			<div class="row">
@@ -247,14 +278,14 @@
 			<div class="section-title">
 				<h2>Tentang Kami</h2>
 				<p>
-					RSUD Genteng dilengkapi dengan berbagai fasilitas medis dan peralatan modern yang mendukung penanganan
-					berbagai macam penyakit dan kondisi kesehatan. Selain itu, RSUD Genteng juga memiliki tenaga medis yang
-					terampil dan berpengalaman dalam memberikan pelayanan kesehatan.<br>
+					RSUD Genteng Banyuwangi dilengkapi dengan berbagai fasilitas medis modern dan peralatan terkini yang mendukung penanganan
+					berbagai macam penyakit dan kondisi kesehatan di wilayah Banyuwangi. Sebagai rumah sakit terbaik di Banyuwangi, 
+					RSUD Genteng memiliki tenaga medis yang terampil dan berpengalaman dalam memberikan pelayanan kesehatan berkualitas.<br>
 
-					Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien. RSUD
-					Genteng berusaha untuk senantiasa meningkatkan kualitas pelayanan kesehatan dengan melakukan inovasi dan
-					pengembangan terbaru. RSUD Genteng menjadi pilihan utama masyarakat untuk mendapatkan pelayanan kesehatan
-					yang berkualitas dan terpercaya.</p>
+					Komitmen RSUD Genteng Banyuwangi adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien. 
+					Kami terus meningkatkan kualitas pelayanan kesehatan dengan melakukan inovasi dan pengembangan terbaru. 
+					RSUD Genteng menjadi pilihan utama masyarakat Banyuwangi untuk mendapatkan pelayanan kesehatan yang berkualitas, 
+					modern, dan terpercaya.</p>
 			</div>
 
 			<div class="row">
@@ -449,8 +480,8 @@
 	<section id="doctors" class="doctors section-bg" aria-label="Tim Dokter">
 		<div class="container">
 			<div class="section-title">
-				<h2>Tim Dokter </h2>
-				<p>Tim dokter kami memiliki pengalaman dan keahlian dalam berbagai bidang medis untuk memberikan pelayanan kesehatan terbaik.</p>
+				<h2>Tim Dokter Spesialis Banyuwangi</h2>
+				<p>Tim dokter spesialis RSUD Genteng Banyuwangi memiliki pengalaman dan keahlian dalam berbagai bidang medis untuk memberikan pelayanan kesehatan terbaik di wilayah Banyuwangi.</p>
 			</div>
 
 			<div class="row">
@@ -495,8 +526,8 @@
 	<section id="gallery" class="gallery" aria-label="Galeri Kegiatan">
 		<div class="container">
 			<div class="section-title">
-				<h2>Galeri Kegiatan</h2>
-				<p>Dokumentasi kegiatan dan pelayanan RSUD Genteng</p>
+				<h2>Galeri Kegiatan RSUD Genteng Banyuwangi</h2>
+				<p>Dokumentasi kegiatan dan pelayanan kesehatan terbaik di RSUD Genteng Banyuwangi</p>
 			</div>
 
 			<div class="gallery-slider swiper">
@@ -655,6 +686,7 @@
 
 </main>
 
+
 <!-- Performance Optimization Scripts -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -689,9 +721,32 @@ document.addEventListener('DOMContentLoaded', function() {
         aosElements.forEach(el => el.removeAttribute('data-aos'));
     }
 
+    // Back to top button functionality
+    const backToTop = document.querySelector('.back-to-top');
+    if (backToTop) {
+        const toggleBacktotop = () => {
+            if (window.scrollY > 100) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        };
+        window.addEventListener('load', toggleBacktotop);
+        document.addEventListener('scroll', toggleBacktotop);
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // Add smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            if (this.classList.contains('back-to-top')) return;
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -704,19 +759,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Optimize third-party script loading
-function loadScript(src, async = true) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = async;
-    document.body.appendChild(script);
-}
-
-// Load non-critical scripts after page load
+// Load Instagram embed script only if needed
 window.addEventListener('load', function() {
-    // Load Instagram embed script only if needed
     if (document.querySelector('.instagram-media')) {
-        loadScript('//www.instagram.com/embed.js');
+        const script = document.createElement('script');
+        script.src = '//www.instagram.com/embed.js';
+        script.async = true;
+        document.body.appendChild(script);
     }
 });
 </script>

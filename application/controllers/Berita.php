@@ -82,6 +82,14 @@ class Berita extends CI_Controller
 			$this->db->limit(5); // Get 5 related articles
 			$related_articles = $this->db->get()->result();
 
+			$keywords = $this->Artikel_model->generate_keywords($row);
+			
+			// Debug information
+			error_log("Article ID: " . $id);
+			error_log("Title: " . $row->judul);
+			error_log("Content length: " . strlen($row->isi));
+			error_log("Keywords generated: " . print_r($keywords, true));
+			
 			$data = array(
 				'id' => $row->id,
 				'nama' => $row->nama,
@@ -89,7 +97,8 @@ class Berita extends CI_Controller
 				'isi' => $row->isi,
 				'sampul' => $row->sampul,
 				'tanggal' => $this->formatDate($row->created_at),
-				'related_articles' => $related_articles
+				'related_articles' => $related_articles,
+				'keywords' => $keywords
 			);
 			$this->load->view('frontend/_layouts/header');
 			$this->load->view('frontend/artikel/detail', $data);

@@ -39,7 +39,7 @@ class Jadwal_dokter_model extends CI_Model
     // get data by id
     function get_by_id($id)
     {
-        $this->db->where($this->id, $id);
+        $this->db->where('jadwal_dokter.id', $id);
         $this->db->select('jadwal_dokter.*, dokter.nama as dokter');
         $this->db->join('dokter', 'jadwal_dokter.dokter_id = dokter.id');
         return $this->db->get($this->table)->row();
@@ -58,10 +58,45 @@ class Jadwal_dokter_model extends CI_Model
         $this->db->update($this->table, $data);
     }
 
-    // delete data
+    // delete data by id
     function delete($id)
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    // delete all schedules for a doctor
+    function delete_by_dokter($dokter_id)
+    {
+        $this->db->where('dokter_id', $dokter_id);
+        $this->db->delete($this->table);
+    }
+
+    // get grouped service hours
+    function get_service_hours()
+    {
+        // Get unique combinations of start and end times for Monday-Thursday
+        $this->db->select('jam_mulai, jam_selesai');
+        $this->db->where_in('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis']);
+        $this->db->group_by('jam_mulai, jam_selesai');
+        $weekday_hours = $this->db->get($this->table)->result();
+
+        // Get Friday hours
+        $this->db->select('jam_mulai, jam_selesai');
+        $this->db->where('hari', 'Jumat');
+        $this->db->group_by('jam_mulai, jam_selesai');
+        $friday_hours = $this->db->get($this->table)->result();
+
+        // Get Saturday hours
+        $this->db->select('jam_mulai, jam_selesai');
+        $this->db->where('hari', 'Sabtu');
+        $this->db->group_by('jam_mulai, jam_selesai');
+        $saturday_hours = $this->db->get($this->table)->result();
+
+        return [
+            'weekday' => $weekday_hours,
+            'friday' => $friday_hours,
+            'saturday' => $saturday_hours
+        ];
     }
 }

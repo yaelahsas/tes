@@ -7,6 +7,7 @@ class Medis extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Dokter_model', 'M_dokter');
+        $this->load->model('Jadwal_dokter_model', 'M_jadwal');
         $this->load->helper('url');
         // $this->load->library('input');
     }
@@ -21,11 +22,54 @@ class Medis extends CI_Controller
             $dokter_list = $this->M_dokter->get_all();
         }
 
+        $service_hours = $this->M_jadwal->get_service_hours();
+        
+        // Get schedules for each doctor
+        $dokter_with_schedules = [];
+        foreach ($dokter_list as $dokter) {
+            $this->db->select('hari, jam_mulai, jam_selesai');
+            $this->db->where('dokter_id', $dokter->id);
+            $this->db->order_by('FIELD(hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")');
+            $schedules = $this->db->get('jadwal_dokter')->result();
+            
+            // Group schedules by time if days are consecutive
+            $grouped_schedules = [];
+            $current_group = null;
+            
+            foreach ($schedules as $schedule) {
+                if ($current_group && 
+                    $current_group['jam_mulai'] == $schedule->jam_mulai && 
+                    $current_group['jam_selesai'] == $schedule->jam_selesai) {
+                    // Add to current group
+                    $current_group['hari_akhir'] = $schedule->hari;
+                } else {
+                    // Start new group
+                    if ($current_group) {
+                        $grouped_schedules[] = $current_group;
+                    }
+                    $current_group = [
+                        'hari_awal' => $schedule->hari,
+                        'hari_akhir' => $schedule->hari,
+                        'jam_mulai' => $schedule->jam_mulai,
+                        'jam_selesai' => $schedule->jam_selesai
+                    ];
+                }
+            }
+            
+            // Add last group
+            if ($current_group) {
+                $grouped_schedules[] = $current_group;
+            }
+            
+            $dokter->jadwal = $grouped_schedules;
+            $dokter_with_schedules[] = $dokter;
+        }
+
         $data = [
             'title' => 'Tim Dokter Spesialis | RSUD Genteng Banyuwangi',
             'description' => 'Daftar lengkap dokter spesialis RSUD Genteng Banyuwangi dengan jadwal praktik dan spesialisasi. Temukan dokter spesialis terbaik untuk kebutuhan kesehatan Anda.',
             'keywords' => 'dokter spesialis Genteng, dokter RSUD Genteng, spesialis Banyuwangi, jadwal dokter RSUD',
-            'dokter' => $dokter_list,
+            'dokter' => $dokter_with_schedules,
             'spesialisasi' => $this->M_dokter->get_all_spesialisasi(),
             'selected_spesialis' => $spesialisasi_filter
         ];

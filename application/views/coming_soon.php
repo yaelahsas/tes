@@ -219,7 +219,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </div>
             
-            <a href="<?= site_url('medis') ?>" class="btn-back">
+            <a href="<?= site_url('frontend/dokter') ?>" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Kembali ke Daftar Dokter
             </a>
         </div>

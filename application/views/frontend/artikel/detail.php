@@ -37,6 +37,18 @@
                         <?= $isi ?>
                     </div>
 
+                    <!-- Keywords -->
+                    <?php if (!empty($keywords)): ?>
+                    <div class="keywords mt-4">
+                        <h5>Keywords:</h5>
+                        <div>
+                            <?php foreach ($keywords as $keyword): ?>
+                                <a href="<?= base_url('berita?search=' . urlencode($keyword)) ?>" class="badge bg-primary me-1 mb-1"><?= htmlspecialchars($keyword) ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
                     <!-- Share Buttons -->
                     <div class="share-buttons mt-5">
                         <h5>Bagikan Artikel</h5>

@@ -7,6 +7,7 @@
 <meta property="og:image" content="<?= base_url('assets/img/doctors-team.jpg') ?>">
 
 <main id="main">
+
     <!-- Breadcrumbs -->
     <section class="breadcrumbs">
         <div class="container">
@@ -68,16 +69,30 @@
                             <div class="card-body text-center">
                                 <h3 class="card-title h5"><?= $d->nama ?></h3>
                                 <p class="card-text text-muted"><?= $d->spesialis ?></p>
-                                <div class="doctor-schedule">
-                                    <small class="d-block mb-2">
-                                        <i class="fas fa-calendar-alt"></i> 
-                                        <!-- Jadwal Praktik: <?= $d->hari_praktik ?> -->
-                                    </small>
-                                    <small>
-                                        <i class="fas fa-clock"></i>
-                                        <!-- <?= $d->jam_mulai ?> - <?= $d->jam_selesai ?> -->
-                                    </small>
-                                </div>
+                            <div class="doctor-schedule mt-3 pt-3 border-top px-3">
+                                <?php if (!empty($d->jadwal)): ?>
+                                    <?php foreach ($d->jadwal as $jadwal): ?>
+                                        <div class="schedule-item mb-2 d-flex justify-content-between">
+                                            <small class="text-primary mb-0">
+                                                <i class="fas fa-calendar-alt me-1"></i>
+                                                <?php
+                                                    if ($jadwal['hari_awal'] == $jadwal['hari_akhir']) {
+                                                        echo $jadwal['hari_awal'];
+                                                    } else {
+                                                        echo $jadwal['hari_awal'] . ' - ' . $jadwal['hari_akhir'];
+                                                    }
+                                                ?>
+                                            </small>
+                                            <small class="text-muted mb-0">
+                                                <i class="fas fa-clock me-1"></i>
+                                                <?= substr($jadwal['jam_mulai'], 0, 5) ?> - <?= substr($jadwal['jam_selesai'], 0, 5) ?>
+                                            </small>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <small class="text-muted">Tidak ada jadwal</small>
+                                <?php endif; ?>
+                            </div>
                             </div>
                         </div>
                     </div>

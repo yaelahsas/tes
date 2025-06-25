@@ -127,14 +127,22 @@ class Jadwal_dokter extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
         } else {
+            $id = $this->input->post('id', TRUE);
+            $dokter_id = $this->input->post('dokter_id', TRUE);
+            $hari = $this->input->post('hari', TRUE);
+            $jam_mulai = $this->input->post('jam_mulai', TRUE);
+            $jam_selesai = $this->input->post('jam_selesai', TRUE);
+
+            // Update only the specific schedule record
             $data = array(
-                'dokter_id' => $this->input->post('dokter_id', TRUE),
-                'hari' => $this->input->post('hari', TRUE),
-                'jam_mulai' => $this->input->post('jam_mulai', TRUE),
-                'jam_selesai' => $this->input->post('jam_selesai', TRUE),
+                'dokter_id' => $dokter_id,
+                'hari' => $hari[0], // Take first selected day since we're updating a single record
+                'jam_mulai' => $jam_mulai,
+                'jam_selesai' => $jam_selesai,
             );
 
-            $this->Jadwal_dokter_model->update($this->input->post('id', TRUE), $data);
+            $this->Jadwal_dokter_model->update($id, $data);
+
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
             }

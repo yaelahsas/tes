@@ -87,10 +87,78 @@ class Artikel_model extends CI_Model
 		$this->db->update($this->table, $data);
 	}
 
-	// delete data
-	function delete($id)
-	{
-		$this->db->where($this->id, $id);
-		$this->db->delete($this->table);
-	}
+    // delete data
+    function delete($id)
+    {
+        $this->db->where($this->id, $id);
+        $this->db->delete($this->table);
+    }
+
+    /**
+     * Generate keywords from article title and content.
+     * Returns an array of keywords.
+     */
+    public function generate_keywords($artikel)
+    {
+        // Get text from title and content
+        $text = $artikel->judul . ' ' . strip_tags($artikel->isi);
+        
+        // Convert to lowercase and normalize spaces
+        $text = mb_strtolower($text, 'UTF-8');
+        $text = preg_replace('/\s+/', ' ', $text);
+        
+        // Remove HTML entities
+        $text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
+        
+        // Remove punctuation but keep letters and numbers
+        $text = preg_replace('/[^\p{L}\p{N}\s]/u', '', $text);
+        
+        // Split into words
+        $words = explode(' ', $text);
+        
+        // Extended stopwords list
+        $stopwords = array(
+            // Indonesian stopwords
+            'ada', 'adalah', 'akan', 'antara', 'apabila', 'bagaimana', 'bagi', 'banyak',
+            'bisa', 'dalam', 'dan', 'dari', 'dengan', 'di', 'dia', 'dimana', 'hal',
+            'hampir', 'hari', 'hingga', 'ini', 'itu', 'juga', 'karena', 'ke', 'kepada',
+            'ketika', 'kita', 'lain', 'maka', 'masih', 'melalui', 'menurut', 'mereka',
+            'oleh', 'pada', 'para', 'saat', 'sampai', 'saya', 'sebab', 'sebagai', 'sebelum',
+            'sebuah', 'sedang', 'seorang', 'seperti', 'serta', 'siapa', 'telah', 'tentang',
+            'tersebut', 'tetap', 'tidak', 'untuk', 'yakni', 'yang', 'yaitu',
+            // English stopwords
+            'the', 'of', 'and', 'to', 'in', 'you', 'it', 'have', 'was', 'for', 'on',
+            'that', 'by', 'with'
+        );
+        
+        $keywords = array();
+        foreach ($words as $word) {
+            // Only process words longer than 3 characters and not in stopwords
+            if (mb_strlen($word, 'UTF-8') > 3 && !in_array($word, $stopwords)) {
+                if (isset($keywords[$word])) {
+                    $keywords[$word]++;
+                } else {
+                    $keywords[$word] = 1;
+                }
+            }
+        }
+        
+        // Sort keywords by frequency descending
+        arsort($keywords);
+        
+        // Get top keywords (at least 1, max 10)
+        $top_keywords = array_slice(array_keys($keywords), 0, 10);
+        
+        // If no keywords found, extract words from title
+        if (empty($top_keywords)) {
+            $title_words = explode(' ', preg_replace('/[^\p{L}\p{N}\s]/u', '', mb_strtolower($artikel->judul, 'UTF-8')));
+            foreach ($title_words as $word) {
+                if (mb_strlen($word, 'UTF-8') > 3 && !in_array($word, $stopwords)) {
+                    $top_keywords[] = $word;
+                }
+            }
+        }
+        
+        return $top_keywords;
+    }
 }
