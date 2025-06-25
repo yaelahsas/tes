@@ -53,3 +53,4 @@ $route['default_controller'] = 'Home';
 // $route['404_override'] = 'Errors/show_404';
 // $route['error'] = 'Errors/show_error';
 $route['translate_uri_dashes'] = FALSE;
+$route['web/home'] = 'home';
