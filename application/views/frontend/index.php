@@ -1,8 +1,8 @@
 <!-- SEO Meta Tags -->
 <meta name="description" content="RSUD Genteng Banyuwangi - Rumah sakit umum daerah yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
-<meta name="keywords" content="RSUD Genteng, rumah sakit Banyuwangi, dokter spesialis, IGD 24 jam, pelayanan kesehatan Genteng">
+<meta name="keywords" content="RSUD Genteng Banyuwangi, rumah sakit Banyuwangi, dokter spesialis banyuwangi, IGD 24 jam, pelayanan kesehatan Genteng banyuwangi">
 <meta property="og:title" content="RSUD Genteng Banyuwangi - Pelayanan Kesehatan Terpadu">
-<meta property="og:description" content="Rumah sakit umum daerah yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
+<meta property="og:description" content="Rumah sakit umum daerah banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
 <meta property="og:image" content="<?= base_url('assets/front/img/rs_malam.jpg') ?>">
 <meta property="og:url" content="<?= current_url() ?>">
 <link rel="canonical" href="<?= current_url() ?>">
@@ -454,50 +454,23 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-4 mb-4">
-					<article class="card h-100 doctor-card">
-						<img src="<?= base_url("gambar/dokter/") ?>dokter-240722-91988d636c.jpg" 
-							 class="card-img-top" 
-							 alt="dr. RIEZKY JANUAR PARAMITHA, Sp.D.V"
-							 width="400" height="300"
-							 loading="lazy">
-						<div class="card-body member-info">
-							<h3 class="card-title h5">dr. RIEZKY JANUAR PARAMITHA, Sp.D.V</h3>
-							<p class="card-text">Spesialis Kulit dan Kelamin</p>
-							<a href="#" class="btn btn-outline-primary btn-sm">Lihat Jadwal</a>
-						</div>
-					</article>
-				</div>
-
-				<div class="col-md-4 mb-4">
-					<article class="card h-100 doctor-card">
-						<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-80f97dcfab.jpg" 
-							 class="card-img-top" 
-							 alt="dr. Nurul Huda D.P, Sp. B"
-							 width="400" height="300"
-							 loading="lazy">
-						<div class="card-body member-info">
-							<h3 class="card-title h5">dr. Nurul Huda D.P, Sp. B</h3>
-							<p class="card-text">Spesialis Bedah</p>
-							<a href="#" class="btn btn-outline-primary btn-sm">Lihat Jadwal</a>
-						</div>
-					</article>
-				</div>
-
-				<div class="col-md-4 mb-4">
-					<article class="card h-100 doctor-card">
-						<img src="<?= base_url("gambar/dokter/") ?>dokter-240718-bc5c749a95.jpg" 
-							 class="card-img-top" 
-							 alt="dr. Yuni Purwanti, Sp.A"
-							 width="400" height="300"
-							 loading="lazy">
-						<div class="card-body member-info">
-							<h3 class="card-title h5">dr. Yuni Purwanti, Sp.A</h3>
-							<p class="card-text">Spesialis Anak</p>
-							<a href="#" class="btn btn-outline-primary btn-sm">Lihat Jadwal</a>
-						</div>
-					</article>
-				</div>
+				<?php foreach ($dokters as $dokter) : ?>
+					<div class="col-md-4 mb-4">
+						<article class="card h-100 doctor-card">
+							<img src="<?= base_url("gambar/dokter/") . $dokter->img ?>" 
+								 class="card-img-top lazy" 
+								 data-src="<?= base_url("gambar/dokter/") . $dokter->img ?>"
+								 alt="<?= htmlspecialchars($dokter->nama) ?>"
+								 width="400" height="300">
+							<div class="card-body member-info">
+								<h3 class="card-title h5"><?= htmlspecialchars($dokter->nama) ?></h3>
+								<p class="card-text"><?= htmlspecialchars($dokter->spesialis) ?></p>
+								<a href="<?= base_url('medis/detail/') . $dokter->id ?>" 
+								   class="btn btn-outline-primary btn-sm">Lihat Detail</a>
+							</div>
+						</article>
+					</div>
+				<?php endforeach; ?>
 			</div>
 
 			<div class="text-center mt-4">

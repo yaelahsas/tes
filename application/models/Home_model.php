@@ -9,7 +9,8 @@ class home_model extends CI_Model
 
 	function get_dokter()
 	{
-		$this->db->order_by('id', 'ASC');
+		$this->db->order_by('RAND()');
+		$this->db->limit(3);
 		return $this->db->get('dokter')->result();
 	}
 	function get_galeri()
