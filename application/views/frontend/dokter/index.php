@@ -61,7 +61,7 @@
                                          style="width: 100%; height: auto; display: block;">
                                 </div>
                                 <div class="img-overlay">
-                                    <a href="#" 
+                                    <a href="<?= site_url('Medis/detail/' . $d->id) ?>" 
                                        class="btn btn-primary">Lihat Detail</a>
                                 </div>
                             </div>

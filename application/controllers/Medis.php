@@ -37,21 +37,14 @@ class Medis extends CI_Controller
 
     public function detail($id)
     {
-        $dokter = $this->M_dokter->get_by_id($id);
-        
-        if (!$dokter) {
-            show_404();
-        }
+        // Redirect to coming soon page instead of showing detail
+              $this->load->view('coming_soon');
 
-        $data = [
-            'title' => $dokter->nama . ' - ' . $dokter->spesialis . ' | RSUD Genteng',
-            'description' => 'Profil dan jadwal praktik ' . $dokter->nama . ', ' . $dokter->spesialis . ' di RSUD Genteng Banyuwangi. Lihat detail pengalaman dan layanan medis yang ditangani.',
-            'keywords' => strtolower($dokter->nama) . ', ' . strtolower($dokter->spesialis) . ', dokter RSUD Genteng',
-            'dokter' => $dokter
-        ];
+    }
 
-        $this->load->view('frontend/_layouts/header', $data);
-        $this->load->view('frontend/dokter/detail', $data);
-        $this->load->view('frontend/_layouts/footer');
+    public function coming_soon()
+    {
+        // Load the standalone coming soon view
+        $this->load->view('coming_soon');
     }
 }
