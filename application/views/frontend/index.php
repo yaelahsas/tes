@@ -1,5 +1,5 @@
 <!-- SEO Meta Tags -->
-<meta name="description" content="RSUD Genteng Banyuwangi - Rumah sakit umum daerah terbaik di Banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
+<meta name="description" content="RSUD Genteng Banyuwangi - Rumah sakit daerah dengan dokter spesialis berpengalaman, siap memberi pelayanan kesehatan terpadu 24 jam untuk keadaan darurat.">
 <meta name="keywords" content="RSUD Genteng Banyuwangi, rumah sakit Banyuwangi, rumah sakit umum daerah Banyuwangi, dokter spesialis Banyuwangi, IGD 24 jam, pelayanan kesehatan Genteng Banyuwangi, RSUD Genteng">
 <meta property="og:title" content="RSUD Genteng Banyuwangi - Pelayanan Kesehatan Terpadu dan Terbaik di Banyuwangi">
 <meta property="og:description" content="Rumah sakit umum daerah terbaik di Banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.">
@@ -290,7 +290,7 @@
 
 			<div class="row">
 				<div class="col-lg-6" data-aos="fade-right">
-					<img src="<?= base_url('assets/front/img/rs_malam.jpg'); ?>" class="img-fluid" alt="">
+					<img src="<?= base_url('assets/front/img/rs_malam.jpg'); ?>" class="img-fluid" alt="Rsud Genteng Banyuwangi">
 				</div>
 				<div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
 					<h3>Komitmen RSUD Genteng adalah memberikan pelayanan kesehatan yang terbaik dan berorientasi pada pasien.
