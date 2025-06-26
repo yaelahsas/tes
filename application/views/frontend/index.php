@@ -149,7 +149,7 @@
 				<div class="d-block w-100 carousel-item <?= $key === 0 ? 'active' : '' ?>">
 					<img class="d-block w-100 h-100 lazy" 
 						 data-src="<?= base_url('gambar/profil/') . $prof->img_profil ?>"
-						 src="<?= base_url('assets/front/img/placeholder.jpg') ?>"
+						 src="<?= base_url('assets/front/img/placeholder.png') ?>"
 						 alt="<?= htmlspecialchars($prof->judul ?? 'RSUD Genteng Slide') ?>"
 						 width="1920" height="1080">
 					<div class="carousel-caption d-none d-md-block">
@@ -537,7 +537,7 @@
 							<a class="gallery-lightbox" 
 							   href="<?= base_url('gambar/galeri/' . $gal->img_galeri) ?>" 
 							   title="<?= htmlspecialchars($gal->judul ?? 'Kegiatan RSUD Genteng') ?>">
-								<img src="<?= base_url('assets/front/img/placeholder-gallery.jpg') ?>" 
+								<img src="<?= base_url('assets/front/img/placeholder-gallery.png') ?>" 
 									 data-src="<?= base_url('gambar/galeri/' . $gal->img_galeri) ?>"
 									 class="img-fluid lazy"
 									 alt="<?= htmlspecialchars($gal->judul ?? 'Kegiatan RSUD Genteng') ?>"
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Preload critical images
     const criticalImages = [
         '<?= base_url("assets/front/img/rs_malam.jpg") ?>',
-        '<?= base_url("assets/front/img/placeholder.jpg") ?>'
+        '<?= base_url("assets/front/img/placeholder.png") ?>'
     ];
     criticalImages.forEach(src => {
         const img = new Image();
