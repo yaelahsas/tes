@@ -14,9 +14,9 @@
 								<strong>Email:</strong> rsudgenteng@banyuwangikab.go.id<br>
 							</p>
 							<div class="social-links mt-3">
-								<a href="https://twitter.com/rsudgenteng" class="twitter"><i class="bx bxl-twitter"></i></a>
-								<a href="https://www.facebook.com/rsudgenteng" class="facebook"><i class="bx bxl-facebook"></i></a>
-								<a href="https://www.instagram.com/rsudgenteng.bwi/" class="instagram"><i class="bx bxl-instagram"></i></a>
+								<a href="https://twitter.com/rsudgenteng" class="twitter"><i class="fab fa-twitter"></i></a>
+								<a href="https://www.facebook.com/rsudgenteng" class="facebook"><i class="fab fa-facebook-f"></i></a>
+								<a href="https://www.instagram.com/rsudgenteng.bwi/" class="instagram"><i class="fab fa-instagram"></i></a>
 							</div>
 						</div>
 					</div>

@@ -27,12 +27,8 @@
 	<!-- Critical CSS -->
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/front/css/style.css'); ?>" rel="stylesheet">
-
-	<!-- Conditional CSS -->
-	<?php if (isset($page_needs_fontawesome)): ?>
 	<link href="<?php echo base_url('assets/front/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet">
-	<?php endif; ?>
+	<link href="<?php echo base_url('assets/front/css/style.css'); ?>" rel="stylesheet">
 
 	<?php if (isset($page_needs_gallery)): ?>
 	<link href="<?php echo base_url('assets/front/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
