@@ -1,4 +1,5 @@
 <!-- ======= Breadcrumbs Section ======= -->
+<br>
 <section class="breadcrumbs">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
@@ -31,7 +32,7 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title h5">
-                                    <a href="<?= base_url('berita/read/' . $article->id) ?>" class="text-dark text-decoration-none">
+                                    <a href="<?= base_url('berita/read/' . $article->slug) ?>" class="text-dark text-decoration-none">
                                         <?= htmlspecialchars($article->judul) ?>
                                     </a>
                                 </h3>
@@ -44,7 +45,7 @@
                                 <p class="card-text">
                                     <?= substr(strip_tags($article->isi), 0, 120) ?>...
                                 </p>
-                                <a href="<?= base_url('berita/read/' . $article->id) ?>" 
+                                <a href="<?= base_url('berita/read/' . $article->slug) ?>" 
                                    class="btn btn-primary btn-sm">
                                    Baca Selengkapnya <i class="bi bi-arrow-right"></i>
                                 </a>
@@ -105,7 +106,7 @@
                                      class="flex-shrink-0 me-3" style="width:80px; height:60px; object-fit:cover;">
                                 <div>
                                     <h4>
-                                        <a href="<?= base_url('berita/detail/' . $recent->id) ?>">
+                                        <a href="<?= base_url('berita/read/' . $recent->slug) ?>">
                                             <?= htmlspecialchars($recent->judul) ?>
                                         </a>
                                     </h4>

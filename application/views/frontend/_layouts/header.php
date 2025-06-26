@@ -24,18 +24,30 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-	<!-- Vendor CSS Files -->
-	<link href="<?php echo base_url('assets/front/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/front/vendor/animate.css/animate.min.css'); ?>" rel="stylesheet">
+	<!-- Critical CSS -->
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/bootstrap-icons/bootstrap-icons.min.css'); ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/front/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('assets/front/css/style.css'); ?>" rel="stylesheet">
+
+	<!-- Conditional CSS -->
+	<?php if (isset($page_needs_fontawesome)): ?>
+	<link href="<?php echo base_url('assets/front/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet">
+	<?php endif; ?>
+
+	<?php if (isset($page_needs_gallery)): ?>
 	<link href="<?php echo base_url('assets/front/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
-	<script async src="//www.instagram.com/embed.js"></script>
+	<?php endif; ?>
 
-	<!-- Template Main CSS File -->
-	<link href="<?php echo base_url('assets/front/css/style.css'); ?>" rel="stylesheet">
+	<!-- Deferred JavaScript -->
+	<?php if (isset($page_needs_gallery)): ?>
+	<script defer src="<?php echo base_url('assets/front/vendor/swiper/swiper-bundle.min.js'); ?>"></script>
+	<script defer src="<?php echo base_url('assets/front/vendor/glightbox/js/glightbox.min.js'); ?>"></script>
+	<?php endif; ?>
+
+	<?php if (isset($page_needs_instagram)): ?>
+	<script async src="//www.instagram.com/embed.js"></script>
+	<?php endif; ?>
 
 	<style>
 		.fixed-height{height:300px;object-fit:cover;width:100%}.fixed-artikel{height:400px;object-fit:cover;width:100%}.member{display:flex;flex-direction:column;align-items:center;text-align:center;height:400px!important}.member-img{width:100%}.member-info{padding:10px}.iframe-wrapper{position:relative;padding-bottom:56.25%;height:900px;overflow:hidden}.iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}@media(min-width:1023px){#hero{height:720px!important}}@media(min-width:768px) and (max-width:1023px){#hero{height:67vh}}@media(max-width:768px){#hero{height:57vh}}@media(max-width:576px){#hero{height:40vh}}

@@ -34,17 +34,24 @@ class Home extends CI_Controller
 			'artikel' => $artikel,
 			'galeri' => $this->Home_model->get_galeri(),
 			'profil' => $this->Home_model->get_profil(),
-			'layanan' => $this->Home_model->get_layanan()
+			'layanan' => $this->Home_model->get_layanan(),
+			// Conditional resource flags
+			'page_needs_gallery' => true, // For Swiper and GLightbox
+			'page_needs_instagram' => true, // For Instagram embeds
+			'page_needs_fontawesome' => true // For FontAwesome icons
 		);
 		// var_dump($data['layanan']);
 		// die;
-		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/_layouts/header', $data);
 		$this->load->view('frontend/index', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 	public function reg()
 	{
-		$this->load->view('frontend/_layouts/header');
+		$data = array(
+			'page_needs_fontawesome' => true
+		);
+		$this->load->view('frontend/_layouts/header', $data);
 
 		$this->load->view('frontend/regonline');
 		$this->load->view('frontend/_layouts/footer');
@@ -66,7 +73,10 @@ class Home extends CI_Controller
 	}
 	public function jadwal_dokter()
 	{
-		$this->load->view('frontend/_layouts/header');
+		$data = array(
+			'page_needs_fontawesome' => true
+		);
+		$this->load->view('frontend/_layouts/header', $data);
 		$this->load->view('frontend/jadwal_dokter');
 		$this->load->view('frontend/_layouts/footer');
 	}
@@ -112,7 +122,6 @@ class Home extends CI_Controller
 	}
 	public function inovasi()
 	{
-
 		$date = date('Y-m-d');
 		$view_data = $this->Pengunjung_model->get_pengunjung_by_date($date);
 
@@ -126,10 +135,11 @@ class Home extends CI_Controller
 		$totalnya = $this->Pengunjung_model->get_total_views();
 		$data = array(
 			'totalnya' => $totalnya,
-			'inovasi' => 'benefit'
+			'inovasi' => 'benefit',
+			'page_needs_fontawesome' => true
 		);
 
-		$this->load->view('frontend/_layouts/header');
+		$this->load->view('frontend/_layouts/header', $data);
 		$this->load->view('frontend/inovasi/index', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}

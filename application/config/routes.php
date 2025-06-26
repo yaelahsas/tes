@@ -54,3 +54,10 @@ $route['default_controller'] = 'Home';
 // $route['error'] = 'Errors/show_error';
 $route['translate_uri_dashes'] = FALSE;
 $route['web/home'] = 'home';
+
+// Generate slugs route (must come before other berita routes)
+$route['berita/generate_slugs'] = 'berita/generate_slugs';
+
+// Support both old ID-based and new slug-based URLs
+$route['berita/read/(:num)'] = 'berita/read/$1';  // Old format with ID
+$route['berita/read/(:any)'] = 'berita/read/$1';  // New format with slug

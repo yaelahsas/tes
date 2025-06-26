@@ -389,7 +389,7 @@
 									 alt="<?= htmlspecialchars($value->judul) ?>">
 								<div class="card-body">
 									<h5 class="card-title"><?= htmlspecialchars($value->judul) ?></h5>
-									<a href="<?= base_url('berita/read/') . $value->id ?>" class="btn btn-primary">Lihat Selengkapnya</a>
+									<a href="<?= base_url('berita/read/' . $value->slug) ?>" class="btn btn-primary">Lihat Selengkapnya</a>
 								</div>
 							</div>
 						</div>

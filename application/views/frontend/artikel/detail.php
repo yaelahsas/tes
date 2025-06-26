@@ -88,7 +88,7 @@
                                      class="flex-shrink-0">
                                 <div>
                                     <h4>
-                                        <a href="<?= base_url('berita/read/' . $related->id) ?>">
+                                        <a href="<?= base_url('berita/read/' . $related->slug) ?>">
                                             <?= htmlspecialchars($related->judul) ?>
                                         </a>
                                     </h4>

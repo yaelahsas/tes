@@ -15,6 +15,50 @@ class Artikel_model extends CI_Model
 		parent::__construct();
 	}
 
+	// Create URL friendly slug
+	function create_slug($title)
+	{
+		$slug = url_title($title, 'dash', TRUE);
+		$slug = strtolower($slug);
+		
+		// Check if slug exists
+		$i = 0;
+		$original_slug = $slug;
+		while(true) {
+			$this->db->where('slug', $slug);
+			$num = $this->db->get($this->table)->num_rows();
+			if($num == 0) break;
+			$i++;
+			$slug = $original_slug . '-' . $i;
+		}
+		
+		return $slug;
+	}
+
+	// Generate slugs for existing articles
+	function generate_missing_slugs()
+	{
+		// Get all articles without slugs
+		$this->db->where('slug IS NULL OR slug = ""');
+		$articles = $this->db->get($this->table)->result();
+
+		$count = 0;
+		foreach ($articles as $article) {
+			$slug = $this->create_slug($article->judul);
+			$this->db->where('id', $article->id);
+			$this->db->update($this->table, array('slug' => $slug));
+			$count++;
+		}
+		return $count;
+	}
+
+	// Get article by slug
+	function get_by_slug($slug)
+	{
+		$this->db->where('slug', $slug);
+		return $this->db->get($this->table)->row();
+	}
+
 	// datatables
 	function json()
 	{
@@ -77,12 +121,18 @@ class Artikel_model extends CI_Model
 	// insert data
 	function insert($data)
 	{
+		if(!isset($data['slug']) && isset($data['judul'])) {
+			$data['slug'] = $this->create_slug($data['judul']);
+		}
 		$this->db->insert($this->table, $data);
 	}
 
 	// update data
 	function update($id, $data)
 	{
+		if(!isset($data['slug']) && isset($data['judul'])) {
+			$data['slug'] = $this->create_slug($data['judul']);
+		}
 		$this->db->where($this->id, $id);
 		$this->db->update($this->table, $data);
 	}

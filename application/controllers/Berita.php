@@ -38,7 +38,8 @@ class Berita extends CI_Controller
 			'search' => $search
 		);
 		
-		$this->load->view('frontend/_layouts/header');
+		$data['page_needs_fontawesome'] = true;
+		$this->load->view('frontend/_layouts/header', $data);
 		$this->load->view('frontend/artikel/lihat_semua', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
@@ -62,22 +63,25 @@ class Berita extends CI_Controller
 			'current_category' => $category,
 		);
 
-		$this->load->view('frontend/_layouts/header');
+		$data['page_needs_fontawesome'] = true;
+		$this->load->view('frontend/_layouts/header', $data);
 		$this->load->view('frontend/artikel/lihat_semua', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 
-	public function read()
+	public function read($slug = NULL)
 	{
-		$id = $this->uri->segment(3);
-		$row = $this->Artikel_model->get_by_id($id);
+		if ($slug === NULL) {
+			$slug = $this->uri->segment(3);
+		}
+		$row = $this->Artikel_model->get_by_slug($slug);
 		if ($row) {
 			// Get related articles from same category
 			$this->db->select('artikel.*, kategori.nama as kategori');
 			$this->db->from('artikel');
 			$this->db->join('kategori', 'kategori.id = artikel.kategori', 'left');
 			$this->db->where('artikel.kategori', $row->kategori);
-			$this->db->where('artikel.id !=', $id); // Exclude current article
+			$this->db->where('artikel.id !=', $row->id); // Exclude current article
 			$this->db->order_by('artikel.id', 'DESC');
 			$this->db->limit(5); // Get 5 related articles
 			$related_articles = $this->db->get()->result();
@@ -85,7 +89,7 @@ class Berita extends CI_Controller
 			$keywords = $this->Artikel_model->generate_keywords($row);
 			
 			// Debug information
-			error_log("Article ID: " . $id);
+			error_log("Article ID: " . $row->id);
 			error_log("Title: " . $row->judul);
 			error_log("Content length: " . strlen($row->isi));
 			error_log("Keywords generated: " . print_r($keywords, true));
@@ -100,7 +104,8 @@ class Berita extends CI_Controller
 				'related_articles' => $related_articles,
 				'keywords' => $keywords
 			);
-			$this->load->view('frontend/_layouts/header');
+			$data['page_needs_fontawesome'] = true;
+			$this->load->view('frontend/_layouts/header', $data);
 			$this->load->view('frontend/artikel/detail', $data);
 			$this->load->view('frontend/_layouts/footer');
 		} else {
@@ -134,5 +139,26 @@ class Berita extends CI_Controller
 		$formattedDate = $dateParts[0] . ' ' . $months[(int)$dateParts[1] - 1] . ' ' . $dateParts[2];
 
 		return $formattedDate;
+	}
+
+	// Generate slugs for existing articles
+	public function generate_slugs()
+	{
+		try {
+			$count = $this->Artikel_model->generate_missing_slugs();
+			$this->output
+				->set_content_type('application/json')
+				->set_output(json_encode([
+					'success' => true,
+					'message' => "Berhasil generate slug untuk $count artikel",
+				]));
+		} catch (Exception $e) {
+			$this->output
+				->set_content_type('application/json')
+				->set_output(json_encode([
+					'success' => false,
+					'message' => 'Error: ' . $e->getMessage()
+				]));
+		}
 	}
 }
