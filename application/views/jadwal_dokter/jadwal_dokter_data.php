@@ -14,12 +14,12 @@ $this->load->view('dist/_partials/header');
         </div>
 
         <div class="section-body">
-            <h2 class="section-title"><?= $title ?></h2>
+       
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Data Jadwal Dokter</h4>
+                           
                             <div class="card-header-action">
                                 <?php echo anchor(site_url('Jadwal_dokter/create'), '<i class="fas fa-plus"></i> Tambah', 'class="btn btn-primary"'); ?>
                             </div>
