@@ -25,12 +25,24 @@ function check_admin()
     }
 }
 
-
 function check_admin_1()
 {
     $ci = &get_instance();
     $ci->load->library('fungsi');
     if ($ci->fungsi->user_login()->level != 1) {
         redirect('Artikel');
+    }
+}
+
+if (!function_exists('get_status_buka')) {
+    function get_status_buka($isBuka)
+    {
+        if ($isBuka == 1) {
+            return "Buka";
+        } elseif ($isBuka == 0) {
+            return "Tutup";
+        } else {
+            return "Unknown";
+        }
     }
 }

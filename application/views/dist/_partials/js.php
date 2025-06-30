@@ -342,6 +342,8 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 						"data": "jam_buka"
 					}, {
 						"data": "jam_tutup"
+					}, {
+						"data": "status_buka",
 					},
 					{
 						"data": "action",

@@ -28,20 +28,30 @@ class Home extends CI_Controller
 	{
 		$artikel = $this->Artikel_model->get_new();
 
-		// $data['artikel'] = $artikel;
+		// Prepare dynamic SEO meta tags
+		$seo_title = "RSUD Genteng Banyuwangi - Pelayanan Kesehatan Terpadu dan Terbaik di Banyuwangi";
+		$seo_description = "Rumah sakit umum daerah terbaik di Banyuwangi yang memberikan pelayanan kesehatan terpadu dengan dokter spesialis berpengalaman. Melayani 24 jam untuk keadaan darurat.";
+		$seo_keywords = "RSUD Genteng Banyuwangi, rumah sakit Banyuwangi, rumah sakit umum daerah Banyuwangi, dokter spesialis Banyuwangi, IGD 24 jam, pelayanan kesehatan Genteng Banyuwangi, RSUD Genteng";
+		$seo_image = base_url('assets/front/img/rs_malam.jpg');
+		$seo_url = current_url();
+
 		$data  = array(
 			'dokters' => $this->Home_model->get_dokter(),
 			'artikel' => $artikel,
 			'galeri' => $this->Home_model->get_galeri(),
 			'profil' => $this->Home_model->get_profil(),
 			'layanan' => $this->Home_model->get_layanan(),
+			// SEO meta tags
+			'seo_title' => $seo_title,
+			'seo_description' => $seo_description,
+			'seo_keywords' => $seo_keywords,
+			'seo_image' => $seo_image,
+			'seo_url' => $seo_url,
 			// Conditional resource flags
 			'page_needs_gallery' => true, // For Swiper and GLightbox
 			'page_needs_instagram' => true, // For Instagram embeds
 			'page_needs_fontawesome' => true // For FontAwesome icons
 		);
-		// var_dump($data['layanan']);
-		// die;
 		$this->load->view('frontend/_layouts/header', $data);
 		$this->load->view('frontend/index', $data);
 		$this->load->view('frontend/_layouts/footer');

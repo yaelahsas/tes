@@ -54,6 +54,14 @@ $this->load->view('dist/_partials/header');
                                             <input type="checkbox" class="custom-control-input" id="hari_kamis" name="hari[]" value="Kamis" <?= (isset($hari) && strpos($hari, 'Kamis') !== false) ? 'checked' : '' ?>>
                                             <label class="custom-control-label" for="hari_kamis">Kamis</label>
                                         </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="hari_jumat" name="hari[]" value="Jumat" <?= (isset($hari) && strpos($hari, 'Jumat') !== false) ? 'checked' : '' ?>>
+                                            <label class="custom-control-label mr-4" for="hari_jumat">Jumat</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="hari_sabtu" name="hari[]" value="Sabtu" <?= (isset($hari) && strpos($hari, 'Sabtu') !== false) ? 'checked' : '' ?>>
+                                            <label class="custom-control-label" for="hari_sabtu">Sabtu</label>
+                                        </div>
                                     </div>
                                     <?= form_error('hari[]', '<small class="text-danger">', '</small>'); ?>
                                 </div>

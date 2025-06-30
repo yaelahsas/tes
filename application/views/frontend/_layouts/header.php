@@ -5,18 +5,21 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>RSUD Genteng Banyuwangi - Rumah Sakit Umum Daerah Terbaik di Banyuwangi</title>
-	<meta name="description" content="RSUD Genteng Banyuwangi adalah rumah sakit umum daerah terbaik di Banyuwangi yang menyediakan pelayanan kesehatan lengkap dengan fasilitas medis modern dan dokter spesialis berpengalaman." />
-	<meta name="keywords" content="RSUD Genteng Banyuwangi, Rumah Sakit Banyuwangi, rumah sakit umum daerah banyuwangi, RSUD Banyuwangi, pelayanan kesehatan banyuwangi, dokter spesialis banyuwangi, fasilitas medis banyuwangi, rumah sakit terbaik banyuwangi" />
+	<title><?= isset($seo_title) ? $seo_title : 'RSUD Genteng Banyuwangi - Rumah Sakit Umum Daerah Terbaik di Banyuwangi' ?></title>
+	<meta name="description" content="<?= isset($seo_description) ? $seo_description : 'RSUD Genteng Banyuwangi adalah rumah sakit umum daerah terbaik di Banyuwangi yang menyediakan pelayanan kesehatan lengkap dengan fasilitas medis modern dan dokter spesialis berpengalaman.' ?>" />
+	<meta name="keywords" content="<?= isset($seo_keywords) ? $seo_keywords : 'RSUD Genteng Banyuwangi, Rumah Sakit Banyuwangi, rumah sakit umum daerah banyuwangi, RSUD Banyuwangi, pelayanan kesehatan banyuwangi, dokter spesialis banyuwangi, fasilitas medis banyuwangi, rumah sakit terbaik banyuwangi' ?>" />
 
-	<meta property="og:title" content="RSUD Genteng Banyuwangi - Rumah Sakit Umum Daerah Terbaik di Banyuwangi" />
+	<meta property="og:title" content="<?= isset($seo_title) ? $seo_title : 'RSUD Genteng Banyuwangi - Rumah Sakit Umum Daerah Terbaik di Banyuwangi' ?>" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://rsudgenteng.banyuwangikab.go.id" />
-	<meta property="og:image" content="https://rsudgenteng.banyuwangikab.go.id/assets/img/logo_bwi_small.png" />
+	<meta property="og:url" content="<?= isset($seo_url) ? $seo_url : 'https://rsudgenteng.banyuwangikab.go.id' ?>" />
+	<meta property="og:image" content="<?= isset($seo_image) ? $seo_image : 'https://rsudgenteng.banyuwangikab.go.id/assets/img/logo_bwi_small.png' ?>" />
 	<meta name="author" content="RSUD Genteng" />
 
 	<!-- Favicons -->
 	<link href="<?php echo base_url('assets/img/logo_bwi_small.png'); ?>" rel="shortcut icon">
+
+	<!-- Canonical URL -->
+	<link rel="canonical" href="<?= isset($seo_url) ? $seo_url : current_url() ?>" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +119,8 @@
 						</ul>
 					</li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
-					<li><a class="nav-link scrollto" href="<?= base_url() ?>#doctors">Dokter</a></li>
+					<li><a class="nav-link" href="<?= base_url('dokter') ?>">Dokter</a></li>
+					<li><a class="nav-link" href="<?= base_url('berita') ?>">Berita</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>
 					<li><a class="nav-link" href="<?= base_url('home/inovasi') ?>">Inovasi</a></li>
 				</ul>

@@ -18,8 +18,9 @@ class Poli_model extends CI_Model
     // datatables
     function json()
     {
-        $this->datatables->select('p.id,p.nama_poli,p.keterangan,p.jam_buka, p.jam_tutup');
+        $this->datatables->select('p.id,p.nama_poli,p.keterangan,p.jam_buka, p.jam_tutup, p.isBuka');
         $this->datatables->from('poli as p');
+        $this->datatables->add_column('status_buka', '$1', 'get_status_buka(isBuka)');
         $this->datatables->add_column('action', anchor(site_url('Poli/update/$1'), '<div class="badge badge-warning">Update</div>') .  anchor(site_url('Poli/delete/$1'), '<div class="badge badge-danger">Delete</div>', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
         return $this->datatables->generate();
     }
@@ -46,6 +47,7 @@ class Poli_model extends CI_Model
         $this->db->or_like('keterangan', $q);
         $this->db->or_like('jam_buka', $q);
         $this->db->or_like('jam_tutup', $q);
+        $this->db->or_like('isBuka', $q);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -59,6 +61,7 @@ class Poli_model extends CI_Model
         $this->db->or_like('keterangan', $q);
         $this->db->or_like('jam_buka', $q);
         $this->db->or_like('jam_tutup', $q);
+        $this->db->or_like('isBuka', $q);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

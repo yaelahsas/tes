@@ -34,6 +34,7 @@ $this->load->view('dist/_partials/header');
                                             <th>Nama Poli</th>
                                             <th>Jam Buka</th>
                                             <th>Jam Tutup</th>
+                                            <th>Status Buka</th>
                                             <th width="200px">Action</th>
                                         </tr>
                                     </thead>
@@ -75,6 +76,13 @@ $this->load->view('dist/_partials/header');
                     <div class="form-group">
                         <label for="jam_tutup">Jam tutup *</label>
                         <input type="time" class="form-control" name="jam_tutup" id="jam_tutup" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="isBuka">Status Buka *</label>
+                        <select class="form-control" name="isBuka" id="isBuka" required>
+                            <option value="1" selected>Buka</option>
+                            <option value="0">Tutup</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

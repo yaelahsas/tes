@@ -59,6 +59,7 @@ class Poli extends CI_Controller
             'keterangan' => set_value('keterangan'),
             'jam_buka' => set_value('jam_buka'),
             'jam_tutup' => set_value('jam_tutup'),
+            'isBuka' => set_value('isBuka'),
         );
         $this->load->view('poli/poli_data', $data);
     }
@@ -76,6 +77,7 @@ class Poli extends CI_Controller
                 'keterangan' => $this->input->post('keterangan', TRUE),
                 'jam_buka' => $this->input->post('jam_buka', TRUE),
                 'jam_tutup' => $this->input->post('jam_tutup', TRUE),
+                'isBuka' => $this->input->post('isBuka', TRUE),
             );
 
             $this->Poli_model->insert($data);
@@ -99,6 +101,7 @@ class Poli extends CI_Controller
                 'keterangan' => set_value('keterangan', $row->keterangan),
                 'jam_buka' => set_value('jam_buka', $row->jam_buka),
                 'jam_tutup' => set_value('jam_tutup', $row->jam_tutup),
+                'isBuka' => set_value('isBuka', $row->isBuka),
             );
             $this->load->view('poli/poli_form', $data);
         } else {
@@ -120,6 +123,7 @@ class Poli extends CI_Controller
                 'keterangan' => $this->input->post('keterangan', TRUE),
                 'jam_buka' => $this->input->post('jam_buka', TRUE),
                 'jam_tutup' => $this->input->post('jam_tutup', TRUE),
+                'isBuka' => $this->input->post('isBuka', TRUE),
             );
 
             $this->Poli_model->update($this->input->post('id', TRUE), $data);
@@ -148,6 +152,7 @@ class Poli extends CI_Controller
         $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
         $this->form_validation->set_rules('jam_buka', 'jam_buka', 'trim|required');
         $this->form_validation->set_rules('jam_tutup', 'jam_tutup', 'trim|required');
+        $this->form_validation->set_rules('isBuka', 'status buka', 'trim|required');
 
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

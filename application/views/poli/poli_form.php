@@ -42,6 +42,13 @@ $this->load->view('dist/_partials/header');
                                         <input type="time" class="form-control" name="jam_tutup" id="jam_tutup" value="<?= $jam_tutup ?>" required autofocus>
                                     </div>
                                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                                    <div class="form-group">
+                                        <label for="isBuka">Status Buka *</label>
+                                        <select class="form-control" name="isBuka" id="isBuka" required>
+                                            <option value="1" <?= (isset($isBuka) && $isBuka == 1) ? 'selected' : '' ?>>Buka</option>
+                                            <option value="0" <?= (isset($isBuka) && $isBuka == 0) ? 'selected' : '' ?>>Tutup</option>
+                                        </select>
+                                    </div>
                                     <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
                                     <a class="btn btn-secondary" href="<?php echo site_url('Poli') ?>" role="button">Cancel</a>
                                 </div>
