@@ -99,4 +99,13 @@ class Dokter_model extends CI_Model
 		$this->db->order_by('nama', 'ASC');
 		return $this->db->get($this->table)->result();
 	}
+
+	function get_poli_by_dokter($dokter_id)
+	{
+		$this->db->select('poli.*');
+		$this->db->from('dokter');
+		$this->db->join('poli', 'dokter.id_poli = poli.id');
+		$this->db->where('dokter.id', $dokter_id);
+		return $this->db->get()->row();
+	}
 }

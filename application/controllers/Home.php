@@ -66,9 +66,9 @@ class Home extends CI_Controller
 		$this->load->view('frontend/regonline');
 		$this->load->view('frontend/_layouts/footer');
 	}
-	
 
-	
+
+
 	public function tempat_tidur()
 	{
 		$data['isi'] = $this->aw();
@@ -83,11 +83,19 @@ class Home extends CI_Controller
 	}
 	public function jadwal_dokter()
 	{
+		$this->load->model('Home_model');
+		// $jadwal = $this->Home_model->get_jadwal_dokter_grouped();
 		$data = array(
-			'page_needs_fontawesome' => true
+			'page_needs_fontawesome' => true,
+			
+			'title' => 'Jadwal Dokter Spesialis & Umum - RSUD Genteng',
+			'description' => 'Lihat jadwal praktek dokter spesialis dan umum di RSUD Genteng Banyuwangi.',
+			'keywords' => 'jadwal dokter, dokter spesialis, dokter umum, RSUD Genteng',
+			'dokter' => $this->Home_model->get_dokter_with_jadwal(),
+			'spesialisasi' => $this->Home_model->get_spesialisasi() // method baru
 		);
 		$this->load->view('frontend/_layouts/header', $data);
-		$this->load->view('frontend/jadwal_dokter');
+		$this->load->view('frontend/jadwal_dokter', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 
@@ -199,8 +207,7 @@ class Home extends CI_Controller
 	public function kelas_butik()
 	{
 		$data['redirect_url'] = 'https://linktr.ee/KelasButik'; // URL tujuan
-		$this->load->view('frontend/redirect',$data);
-
+		$this->load->view('frontend/redirect', $data);
 	}
 
 	public function tambah_review()

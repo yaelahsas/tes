@@ -23,7 +23,7 @@ class Medis extends CI_Controller
         }
 
         $service_hours = $this->M_jadwal->get_service_hours();
-        
+   
         // Get schedules for each doctor
         $dokter_with_schedules = [];
         foreach ($dokter_list as $dokter) {
@@ -31,7 +31,7 @@ class Medis extends CI_Controller
             $this->db->where('dokter_id', $dokter->id);
             $this->db->order_by('FIELD(hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")');
             $schedules = $this->db->get('jadwal_dokter')->result();
-            
+            $poli = $this->M_dokter->get_poli_by_dokter($dokter->id);
             // Group schedules by time if days are consecutive
             $grouped_schedules = [];
             $current_group = null;
@@ -60,18 +60,20 @@ class Medis extends CI_Controller
             if ($current_group) {
                 $grouped_schedules[] = $current_group;
             }
-            
+			
+			$dokter->poli = $poli ? $poli->nama_poli : '-';
             $dokter->jadwal = $grouped_schedules;
             $dokter_with_schedules[] = $dokter;
         }
 
         $data = [
             'title' => 'Tim Dokter Spesialis | RSUD Genteng Banyuwangi',
-            'description' => 'Daftar lengkap dokter spesialis RSUD Genteng Banyuwangi dengan jadwal praktik dan spesialisasi. Temukan dokter spesialis terbaik untuk kebutuhan kesehatan Anda.',
-            'keywords' => 'dokter spesialis Genteng, dokter RSUD Genteng, spesialis Banyuwangi, jadwal dokter RSUD',
+            'description' => 'Daftar lengkap dokter spesialis RSUD Genteng Banyuwangi dengan jadwal praktik dan spesialisasi. Temukan dokter spesialis terbaik untuk kebutuhan kesehatan Anda. Jadwal dokter RSUD Genteng Banyuwangi. ',
+            'keywords' => 'dokter spesialis Genteng, dokter RSUD Genteng, spesialis Banyuwangi, jadwal dokter RSUD Genteng, jadwal dokter genteng, dokter umum Genteng, dokter spesialis umum, dokter spesialis anak, dokter spesialis kandungan, dokter spesialis bedah, dokter spesialis penyakit dalam',
             'dokter' => $dokter_with_schedules,
             'spesialisasi' => $this->M_dokter->get_all_spesialisasi(),
-            'selected_spesialis' => $spesialisasi_filter
+            'selected_spesialis' => $spesialisasi_filter,
+			
         ];
 
         $this->load->view('frontend/_layouts/header', $data);

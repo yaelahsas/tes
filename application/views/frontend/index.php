@@ -190,7 +190,7 @@
 				</div>
 				<div class="col-lg-4 col-md-6 icon-box">
 					<div class="icon" aria-hidden="true"><i class="fas fa-user-doctor"></i></div>
-					<h3 class="title"><a href="<?= base_url('home/jadwal_dokter') ?>">Jadwal Dokter & Poliklinik</a></h3>
+					<h3 class="title"><a href="<?= base_url('medis')?>">Jadwal Dokter & Poliklinik</a></h3>
 					<p>Informasi jadwal praktik dokter dan layanan poliklinik</p>
 				</div>
 

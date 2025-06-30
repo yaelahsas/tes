@@ -12,10 +12,10 @@
     <section class="breadcrumbs">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Tim Dokter Spesialis dan Umum</h2>
+                <h2>Dokter Spesialis dan Umum</h2>
                 <ol>
                     <li><a href="<?= base_url() ?>">Beranda</a></li>
-                    <li>Tim Dokter</li>
+                    <li>Dokter</li>
                 </ol>
             </div>
         </div>
@@ -28,11 +28,13 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="filterSpesialisasi">Filter berdasarkan Spesialisasi:</label>
-                        <select class="form-control" id="filterSpesialisasi">
-                            <option value="">Semua Spesialisasi</option>
-                            <?php foreach ($spesialisasi as $s) : ?>
-                                <option value="<?= $s->spesialis ?>"><?= $s->spesialis ?></option>
+                        <label for="filterPoli">Filter berdasarkan Poli:</label>
+                        <select class="form-control" id="filterPoli">
+                            <option value="">Semua Poli</option>
+                            <?php 
+                            $unique_poli = array_unique(array_column($dokter, 'poli'));
+                            foreach ($unique_poli as $poli) : ?>
+                                <option value="<?= $poli ?>"><?= $poli ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -50,7 +52,8 @@
                 <?php foreach ($dokter as $d) : ?>
                     <div class="col-lg-4 col-md-6 mb-4 doctor-card" 
                          data-spesialisasi="<?= $d->spesialis ?>" 
-                         data-nama="<?= $d->nama ?>">
+                         data-nama="<?= $d->nama ?>"
+						 data-poli="<?= $d->poli ?>">
                         <div class="card h-100">
                             <div class="card-img-wrapper">
                                 <!-- Lazy loading with blur-up technique -->
@@ -68,9 +71,21 @@
                             </div>
                             <div class="card-body text-center">
                                 <h3 class="card-title h5"><?= $d->nama ?></h3>
-                                <p class="card-text text-muted"><?= $d->spesialis ?></p>
+                                <div class="poli-badge-container mb-3">
+                                    <span class="poli-badge">
+                                        <i class="fas fa-hospital-alt"></i>
+                                        <?= $d->poli ?>
+                                    </span>
+                                </div>
                             <div class="doctor-schedule mt-3 pt-3 border-top px-3">
-                                <?php if (!empty($d->jadwal)): ?>
+                                <?php if ($d->id == 12): ?>
+                                    <div class="schedule-item mb-2 text-center">
+                                        <small class="text-primary mb-0">
+                                            <i class="fas fa-calendar-alt me-1"></i>
+                                            Dengan Perjanjian
+                                        </small>
+                                    </div>
+                                <?php elseif (!empty($d->jadwal)): ?>
                                     <?php foreach ($d->jadwal as $jadwal): ?>
                                         <div class="schedule-item mb-2 d-flex justify-content-between">
                                             <small class="text-primary mb-0">
@@ -163,6 +178,53 @@
         margin-top: 1rem;
     }
 
+    /* Poli Badge Styles */
+    .poli-badge-container {
+        margin: 0.75rem 0;
+    }
+
+    .poli-badge {
+        display: inline-block;
+        background: #3fbbc0;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(63, 187, 192, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .poli-badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .poli-badge:hover::before {
+        left: 100%;
+    }
+
+    .poli-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(63, 187, 192, 0.4);
+    }
+
+    .poli-badge i {
+        margin-right: 6px;
+        font-size: 0.8rem;
+    }
+
+
     /* Lazy Loading Styles */
     .lazy {
         opacity: 0;
@@ -177,6 +239,11 @@
     @media (max-width: 768px) {
         .doctor-card {
             margin-bottom: 2rem;
+        }
+        
+        .poli-badge {
+            font-size: 0.8rem;
+            padding: 6px 12px;
         }
     }
 </style>
@@ -201,21 +268,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Filter and Search Implementation
     const doctorCards = document.querySelectorAll('.doctor-card');
-    const filterSelect = document.getElementById('filterSpesialisasi');
+    const filterSelect = document.getElementById('filterPoli');
     const searchInput = document.getElementById('searchDokter');
     const noResults = document.getElementById('noResults');
 
     function filterDoctors() {
         const searchTerm = searchInput.value.toLowerCase();
-        const selectedSpesialisasi = filterSelect.value.toLowerCase();
+        const selectedPoli = filterSelect.value.toLowerCase();
         let hasResults = false;
 
         doctorCards.forEach(card => {
             const nama = card.dataset.nama.toLowerCase();
-            const spesialisasi = card.dataset.spesialisasi.toLowerCase();
+            const poli = card.dataset.poli.toLowerCase();
             
             const matchesSearch = nama.includes(searchTerm);
-            const matchesFilter = !selectedSpesialisasi || spesialisasi === selectedSpesialisasi;
+            const matchesFilter = !selectedPoli || poli === selectedPoli;
 
             if (matchesSearch && matchesFilter) {
                 card.style.display = '';
@@ -239,5 +306,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const img = new Image();
         img.src = src;
     });
+
+    // Keep all poli badges with the same color #3fbbc0 (already set in CSS)
+    const poliBadges = document.querySelectorAll('.poli-badge');
+    
+    poliBadges.forEach((badge, index) => {
+        // Add pulse animation on hover
+        badge.addEventListener('mouseenter', function() {
+            this.style.animation = 'pulse 0.6s ease-in-out';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+    });
+
+    // Add pulse keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0% { transform: scale(1) translateY(-2px); }
+            50% { transform: scale(1.05) translateY(-2px); }
+            100% { transform: scale(1) translateY(-2px); }
+        }
+    `;
+    document.head.appendChild(style);
 });
 </script>
