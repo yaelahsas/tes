@@ -37,6 +37,16 @@ $this->load->view('dist/_partials/header');
 									<?= form_error('spesialis', '<small class="text-danger">', '</small>'); ?>
 								</div>
 								<div class="form-group">
+									<label for="id_poli">Poli *</label>
+									<select name="id_poli" id="id_poli" class="form-control" required>
+										<option value="">-- Pilih Poli --</option>
+										<?php foreach ($poli_list as $poli) : ?>
+											<option value="<?= $poli->id ?>" <?= ($poli->id == $id_poli) ? 'selected' : '' ?>><?= $poli->nama_poli ?></option>
+										<?php endforeach; ?>
+									</select>
+									<?= form_error('id_poli', '<small class="text-danger">', '</small>'); ?>
+								</div>
+								<div class="form-group">
 									<label for="img">Foto </label>
 									<?php if ($img != null) { ?>
 										<br>

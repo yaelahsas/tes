@@ -33,12 +33,14 @@ $this->load->view('dist/_partials/header');
 											<th width="80px">No</th>
 											<th>Dokter</th>
 											<th>Spesialis</th>
+											<th>Poli</th>
 											<th>Foto</th>
 											<th width="200px">Action</th>
 										</tr>
 									</thead>
 
 								</table>
+							
 							</div>
 						</div>
 					</div>

@@ -416,6 +416,10 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 						"data": "spesialis",
 						"className": "text-center"
 					},
+					 {
+						"data": "nama_poli",
+						"className": "text-center"
+					},
 					{
 						"data": "img",
 						"render": function(data) {

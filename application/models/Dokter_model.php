@@ -18,9 +18,10 @@ class Dokter_model extends CI_Model
 	// datatables
 	function json()
 	{
-		$this->datatables->select('id,nama,spesialis,img');
+		$this->datatables->select('dokter.id,dokter.nama,dokter.spesialis,dokter.img,dokter.id_poli,poli.nama_poli');
 		$this->datatables->from('dokter');
-		$this->datatables->add_column('action', anchor(site_url('Dokter/update/$1'), '<div class="badge badge-warning">Update</div>') .  anchor(site_url('Dokter/delete/$1'), '<div class="badge badge-danger">Delete</div>', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+		$this->datatables->join('poli', 'dokter.id_poli = poli.id', 'left');
+		$this->datatables->add_column('action', anchor(site_url('Dokter/update/$1'), '<div class="badge badge-warning">Update</div>') .  anchor(site_url('Dokter/delete/$1'), '<div class="badge badge-danger">Delete</div>', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'dokter.id');
 		return $this->datatables->generate();
 	}
 
@@ -44,6 +45,7 @@ class Dokter_model extends CI_Model
 		$this->db->like('id', $q);
 		$this->db->or_like('nama', $q);
 		$this->db->or_like('img', $q);
+		$this->db->or_like('id_poli', $q);
 		$this->db->from($this->table);
 		return $this->db->count_all_results();
 	}
@@ -55,6 +57,7 @@ class Dokter_model extends CI_Model
 		$this->db->like('id', $q);
 		$this->db->or_like('nama', $q);
 		$this->db->or_like('img', $q);
+		$this->db->or_like('id_poli', $q);
 		$this->db->limit($limit, $start);
 		return $this->db->get($this->table)->result();
 	}

@@ -10,6 +10,7 @@ class Dokter extends CI_Controller
 		parent::__construct();
 		check_not_login();
 		$this->load->model('Dokter_model');
+		$this->load->model('Poli_model');
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
 	}
@@ -30,6 +31,7 @@ class Dokter extends CI_Controller
 
 	public function create()
 	{
+		$poli_list = $this->Poli_model->get_all();
 		$data = array(
 			'button' => 'Create',
 			'title' => 'Dokter',
@@ -39,6 +41,8 @@ class Dokter extends CI_Controller
 			'nama' => set_value('nama'),
 			'spesialis' => set_value('spesialis'),
 			'img' => set_value('img'),
+			'id_poli' => set_value('id_poli'),
+			'poli_list' => $poli_list,
 		);
 		$this->load->view('dokter/dokter_form', $data);
 	}
@@ -56,12 +60,15 @@ class Dokter extends CI_Controller
 			$config['file_name']   = 'dokter -' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 			$this->load->library('upload', $config);
 
+			$id_poli = $this->input->post('id_poli', TRUE);
+
 			if (@$_FILES['img']['name'] != null) {
 
 				if ($this->upload->do_upload('img')) {
 					$data = array(
 						'nama' => $this->input->post('nama', TRUE),
 						'spesialis' => $this->input->post('spesialis', TRUE),
+						'id_poli' => $id_poli,
 						'img' => $this->upload->data('file_name')
 					);
 					$this->Dokter_model->insert($data);
@@ -78,6 +85,7 @@ class Dokter extends CI_Controller
 				$data = array(
 					'nama' => $this->input->post('nama', TRUE),
 					'spesialis' => $this->input->post('spesialis', TRUE),
+					'id_poli' => $id_poli,
 				);
 				$this->Dokter_model->insert($data);
 				if ($this->db->affected_rows() > 0) {
@@ -93,6 +101,7 @@ class Dokter extends CI_Controller
 		$row = $this->Dokter_model->get_by_id($id);
 
 		if ($row) {
+			$poli_list = $this->Poli_model->get_all();
 			$data = array(
 				'title' => 'Dokter',
 				'page' => 'Update Dokter',
@@ -102,6 +111,8 @@ class Dokter extends CI_Controller
 				'nama' => set_value('nama', $row->nama),
 				'spesialis' => set_value('spesialis', $row->spesialis),
 				'img' => set_value('img', $row->img),
+				'id_poli' => set_value('id_poli', $row->id_poli),
+				'poli_list' => $poli_list,
 			);
 			// $this->load->view('satuan/tb_satuan_form', $data);
 			$this->load->view('dokter/dokter_form', $data);
@@ -124,6 +135,8 @@ class Dokter extends CI_Controller
 			$config['file_name']   = 'dokter-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 			$this->load->library('upload', $config);
 
+			$id_poli = $this->input->post('id_poli', TRUE);
+
 			if (@$_FILES['img']['name'] != null) {
 				if ($this->upload->do_upload('img')) {
 
@@ -138,6 +151,7 @@ class Dokter extends CI_Controller
 					$data = array(
 						'nama' => $this->input->post('nama', TRUE),
 						'spesialis' => $this->input->post('spesialis', TRUE),
+						'id_poli' => $id_poli,
 						'img' => $this->upload->data('file_name')
 					);
 					$this->Dokter_model->update($this->input->post('id', TRUE), $data);
@@ -154,6 +168,7 @@ class Dokter extends CI_Controller
 				$data = array(
 					'nama' => $this->input->post('nama', TRUE),
 					'spesialis' => $this->input->post('spesialis', TRUE),
+					'id_poli' => $id_poli,
 				);
 				$this->Dokter_model->update($this->input->post('id', TRUE), $data);
 				if ($this->db->affected_rows() > 0) {
@@ -182,6 +197,7 @@ class Dokter extends CI_Controller
 	{
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
 		$this->form_validation->set_rules('spesialis', 'spesialis', 'trim|required');
+		$this->form_validation->set_rules('id_poli', 'poli', 'trim|required');
 		$this->form_validation->set_rules('img', 'img', 'trim');
 
 		$this->form_validation->set_rules('id', 'id', 'trim');
