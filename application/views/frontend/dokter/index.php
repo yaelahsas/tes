@@ -79,11 +79,15 @@
                                 </div>
                             <div class="doctor-schedule mt-3 pt-3 border-top px-3">
                                 <?php if ($d->id == 12): ?>
-                                    <div class="schedule-item mb-2 text-center">
+                                   <div class="schedule-item mb-2 d-flex justify-content-between">
                                         <small class="text-primary mb-0">
                                             <i class="fas fa-calendar-alt me-1"></i>
-                                            Dengan Perjanjian
+                                         	Senin - Kamis   
                                         </small>
+										 <small class="text-muted mb-0">
+                                                <i class="fas fa-clock me-1"></i>
+                                              	Kunjungan berdasarkan reservasi
+                                            </small>
                                     </div>
                                 <?php elseif (!empty($d->jadwal)): ?>
                                     <?php foreach ($d->jadwal as $jadwal): ?>
