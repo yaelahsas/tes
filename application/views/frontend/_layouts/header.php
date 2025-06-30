@@ -119,7 +119,7 @@
 						</ul>
 					</li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
-					<li><a class="nav-link" href="<?= base_url('dokter') ?>">Dokter</a></li>
+					<li><a class="nav-link" href="<?= base_url('medis') ?>">Dokter</a></li>
 					<li><a class="nav-link" href="<?= base_url('berita') ?>">Berita</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>
 					<li><a class="nav-link" href="<?= base_url('home/inovasi') ?>">Inovasi</a></li>
