@@ -21,7 +21,7 @@ class Dokter_model extends CI_Model
 		$this->datatables->select('dokter.id,dokter.nama,dokter.spesialis,dokter.img,dokter.id_poli,poli.nama_poli');
 		$this->datatables->from('dokter');
 		$this->datatables->join('poli', 'dokter.id_poli = poli.id', 'left');
-		$this->datatables->add_column('action', anchor(site_url('Dokter/update/$1'), '<div class="badge badge-warning">Update</div>') .  anchor(site_url('Dokter/delete/$1'), '<div class="badge badge-danger">Delete</div>', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'dokter.id');
+		$this->datatables->add_column('action', anchor(site_url('Dokter/update/$1'), '<div class="badge badge-warning">Update</div>') .  anchor(site_url('Dokter/delete/$1'), '<div class="badge badge-danger">Delete</div>', 'onclick="javascript: return confirm(\'Are You Sure ?\')"'), 'id');
 		return $this->datatables->generate();
 	}
 
