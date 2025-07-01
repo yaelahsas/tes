@@ -71,7 +71,9 @@ class Home extends CI_Controller
 
 	public function tempat_tidur()
 	{
-		$data['isi'] = $this->aw();
+		$json_data = $this->aw();
+		$bed_data = json_decode($json_data, true);
+		$data['bed_data'] = $bed_data;
 		$this->load->view('frontend/tt', $data);
 	}
 	public function pengaduan()
@@ -87,7 +89,7 @@ class Home extends CI_Controller
 		// $jadwal = $this->Home_model->get_jadwal_dokter_grouped();
 		$data = array(
 			'page_needs_fontawesome' => true,
-			
+
 			'title' => 'Jadwal Dokter Spesialis & Umum - RSUD Genteng',
 			'description' => 'Lihat jadwal praktek dokter spesialis dan umum di RSUD Genteng Banyuwangi.',
 			'keywords' => 'jadwal dokter, dokter spesialis, dokter umum, RSUD Genteng',
@@ -115,12 +117,10 @@ class Home extends CI_Controller
 	}
 	public function aw()
 	{
-
-
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => 'https://yankes.kemkes.go.id/app/siranap/tempat_tidur?kode_rs=3510043&jenis=2&propinsi=35prop&kabkota=3510',
+			CURLOPT_URL => 'https://rsudgenteng.id:8888/service/medifirst2000/kiosk/get-view-bed-tea',
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -129,13 +129,15 @@ class Home extends CI_Controller
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => 'GET',
 			CURLOPT_HTTPHEADER => array(
-				'Cookie: TS01311a88=0172bf5c62d835e85e667de81afe4b870c94fb39bb7c303f8100a487b727d939c5cb22e231f6d28daf632541825ee6512dae3b9553; TS01311a88028=015463a1a801994557d80964660bad585e94f77ccd651e70812e458717aa5de41b59babd1c9bad9af3e9e0d70748ed4e1c24e69fbb'
+				'X-Auth-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNTAzNjAifQ.Lx3QCGK7BiZmz6jN5avphtXFn9upKcnYKBDdQHWddG1k_67FoaGs88f_PdmfoNfFkTMUg5HW-TDDr2rXjw4EnA',
 			),
 		));
 
 		$response = curl_exec($curl);
 
 		curl_close($curl);
+
+
 		return $response;
 	}
 	public function inovasi()
