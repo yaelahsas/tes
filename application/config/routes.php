@@ -55,6 +55,10 @@ $route['default_controller'] = 'Home';
 $route['translate_uri_dashes'] = FALSE;
 $route['web/home'] = 'home';
 
+// Custom route for tempat tidur with hyphen for SEO friendly URL
+$route['tempat-tidur'] = 'home/tempat_tidur';
+$route['home/jadwal-dokter'] = 'home/jadwal_dokter';
+
 // Generate slugs route (must come before other berita routes)
 $route['berita/generate_slugs'] = 'berita/generate_slugs';
 

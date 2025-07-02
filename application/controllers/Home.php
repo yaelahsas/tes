@@ -21,6 +21,9 @@ class Home extends CI_Controller
 		$this->load->model('Pengunjung_model');
 		$this->load->library('datatables');
 		$this->load->library('bpjs');
+		$this->load->model('Dokter_model', 'M_dokter');
+		$this->load->model('Jadwal_dokter_model', 'M_jadwal');
+		$this->load->helper('url');
 	}
 
 
@@ -85,19 +88,61 @@ class Home extends CI_Controller
 	}
 	public function jadwal_dokter()
 	{
-		$this->load->model('Home_model');
-		// $jadwal = $this->Home_model->get_jadwal_dokter_grouped();
-		$data = array(
-			'page_needs_fontawesome' => true,
+		$spesialisasi_filter = $this->input->get('spesialisasi');
 
-			'title' => 'Jadwal Dokter Spesialis & Umum - RSUD Genteng',
-			'description' => 'Lihat jadwal praktek dokter spesialis dan umum di RSUD Genteng Banyuwangi.',
-			'keywords' => 'jadwal dokter, dokter spesialis, dokter umum, RSUD Genteng',
-			'dokter' => $this->Home_model->get_dokter_with_jadwal(),
-			'spesialisasi' => $this->Home_model->get_spesialisasi() // method baru
-		);
+		if ($spesialisasi_filter) {
+			$dokter_list = $this->M_dokter->get_by_spesialisasi($spesialisasi_filter);
+		} else {
+			$dokter_list = $this->M_dokter->get_all();
+		}
+
+		$dokter_with_schedules = [];
+		foreach ($dokter_list as $dokter) {
+			$this->db->select('hari, jam_mulai, jam_selesai');
+			$this->db->where('dokter_id', $dokter->id);
+			$this->db->order_by('FIELD(hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")');
+			$schedules = $this->db->get('jadwal_dokter')->result();
+
+			$poli = $this->M_dokter->get_poli_by_dokter($dokter->id);
+
+			// Group hari berdasarkan jam yang sama
+			$grouped = []; // key: "jam_mulai|jam_selesai" => [hari]
+			foreach ($schedules as $s) {
+				$key = $s->jam_mulai . '|' . $s->jam_selesai;
+				if (!isset($grouped[$key])) {
+					$grouped[$key] = [];
+				}
+				$grouped[$key][] = $s->hari;
+			}
+
+			// Bentuk array akhir
+			$grouped_schedules = [];
+			foreach ($grouped as $jam_key => $hari_list) {
+				list($jam_mulai, $jam_selesai) = explode('|', $jam_key);
+				$grouped_schedules[] = [
+					'hari_list' => $hari_list,
+					'jam_mulai' => $jam_mulai,
+					'jam_selesai' => $jam_selesai
+				];
+			}
+
+			$dokter->poli = $poli ? $poli->nama_poli : '-';
+			$dokter->jadwal = $grouped_schedules;
+			$dokter_with_schedules[] = $dokter;
+		}
+
+		$data = [
+			'title' => 'Jadwal Dokter Spesialis RSUD Genteng Banyuwangi | Informasi Lengkap dan Terbaru',
+			'description' => 'Lihat jadwal praktik dokter spesialis RSUD Genteng Banyuwangi. Informasi lengkap tentang nama dokter, hari dan jam praktik, serta spesialisasi di RSUD Genteng.',
+			'keywords' => 'jadwal dokter RSUD Genteng, jadwal dokter Banyuwangi, dokter spesialis Banyuwangi, jadwal praktik dokter Genteng, dokter RSUD Genteng terbaru, jadwal dokter umum Banyuwangi, rumah sakit genteng jadwal dokter, informasi dokter RSUD Genteng Banyuwangi, dokter spesialis anak genteng, dokter penyakit dalam Banyuwangi, jadwal praktek dokter RSUD Genteng Banyuwangi',
+			'dokter' => $dokter_with_schedules,
+			'spesialisasi' => $this->M_dokter->get_all_spesialisasi(),
+			'selected_spesialis' => $spesialisasi_filter,
+		];
+
+
 		$this->load->view('frontend/_layouts/header', $data);
-		$this->load->view('frontend/jadwal_dokter', $data);
+		$this->load->view('frontend/dokter/index', $data);
 		$this->load->view('frontend/_layouts/footer');
 	}
 
