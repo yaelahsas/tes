@@ -7,6 +7,9 @@ RewriteRule ^(.*)$ index.php/$1 [L]
 RewriteCond %{REQUEST_URI} ^/web/
 RewriteRule ^web/(.*)$ /$1 [R=301,L]
 
+# Abaikan folder genpas/
+RewriteCond %{REQUEST_URI} !^/genpas/
+
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php74” package as the default “PHP” programming language.
 <IfModule mime_module>
