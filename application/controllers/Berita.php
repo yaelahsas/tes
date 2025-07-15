@@ -29,6 +29,13 @@ class Berita extends CI_Controller
 		$this->db->select('artikel.*, kategori.nama as kategori');
 		$this->db->from('artikel');
 		$this->db->join('kategori', 'kategori.id = artikel.kategori', 'left');
+		
+		// Check if status column exists
+		$this->db->query("SHOW COLUMNS FROM artikel LIKE 'status'");
+		if ($this->db->affected_rows() > 0) {
+			$this->db->where('artikel.status', 'tampil');
+		}
+		
 		$this->db->order_by('artikel.id', 'DESC');
 		$articles = $this->db->get()->result();
 
@@ -52,6 +59,13 @@ class Berita extends CI_Controller
 		$this->db->from('artikel');
 		$this->db->join('kategori', 'kategori.id = artikel.kategori', 'left');
 		$this->db->where('kategori.id', $id);
+		
+		// Check if status column exists
+		$this->db->query("SHOW COLUMNS FROM artikel LIKE 'status'");
+		if ($this->db->affected_rows() > 0) {
+			$this->db->where('artikel.status', 'tampil');
+		}
+		
 		$this->db->order_by('artikel.id', 'DESC');
 		$articles = $this->db->get()->result();
 
@@ -82,6 +96,13 @@ class Berita extends CI_Controller
 			$this->db->join('kategori', 'kategori.id = artikel.kategori', 'left');
 			$this->db->where('artikel.kategori', $row->kategori);
 			$this->db->where('artikel.id !=', $row->id); // Exclude current article
+			
+			// Check if status column exists
+			$this->db->query("SHOW COLUMNS FROM artikel LIKE 'status'");
+			if ($this->db->affected_rows() > 0) {
+				$this->db->where('artikel.status', 'tampil');
+			}
+			
 			$this->db->order_by('artikel.id', 'DESC');
 			$this->db->limit(5); // Get 5 related articles
 			$related_articles = $this->db->get()->result();

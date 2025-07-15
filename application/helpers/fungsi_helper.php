@@ -46,3 +46,14 @@ if (!function_exists('get_status_buka')) {
         }
     }
 }
+
+if (!function_exists('get_status_badge')) {
+    function get_status_badge($status)
+    {
+        if ($status == 'tampil') {
+            return '<div class="badge badge-success">Tampil</div>';
+        } else {
+            return '<div class="badge badge-secondary">Draft</div>';
+        }
+    }
+}

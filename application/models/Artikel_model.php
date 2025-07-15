@@ -62,7 +62,16 @@ class Artikel_model extends CI_Model
 	// datatables
 	function json()
 	{
-		$this->datatables->select('a.id, k.nama as kategori, a.judul, a.isi, a.sampul');
+		// Check if status column exists, if not use default value
+		$this->db->query("SHOW COLUMNS FROM artikel LIKE 'status'");
+		$status_exists = $this->db->affected_rows() > 0;
+		
+		if ($status_exists) {
+			$this->datatables->select('a.id, k.nama as kategori, a.judul, a.isi, a.sampul, COALESCE(a.status, "draft") as status');
+		} else {
+			$this->datatables->select('a.id, k.nama as kategori, a.judul, a.isi, a.sampul, "draft" as status');
+		}
+		
 		$this->datatables->from('artikel as a');
 		//add this line for join
 		$this->datatables->join('kategori as k', 'k.id = a.kategori');
@@ -71,16 +80,36 @@ class Artikel_model extends CI_Model
 		return $this->datatables->generate();
 	}
 
-	// get all
+	// get all dengan status tampil
 	function get_all()
+	{
+		// Check if status column exists
+		$this->db->query("SHOW COLUMNS FROM artikel LIKE 'status'");
+		$status_exists = $this->db->affected_rows() > 0;
+		
+		if ($status_exists) {
+			$this->db->where('status', 'tampil');
+		}
+		$this->db->order_by($this->id, $this->order);
+		return $this->db->get($this->table)->result();
+	}
+
+	// get all articles (untuk admin)
+	function get_all_admin()
 	{
 		$this->db->order_by($this->id, $this->order);
 		return $this->db->get($this->table)->result();
 	}
-	// get 3 terbaru
+	// get 3 terbaru dengan status tampil
 	function get_new()
 	{
-
+		// Check if status column exists
+		$this->db->query("SHOW COLUMNS FROM artikel LIKE 'status'");
+		$status_exists = $this->db->affected_rows() > 0;
+		
+		if ($status_exists) {
+			$this->db->where('status', 'tampil');
+		}
 		$this->db->order_by($this->id, $this->order);
 		$this->db->limit(3, 0);
 		return $this->db->get($this->table)->result();

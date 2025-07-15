@@ -43,6 +43,16 @@ $this->load->view('dist/_partials/header');
                                 <div class="form-group">
                                     <label for="isi">Isi *</label>
                                     <textarea id="isi" name="isi"><?= $isi ?></textarea>
+                                    <button type="button" id="generate-ai-article" class="btn btn-info mt-2">Generate AI Article</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status *</label>
+                                    <select name="status" id="status" class="form-control" required="required">
+                                        <option value="">--Pilih Status--</option>
+                                        <option value="draft" <?= (isset($status) && $status == 'draft') ? "selected" : null ?>>Draft</option>
+                                        <option value="tampil" <?= (isset($status) && $status == 'tampil') ? "selected" : null ?>>Tampil</option>
+                                    </select>
+                                    <?= form_error('status', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="sampul">Sampul </label>
@@ -60,6 +70,35 @@ $this->load->view('dist/_partials/header');
                         </div>
                         <script>
                             CKEDITOR.replace('isi');
+
+                            $(document).ready(function() {
+                                $('#generate-ai-article').click(function() {
+                                    var $btn = $(this);
+                                    $btn.prop('disabled', true).text('Generating...');
+                                    $.ajax({
+                                        url: '<?= site_url('Artikel/generate_ai_article') ?>',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        success: function(response) {
+                                            if (response.error) {
+                                                alert(response.error);
+                                            } else {
+                                                if (response.isi) {
+                                                    CKEDITOR.instances['isi'].setData(response.isi);
+                                                }
+                                                if (response.judul) {
+                                                    $('#judul').val(response.judul);
+                                                }
+                                            }
+                                            $btn.prop('disabled', false).text('Generate AI Article');
+                                        },
+                                        error: function() {
+                                            alert('Error generating article.');
+                                            $btn.prop('disabled', false).text('Generate AI Article');
+                                        }
+                                    });
+                                });
+                            });
                         </script>
                         <?= form_close() ?>
                     </div>

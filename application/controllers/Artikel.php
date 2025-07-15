@@ -13,6 +13,171 @@ class Artikel extends CI_Controller
 		$this->load->model('Kategori_model');
 		$this->load->library('form_validation');
 		$this->load->library('datatables');
+		// Load HTTP client for API calls
+		// $this->load->library('curl');
+	}
+
+	// New method to generate article via AI
+	public function generate_ai_article()
+	{
+		header('Content-Type: application/json');
+		
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://api.akbxr.com/v1/chat/completions',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => '{
+				"model": "auto",
+				"messages": [
+					{
+						"role": "user",
+						"content": "Buatkan saya artikel tentang kesehatan / kesehatan remaja / kesehatan orangtua / kesehatan anak / kesehatan organ tubuh / olahraga  yang uniq dengan panjang min 200 kata , dengan gaya bahasa informal untuk dibaca pasien. gunakan seo dan keyword terindexs google, buatkan dengan format html tanpa head dan body tanpa \\n"
+					}
+				],
+				"stream": false
+			}',
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json',
+				'Authorization: Bearer UNLIMITED-BETA'
+			),
+		));
+
+		$response = curl_exec($curl);
+
+		// Check for cURL errors
+		if (curl_errno($curl)) {
+			$error_msg = curl_error($curl);
+			curl_close($curl);
+			echo json_encode(array('error' => 'Curl error: ' . $error_msg));
+			return;
+		}
+
+		curl_close($curl);
+
+		// Decode response
+		$result = json_decode($response, true);
+
+		// Parse the generated text from response
+		if ($result && isset($result['choices'][0]['message']['content'])) {
+			$generated_content = $result['choices'][0]['message']['content'];
+			
+			// Replace \n with actual line breaks
+			$generated_content = str_replace('\\n', "\n", $generated_content);
+			
+			// Extract title from h2 tag
+			preg_match('/<h2>(.*?)<\/h2>/', $generated_content, $title_matches);
+			$judul = isset($title_matches[1]) ? strip_tags($title_matches[1]) : "Artikel Kesehatan";
+			
+			// Use the full content as isi
+			$isi = $generated_content;
+
+			// Return JSON response for AJAX
+			echo json_encode(array(
+				'judul' => $judul,
+				'isi' => $isi
+			));
+		} else {
+			echo json_encode(array('error' => 'Gagal generate artikel AI'));
+		}
+	}
+
+	// Method untuk generate batch artikel
+	public function generate_batch_article()
+	{
+		header('Content-Type: application/json');
+		
+		$kategori = $this->input->post('kategori');
+		
+		if (!$kategori) {
+			echo json_encode(array('error' => 'Kategori tidak boleh kosong'));
+			return;
+		}
+		
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://api.akbxr.com/v1/chat/completions',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => '{
+				"model": "auto",
+				"messages": [
+					{
+						"role": "user",
+						"content": "Buatkan saya artikel tentang kesehatan / kesehatan remaja / kesehatan orangtua / kesehatan anak / kesehatan organ tubuh / olahraga  yang uniq dengan panjang min 200 kata , dengan gaya bahasa informal untuk dibaca pasien. gunakan seo dan keyword terindexs google, buatkan dengan format html tanpa head dan body tanpa \\n"
+					}
+				],
+				"stream": false
+			}',
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json',
+				'Authorization: Bearer UNLIMITED-BETA'
+			),
+		));
+
+		$response = curl_exec($curl);
+
+		// Check for cURL errors
+		if (curl_errno($curl)) {
+			$error_msg = curl_error($curl);
+			curl_close($curl);
+			echo json_encode(array('error' => 'Curl error: ' . $error_msg));
+			return;
+		}
+
+		curl_close($curl);
+
+		// Decode response
+		$result = json_decode($response, true);
+
+		// Parse the generated text from response
+		if ($result && isset($result['choices'][0]['message']['content'])) {
+			$generated_content = $result['choices'][0]['message']['content'];
+			
+			// Replace \n with actual line breaks
+			$generated_content = str_replace('\\n', "\n", $generated_content);
+			
+			// Extract title from h2 tag
+			preg_match('/<h2>(.*?)<\/h2>/', $generated_content, $title_matches);
+			$judul = isset($title_matches[1]) ? strip_tags($title_matches[1]) : "Artikel Kesehatan " . date('Y-m-d H:i:s');
+			
+			// Use the full content as isi
+			$isi = $generated_content;
+
+			// Save to database with selected category and draft status
+			$data = array(
+				'kategori' => $kategori,
+				'judul' => $judul,
+				'isi' => $isi,
+				'status' => 'draft'
+			);
+			
+			$this->Artikel_model->insert($data);
+			
+			if ($this->db->affected_rows() > 0) {
+				echo json_encode(array(
+					'success' => true,
+					'judul' => $judul,
+					'message' => 'Artikel berhasil dibuat'
+				));
+			} else {
+				echo json_encode(array('error' => 'Gagal menyimpan artikel ke database'));
+			}
+		} else {
+			echo json_encode(array('error' => 'Gagal generate artikel AI'));
+		}
 	}
 
 	public function index()
@@ -45,6 +210,7 @@ class Artikel extends CI_Controller
 			'judul' => set_value('judul'),
 			'isi' => set_value('isi'),
 			'img_sampul' => set_value('img_sampul'),
+			'status' => set_value('status', isset($row->status) ? $row->status : 'draft'),
 		);
 		$this->load->view('artikel/artikel_form', $data);
 	}
@@ -52,8 +218,6 @@ class Artikel extends CI_Controller
 	public function create_action()
 	{
 		$this->_rules();
-
-
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->create();
@@ -72,7 +236,8 @@ class Artikel extends CI_Controller
 						'kategori' => $this->input->post('kategori', TRUE),
 						'judul' => $this->input->post('judul', TRUE),
 						'isi' => $this->input->post('isi', TRUE),
-						'sampul' => $this->upload->data('file_name')
+						'sampul' => $this->upload->data('file_name'),
+						'status' => $this->input->post('status', TRUE)
 					);
 					$this->Artikel_model->insert($data);
 					if ($this->db->affected_rows() > 0) {
@@ -89,6 +254,7 @@ class Artikel extends CI_Controller
 					'kategori' => $this->input->post('kategori', TRUE),
 					'judul' => $this->input->post('judul', TRUE),
 					'isi' => $this->input->post('isi', TRUE),
+					'status' => $this->input->post('status', TRUE)
 				);
 				$this->Artikel_model->insert($data);
 				if ($this->db->affected_rows() > 0) {
@@ -116,6 +282,7 @@ class Artikel extends CI_Controller
 				'judul' => set_value('judul', $row->judul),
 				'isi' => set_value('isi', $row->isi),
 				'sampul' => set_value('sampul', $row->sampul),
+				'status' => set_value('status', isset($row->status) ? $row->status : 'draft'),
 			);
 			$this->load->view('artikel/artikel_form', $data);
 		} else {
@@ -153,7 +320,8 @@ class Artikel extends CI_Controller
 						'kategori' => $this->input->post('kategori', TRUE),
 						'judul' => $this->input->post('judul', TRUE),
 						'isi' => $this->input->post('isi', TRUE),
-						'sampul' => $this->upload->data('file_name')
+						'sampul' => $this->upload->data('file_name'),
+						'status' => $this->input->post('status', TRUE)
 					);
 					$this->Artikel_model->update($this->input->post('id', TRUE), $data);
 
@@ -170,6 +338,7 @@ class Artikel extends CI_Controller
 					'kategori' => $this->input->post('kategori', TRUE),
 					'judul' => $this->input->post('judul', TRUE),
 					'isi' => $this->input->post('isi', TRUE),
+					'status' => $this->input->post('status', TRUE)
 				);
 				$this->Artikel_model->update($this->input->post('id', TRUE), $data);
 				if ($this->db->affected_rows() > 0) {
@@ -200,6 +369,7 @@ class Artikel extends CI_Controller
 		$this->form_validation->set_rules('kategori', 'kategori', 'trim|required');
 		$this->form_validation->set_rules('isi', 'isi', 'trim');
 		$this->form_validation->set_rules('img_sampul', 'img_sampul', 'trim');
+		$this->form_validation->set_rules('status', 'status', 'trim|required');
 
 		$this->form_validation->set_rules('id', 'id', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

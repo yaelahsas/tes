@@ -209,6 +209,8 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 						"data": "judul"
 					}, {
 						"data": "kategori"
+					}, {
+						"data": "status"
 					},
 					{
 						"data": "action",
@@ -217,6 +219,21 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 
 					}
 				],
+				columnDefs: [{
+					targets: [3],
+					render: function(data, type, row) {
+						switch (data) {
+							case 'tampil':
+								return '<span class="badge badge-success">Tampil</span>';
+								break;
+							case 'draft':
+								return '<span class="badge badge-secondary">Draft</span>';
+								break;
+							default:
+								return '<span class="badge badge-secondary">Draft</span>';
+						}
+					}
+				}],
 				order: [
 					[0, 'desc']
 				],
