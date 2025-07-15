@@ -7,19 +7,37 @@
  * (Akan dijalankan setiap hari jam 8 pagi)
  */
 
-// Set path ke CodeIgniter
-define('BASEPATH', TRUE);
-$system_path = 'system';
-$application_folder = 'application';
+// Method 1: Via URL (Recommended)
+$base_url = "http://localhost/rsud"; // Sesuaikan dengan URL website Anda
+$secret_key = "rsud_cron_2024"; // Secret key untuk keamanan
 
-// Path ke index.php
-$_SERVER['REQUEST_URI'] = '/artikel/auto_publish';
-$_SERVER['HTTP_HOST'] = 'localhost';
+$url = $base_url . "/cron/auto_publish?key=" . $secret_key;
+$result = file_get_contents($url);
+echo $result;
 
-// Include CodeIgniter
-require_once 'index.php';
+// Method 2: Via cURL (Alternative)
+/*
+$curl = curl_init();
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $base_url . "/cron/auto_publish?key=" . $secret_key,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+));
 
-// Atau alternatif, panggil langsung via URL
-// $url = "http://localhost/rsud/artikel/auto_publish";
-// $result = file_get_contents($url);
-// echo $result;
+$response = curl_exec($curl);
+$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+curl_close($curl);
+
+if ($http_code == 200) {
+    echo $response;
+} else {
+    echo "Error: HTTP $http_code\n";
+}
+*/
+
+// Method 3: Test tanpa mengubah data
+// $test_url = $base_url . "/cron/test?key=" . $secret_key;
+// echo file_get_contents($test_url);
