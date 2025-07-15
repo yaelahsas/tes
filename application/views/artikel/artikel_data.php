@@ -79,6 +79,19 @@ $this->load->view('dist/_partials/header');
 							<?php } ?>
 						</select>
 					</div>
+					<div class="form-group">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="enableScheduling" name="enableScheduling">
+							<label class="form-check-label" for="enableScheduling">
+								Aktifkan penjadwalan otomatis (1 artikel per hari)
+							</label>
+						</div>
+					</div>
+					<div class="form-group" id="schedulingOptions" style="display: none;">
+						<label for="startDate">Mulai publish dari tanggal:</label>
+						<input type="date" class="form-control" id="startDate" name="startDate" value="<?= date('Y-m-d', strtotime('+1 day')) ?>">
+						<small class="form-text text-muted">Artikel akan dipublish secara berurutan setiap hari mulai dari tanggal ini</small>
+					</div>
 				</form>
 				
 				<!-- Progress Section -->
@@ -108,10 +121,22 @@ $(document).ready(function() {
 	let isGenerating = false;
 	let currentIndex = 0;
 	let totalArticles = 0;
+	let generatedArticleIds = []; // Array untuk menyimpan ID artikel yang digenerate
+	
+	// Toggle scheduling options
+	$('#enableScheduling').change(function() {
+		if ($(this).is(':checked')) {
+			$('#schedulingOptions').show();
+		} else {
+			$('#schedulingOptions').hide();
+		}
+	});
 	
 	$('#startGenerateBtn').click(function() {
 		const jumlah = parseInt($('#jumlahArtikel').val());
 		const kategori = $('#kategoriArtikel').val();
+		const enableScheduling = $('#enableScheduling').is(':checked');
+		const startDate = $('#startDate').val();
 		
 		if (!kategori) {
 			alert('Pilih kategori terlebih dahulu!');
@@ -123,7 +148,12 @@ $(document).ready(function() {
 			return;
 		}
 		
-		startBatchGenerate(jumlah, kategori);
+		if (enableScheduling && !startDate) {
+			alert('Pilih tanggal mulai publish!');
+			return;
+		}
+		
+		startBatchGenerate(jumlah, kategori, enableScheduling, startDate);
 	});
 	
 	$('#stopGenerateBtn').click(function() {
@@ -134,10 +164,11 @@ $(document).ready(function() {
 		addLog('❌ Proses dihentikan oleh user');
 	});
 	
-	function startBatchGenerate(jumlah, kategori) {
+	function startBatchGenerate(jumlah, kategori, enableScheduling, startDate) {
 		isGenerating = true;
 		currentIndex = 0;
 		totalArticles = jumlah;
+		generatedArticleIds = []; // Reset array
 		
 		// Show progress section and hide form
 		$('#batchGenerateForm').hide();
@@ -150,24 +181,25 @@ $(document).ready(function() {
 		updateProgress(0);
 		$('#progressLog').html('');
 		
-		addLog('🚀 Memulai generate ' + jumlah + ' artikel...');
+		if (enableScheduling) {
+			addLog('🚀 Memulai generate ' + jumlah + ' artikel dengan penjadwalan otomatis...');
+			addLog('📅 Artikel akan dipublish mulai tanggal: ' + startDate);
+		} else {
+			addLog('🚀 Memulai generate ' + jumlah + ' artikel...');
+		}
 		
-		generateNextArticle(kategori);
+		generateNextArticle(kategori, enableScheduling, startDate);
 	}
 	
-	function generateNextArticle(kategori) {
+	function generateNextArticle(kategori, enableScheduling, startDate) {
 		if (!isGenerating || currentIndex >= totalArticles) {
-			// Selesai
-			isGenerating = false;
-			$('#startGenerateBtn').show();
-			$('#stopGenerateBtn').hide();
-			$('#closeBtn').prop('disabled', false);
-			addLog('✅ Semua artikel berhasil digenerate!');
-			
-			// Reload datatable
-			setTimeout(function() {
-				location.reload();
-			}, 2000);
+			// Selesai generate, cek apakah perlu set scheduling
+			if (enableScheduling && generatedArticleIds.length > 0) {
+				addLog('📅 Setting jadwal publish untuk ' + generatedArticleIds.length + ' artikel...');
+				setArticleSchedule(generatedArticleIds, startDate);
+			} else {
+				finishBatchGenerate();
+			}
 			return;
 		}
 		
@@ -188,26 +220,67 @@ $(document).ready(function() {
 					addLog('❌ Error artikel ke-' + currentIndex + ': ' + response.error);
 				} else {
 					addLog('✅ Artikel ke-' + currentIndex + ' berhasil: "' + response.judul + '"');
+					if (response.artikel_id) {
+						generatedArticleIds.push(response.artikel_id);
+					}
 				}
 				
 				// Jeda 5 detik sebelum artikel berikutnya
 				if (isGenerating && currentIndex < totalArticles) {
 					addLog('⏳ Menunggu 5 detik...');
 					setTimeout(function() {
-						generateNextArticle(kategori);
+						generateNextArticle(kategori, enableScheduling, startDate);
 					}, 5000);
 				} else {
-					generateNextArticle(kategori);
+					generateNextArticle(kategori, enableScheduling, startDate);
 				}
 			},
 			error: function() {
 				addLog('❌ Error network artikel ke-' + currentIndex);
 				// Lanjut ke artikel berikutnya meski error
 				setTimeout(function() {
-					generateNextArticle(kategori);
+					generateNextArticle(kategori, enableScheduling, startDate);
 				}, 5000);
 			}
 		});
+	}
+
+	function setArticleSchedule(articleIds, startDate) {
+		$.ajax({
+			url: '<?= site_url('Artikel/set_batch_schedule') ?>',
+			type: 'POST',
+			data: { 
+				artikel_ids: articleIds,
+				start_date: startDate
+			},
+			dataType: 'json',
+			success: function(response) {
+				if (response.error) {
+					addLog('❌ Error setting schedule: ' + response.error);
+				} else {
+					addLog('✅ Jadwal publish berhasil diset!');
+					addLog('📅 Artikel akan tayang otomatis setiap hari mulai ' + startDate);
+				}
+				finishBatchGenerate();
+			},
+			error: function() {
+				addLog('❌ Error network saat setting schedule');
+				finishBatchGenerate();
+			}
+		});
+	}
+
+	function finishBatchGenerate() {
+		isGenerating = false;
+		$('#startGenerateBtn').show();
+		$('#stopGenerateBtn').hide();
+		$('#closeBtn').prop('disabled', false);
+		addLog('✅ Semua proses selesai!');
+		
+		// Reload datatable
+		setTimeout(function() {
+			location.reload();
+		}, 2000);
 	}
 	
 	function updateProgress(percent) {

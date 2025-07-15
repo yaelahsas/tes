@@ -52,6 +52,8 @@ if (!function_exists('get_status_badge')) {
     {
         if ($status == 'tampil') {
             return '<div class="badge badge-success">Tampil</div>';
+        } elseif ($status == 'scheduled') {
+            return '<div class="badge badge-warning">Terjadwal</div>';
         } else {
             return '<div class="badge badge-secondary">Draft</div>';
         }

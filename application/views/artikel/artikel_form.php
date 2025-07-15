@@ -51,6 +51,7 @@ $this->load->view('dist/_partials/header');
                                         <option value="">--Pilih Status--</option>
                                         <option value="draft" <?= (isset($status) && $status == 'draft') ? "selected" : null ?>>Draft</option>
                                         <option value="tampil" <?= (isset($status) && $status == 'tampil') ? "selected" : null ?>>Tampil</option>
+                                        <option value="scheduled" <?= (isset($status) && $status == 'scheduled') ? "selected" : null ?>>Terjadwal</option>
                                     </select>
                                     <?= form_error('status', '<small class="text-danger">', '</small>'); ?>
                                 </div>

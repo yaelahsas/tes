@@ -164,12 +164,13 @@ class Artikel extends CI_Controller
 				'status' => 'draft'
 			);
 			
-			$this->Artikel_model->insert($data);
+			$artikel_id = $this->Artikel_model->insert($data);
 			
-			if ($this->db->affected_rows() > 0) {
+			if ($artikel_id) {
 				echo json_encode(array(
 					'success' => true,
 					'judul' => $judul,
+					'artikel_id' => $artikel_id,
 					'message' => 'Artikel berhasil dibuat'
 				));
 			} else {
@@ -177,6 +178,43 @@ class Artikel extends CI_Controller
 			}
 		} else {
 			echo json_encode(array('error' => 'Gagal generate artikel AI'));
+		}
+	}
+
+	// Method untuk set jadwal publish batch artikel
+	public function set_batch_schedule()
+	{
+		header('Content-Type: application/json');
+		
+		$artikel_ids = $this->input->post('artikel_ids');
+		$start_date = $this->input->post('start_date');
+		
+		if (empty($artikel_ids)) {
+			echo json_encode(array('error' => 'Tidak ada artikel untuk dijadwalkan'));
+			return;
+		}
+		
+		$result = $this->Artikel_model->set_batch_publish_schedule($artikel_ids, $start_date);
+		
+		if ($result) {
+			echo json_encode(array(
+				'success' => true,
+				'message' => 'Jadwal publish berhasil diset untuk ' . count($artikel_ids) . ' artikel'
+			));
+		} else {
+			echo json_encode(array('error' => 'Gagal set jadwal publish'));
+		}
+	}
+
+	// Method untuk auto-publish artikel (dipanggil via cron job)
+	public function auto_publish()
+	{
+		$published_count = $this->Artikel_model->auto_publish_scheduled_articles();
+		
+		if ($published_count > 0) {
+			echo "Published $published_count articles successfully.";
+		} else {
+			echo "No articles to publish today.";
 		}
 	}
 

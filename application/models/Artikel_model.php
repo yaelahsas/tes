@@ -154,6 +154,53 @@ class Artikel_model extends CI_Model
 			$data['slug'] = $this->create_slug($data['judul']);
 		}
 		$this->db->insert($this->table, $data);
+		return $this->db->insert_id(); // Return ID artikel yang baru dibuat
+	}
+
+	// Method untuk set jadwal publish artikel batch
+	function set_batch_publish_schedule($artikel_ids, $start_date = null)
+	{
+		if (empty($artikel_ids)) return false;
+		
+		// Jika tidak ada start_date, mulai dari besok
+		if (!$start_date) {
+			$start_date = date('Y-m-d', strtotime('+1 day'));
+		}
+		
+		foreach ($artikel_ids as $index => $artikel_id) {
+			// Hitung tanggal publish (setiap hari bertambah 1)
+			$publish_date = date('Y-m-d', strtotime($start_date . ' +' . $index . ' days'));
+			
+			// Update artikel dengan tanggal publish
+			$this->db->where('id', $artikel_id);
+			$this->db->update($this->table, array(
+				'tanggal_publish' => $publish_date,
+				'status' => 'scheduled' // Status baru untuk artikel terjadwal
+			));
+		}
+		
+		return true;
+	}
+
+	// Method untuk auto-publish artikel yang sudah waktunya
+	function auto_publish_scheduled_articles()
+	{
+		$today = date('Y-m-d');
+		
+		// Cari artikel dengan status 'scheduled' dan tanggal_publish = hari ini
+		$this->db->where('status', 'scheduled');
+		$this->db->where('tanggal_publish <=', $today);
+		$this->db->update($this->table, array('status' => 'tampil'));
+		
+		return $this->db->affected_rows();
+	}
+
+	// Method untuk get artikel scheduled
+	function get_scheduled_articles()
+	{
+		$this->db->where('status', 'scheduled');
+		$this->db->order_by('tanggal_publish', 'ASC');
+		return $this->db->get($this->table)->result();
 	}
 
 	// update data
