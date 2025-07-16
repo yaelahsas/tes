@@ -226,6 +226,9 @@ if ($this->uri->segment(1) == "" || $this->uri->segment(1) == "Dashboard") { ?>
 							case 'tampil':
 								return '<span class="badge badge-success">Tampil</span>';
 								break;
+							case 'scheduled':
+								return '<span class="badge badge-warning">Terjadwal</span>';
+								break;
 							case 'draft':
 								return '<span class="badge badge-secondary">Draft</span>';
 								break;
