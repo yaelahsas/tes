@@ -62,6 +62,10 @@
             cursor: pointer;
             text-decoration: none;
         }
+        .dayun-float {
+            bottom: 290px;
+            background: linear-gradient(45deg, #3B82F6, #10B981);
+        }
         .daftar-float {
             bottom: 220px;
             background-color:rgb(37, 191, 211);
@@ -74,9 +78,19 @@
             bottom: 80px;
             background-color: #FF0000;
         }
-        .whatsapp-float img, .emergency-float img, .daftar-float img {
+        .whatsapp-float img, .emergency-float img, .daftar-float img, .dayun-float i {
             width: 40px;
             height: 40px;
+        }
+        .dayun-float i {
+            font-size: 24px;
+            color: white;
+            line-height: 60px;
+        }
+        .dayun-float:hover {
+            background: linear-gradient(45deg, #1E40AF, #059669);
+            transform: scale(1.1);
+            transition: all 0.3s ease;
         }
         .daftar-float:hover {
             background-color:rgb(76, 147, 228);
@@ -121,6 +135,7 @@
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#services">Pelayanan</a></li>
 					<li><a class="nav-link" href="<?= base_url('medis') ?>">Dokter</a></li>
 					<li><a class="nav-link" href="<?= base_url('berita') ?>">Berita</a></li>
+					<li><a class="nav-link" href="<?= base_url('dayun') ?>" style="background: linear-gradient(45deg, #3B82F6, #10B981); color: white; padding: 8px 16px; border-radius: 20px; margin: 0 5px;"><i class="fas fa-comments"></i> Dayun Chat</a></li>
 					<li><a class="nav-link scrollto" href="<?= base_url() ?>#contact">Kontak</a></li>
 					<li><a class="nav-link" href="<?= base_url('home/inovasi') ?>">Inovasi</a></li>
 				</ul>
