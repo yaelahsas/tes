@@ -33,9 +33,9 @@
     </div>
 
     <!-- Main Chat Interface -->
-    <div id="chatInterface" class="hidden flex flex-col h-full max-w-md mx-auto bg-white shadow-lg">
+    <div id="chatInterface" class="hidden flex flex-col h-screen max-w-md mx-auto bg-white shadow-lg">
         <!-- Header -->
-        <div class="bg-primary text-white p-4 flex items-center justify-between">
+        <div class="bg-primary text-white p-4 flex items-center justify-between flex-shrink-0">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                     <i class="fas fa-comments text-lg"></i>
@@ -52,7 +52,7 @@
         </div>
 
         <!-- Chat Messages Container -->
-        <div id="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+        <div id="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 min-h-0">
             <!-- Welcome Message -->
             <div class="flex justify-center">
                 <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm">
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Message Input -->
-        <div class="bg-white border-t border-gray-200 p-4">
+        <div class="bg-white border-t border-gray-200 p-4 flex-shrink-0">
             <form id="chatForm" class="flex items-center space-x-3">
                 <div class="flex-1 relative">
                     <input 
@@ -195,7 +195,7 @@
                     message: message
                 };
 
-                console.log('Sending to webhook:', this.webhookUrl, payload);
+               
 
                 try {
                     const controller = new AbortController();
@@ -213,8 +213,7 @@
 
                     clearTimeout(timeoutId);
 
-                    console.log('Webhook response status:', response.status);
-                    console.log('Webhook response headers:', Object.fromEntries(response.headers.entries()));
+               
 
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -222,7 +221,7 @@
 
                     // Get response text first
                     const responseText = await response.text();
-                    console.log('Webhook response text:', responseText);
+                
                     
                     // If response is empty, return success
                     if (!responseText || responseText.trim() === '') {
@@ -234,7 +233,7 @@
                     if (contentType.includes('application/json')) {
                         try {
                             const jsonResponse = JSON.parse(responseText);
-                            console.log('Parsed JSON response:', jsonResponse);
+                        
                             
                             // Check if response is array with output property
                             if (Array.isArray(jsonResponse) && jsonResponse.length > 0 && jsonResponse[0].output) {
