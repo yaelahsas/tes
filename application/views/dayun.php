@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Dayun - Chat Application</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,18 +24,18 @@
 <body class="bg-gray-100 h-screen overflow-hidden">
     <!-- Splash Screen -->
     <div id="splashScreen" class="fixed inset-0 z-50 bg-white">
-        <!-- Image Only Container -->
+        <!-- Image Container -->
         <div class="w-full h-full flex items-center justify-center">
-            <img src="<?= base_url('gambar/dayun.png') ?>" alt="Dayun AI Assistant" 
+            <img src="<?= base_url('gambar/inovasi_dayun.png') ?>" alt="Dayun AI Assistant" 
                  class="max-w-full max-h-full w-auto h-auto object-contain"
                  style="max-height: 90vh; max-width: 90vw;">
         </div>
     </div>
 
     <!-- Main Chat Interface -->
-    <div id="chatInterface" class="hidden flex flex-col h-screen max-w-md mx-auto bg-white shadow-lg">
+    <div id="chatInterface" class="hidden fixed inset-0 max-w-md mx-auto bg-white shadow-lg">
         <!-- Header -->
-        <div class="bg-primary text-white p-4 flex items-center justify-between flex-shrink-0">
+        <div class="absolute top-0 left-0 right-0 bg-primary text-white p-4 flex items-center justify-between z-10">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                     <i class="fas fa-comments text-lg"></i>
@@ -52,7 +52,7 @@
         </div>
 
         <!-- Chat Messages Container -->
-        <div id="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 min-h-0">
+        <div id="chatContainer" class="absolute top-20 left-0 right-0 overflow-y-auto p-4 space-y-4 bg-gray-50" style="bottom: max(6rem, calc(6rem + env(safe-area-inset-bottom, 0px)));">
             <!-- Welcome Message -->
             <div class="flex justify-center">
                 <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm">
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Message Input -->
-        <div class="bg-white border-t border-gray-200 p-4 flex-shrink-0">
+        <div class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 pb-8 z-10" style="padding-bottom: max(2rem, env(safe-area-inset-bottom, 2rem));">
             <form id="chatForm" class="flex items-center space-x-3">
                 <div class="flex-1 relative">
                     <input 
@@ -384,11 +384,10 @@
             }
         }
 
-        // Initialize chat when DOM is loaded
+        // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Show splash screen for 3 seconds
+            // Show splash screen for 3 seconds then fade to chat
             setTimeout(() => {
-                // Hide splash screen with fade effect
                 const splashScreen = document.getElementById('splashScreen');
                 const chatInterface = document.getElementById('chatInterface');
                 
