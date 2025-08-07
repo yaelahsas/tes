@@ -45,29 +45,48 @@
                     <p class="text-sm text-blue-100">RSUD Genteng</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-2">
-                <div class="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
-                <span class="text-sm">Online</span>
+            <div class="flex items-center space-x-3">
+                <!-- Clear Chat Button -->
+                <button id="clearChatBtn" class="text-white hover:text-blue-200 transition-colors" title="Hapus Riwayat Chat">
+                    <i class="fas fa-trash text-sm"></i>
+                </button>
+                <!-- Online Status -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
+                    <span class="text-sm">Online</span>
+                </div>
             </div>
         </div>
 
         <!-- Chat Messages Container -->
         <div id="chatContainer" class="absolute top-20 left-0 right-0 overflow-y-auto p-4 space-y-4 bg-gray-50" style="bottom: max(6rem, calc(6rem + env(safe-area-inset-bottom, 0px)));">
-            <!-- Welcome Message -->
-            <div class="flex justify-center">
-                <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm">
-                    Selamat datang di Dayun Chat! 🤖
+            <!-- Loading indicator for chat history -->
+            <div id="historyLoading" class="flex justify-center py-4">
+                <div class="flex items-center space-x-2 text-gray-500">
+                    <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                    <span class="text-sm">Memuat riwayat chat...</span>
                 </div>
             </div>
             
-            <!-- Sample Messages -->
-            <div class="flex justify-start">
-                <div class="max-w-xs lg:max-w-md">
-                    <div class="bg-white rounded-lg shadow-sm p-3 border">
-                        <div class="text-gray-800">Halo! Saya <strong>Dayun</strong> AI Assistant RSUD Genteng. Ada yang bisa saya bantu mengenai informasi rumah sakit?</div>
-                        <div class="flex items-center justify-between mt-2">
-                            <span class="text-xs text-gray-500">AI Assistant</span>
-                            <span class="text-xs text-gray-400">10:30</span>
+            <!-- Chat history will be loaded here -->
+            <div id="chatHistory"></div>
+            
+            <!-- Welcome Message (shown only for new sessions) -->
+            <div id="welcomeMessage" class="hidden">
+                <div class="flex justify-center">
+                    <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm">
+                        Selamat datang di Dayun Chat! 🤖
+                    </div>
+                </div>
+                
+                <div class="flex justify-start">
+                    <div class="max-w-xs lg:max-w-md">
+                        <div class="bg-white rounded-lg shadow-sm p-3 border">
+                            <div class="text-gray-800">Halo! Saya <strong>Dayun</strong> AI Assistant RSUD Genteng. Ada yang bisa saya bantu mengenai informasi rumah sakit?</div>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs text-gray-500">AI Assistant</span>
+                                <span class="text-xs text-gray-400"><?= date('H:i') ?></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,12 +136,18 @@
         class DayunChat {
             constructor() {
                 this.chatContainer = document.getElementById('chatContainer');
+                this.chatHistory = document.getElementById('chatHistory');
                 this.messageInput = document.getElementById('messageInput');
                 this.chatForm = document.getElementById('chatForm');
                 this.sendBtn = document.getElementById('sendBtn');
+                this.clearChatBtn = document.getElementById('clearChatBtn');
+                this.historyLoading = document.getElementById('historyLoading');
+                this.welcomeMessage = document.getElementById('welcomeMessage');
                 this.typingIndicator = null; // Will be created dynamically
                 this.loadingOverlay = document.getElementById('loadingOverlay');
                 this.webhookUrl = 'https://n8n.rsudgenteng.id/webhook/get-whatsapp';
+                this.sessionId = '<?= $session_id ?>';
+                this.lastMessageId = null; // Track last user message for AI response updates
                 
                 this.init();
             }
@@ -136,8 +161,41 @@
                     }
                 });
                 
-                // Auto-scroll to bottom
-                this.scrollToBottom();
+                // Clear chat button
+                this.clearChatBtn.addEventListener('click', () => this.clearChat());
+                
+                // Load chat history
+                this.loadChatHistory();
+            }
+
+            async loadChatHistory() {
+                try {
+                    const response = await fetch(`<?= base_url('dayun/get_chat_history') ?>?session_id=${this.sessionId}`);
+                    const data = await response.json();
+                    
+                    this.historyLoading.style.display = 'none';
+                    
+                    if (data.success && data.data && data.data.length > 0) {
+                        // Load existing chat history
+                        data.data.forEach(message => {
+                            if (message.message_type === 'user') {
+                                this.addMessageToHistory(message.message_content, 'user', message.created_at);
+                            }
+                            if (message.ai_response) {
+                                this.addMessageToHistory(message.ai_response, 'ai', message.created_at);
+                            }
+                        });
+                    } else {
+                        // Show welcome message for new sessions
+                        this.welcomeMessage.classList.remove('hidden');
+                    }
+                    
+                    this.scrollToBottom();
+                } catch (error) {
+                    console.error('Error loading chat history:', error);
+                    this.historyLoading.style.display = 'none';
+                    this.welcomeMessage.classList.remove('hidden');
+                }
             }
 
             async handleSubmit(e) {
@@ -150,8 +208,9 @@
                 this.addMessage(message, 'user');
                 this.messageInput.value = '';
                 
-                // Track message sending
-                this.trackMessage();
+                // Save user message to database
+                const startTime = Date.now();
+                await this.saveMessage(message, 'user');
                 
                 // Show typing indicator immediately (no loading overlay)
                 this.showTypingIndicator(true);
@@ -159,15 +218,26 @@
                 try {
                     // Send to n8n webhook (no artificial delay)
                     const response = await this.sendToWebhook(message);
+                    const responseTime = Date.now() - startTime;
                     
                     // Hide typing indicator and show response immediately
                     this.showTypingIndicator(false);
                     
+                    let aiResponse = '';
                     if (response && response.message) {
-                        this.addMessage(response.message, 'admin');
+                        aiResponse = response.message;
+                        this.addMessage(response.message, 'ai');
                     } else {
-                        this.addMessage('Terima kasih atas pesan Anda. Tim kami akan segera merespons.', 'admin');
+                        aiResponse = 'Terima kasih atas pesan Anda. Tim kami akan segera merespons.';
+                        this.addMessage(aiResponse, 'ai');
                     }
+                    
+                    // Save AI response to database
+                    await this.saveMessage(aiResponse, 'ai', {
+                        webhook_response: JSON.stringify(response),
+                        response_time_ms: responseTime,
+                        is_successful: true
+                    });
                     
                 } catch (error) {
                     console.error('Error sending message:', error);
@@ -185,27 +255,39 @@
                         errorMessage = 'Response terlalu lama. Server mungkin sedang sibuk.';
                     }
                     
-                    this.addMessage(errorMessage + ' Silakan coba lagi.', 'system');
+                    const fullErrorMessage = errorMessage + ' Silakan coba lagi.';
+                    this.addMessage(fullErrorMessage, 'system');
+                    
+                    // Save error message to database
+                    await this.saveMessage(fullErrorMessage, 'ai', {
+                        webhook_response: JSON.stringify({error: error.message}),
+                        response_time_ms: Date.now() - startTime,
+                        is_successful: false
+                    });
                 }
             }
 
-            // Track message sending to database
-            async trackMessage() {
+            // Save message to database
+            async saveMessage(message, messageType, additionalData = {}) {
                 try {
-                    await fetch('<?= base_url('dayun/track_message') ?>', {
+                    const payload = {
+                        session_id: this.sessionId,
+                        message: message,
+                        message_type: messageType,
+                        ...additionalData
+                    };
+                    
+                    await fetch('<?= base_url('dayun/save_message') ?>', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         },
-                        body: JSON.stringify({
-                            action: 'track_message',
-                            timestamp: new Date().toISOString()
-                        })
+                        body: JSON.stringify(payload)
                     });
                 } catch (error) {
                     // Silent fail - don't interrupt user experience
-                    console.log('Message tracking failed:', error);
+                    console.log('Message saving failed:', error);
                 }
             }
 
@@ -314,7 +396,7 @@
                             </div>
                         </div>
                     `;
-                } else if (sender === 'admin') {
+                } else if (sender === 'ai' || sender === 'admin') {
                     messageDiv.className = 'flex justify-start';
                     messageDiv.innerHTML = `
                         <div class="max-w-xs lg:max-w-md">
@@ -338,6 +420,77 @@
 
                 this.chatContainer.appendChild(messageDiv);
                 this.scrollToBottom();
+            }
+
+            addMessageToHistory(message, sender, timestamp) {
+                const messageDiv = document.createElement('div');
+                const messageTime = new Date(timestamp);
+                const timeString = messageTime.toLocaleTimeString('id-ID', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+
+                if (sender === 'user') {
+                    messageDiv.className = 'flex justify-end';
+                    messageDiv.innerHTML = `
+                        <div class="max-w-xs lg:max-w-md">
+                            <div class="bg-primary text-white rounded-lg shadow-sm p-3">
+                                <p>${this.escapeHtml(message)}</p>
+                                <div class="flex items-center justify-between mt-2">
+                                    <span class="text-xs text-blue-100">Anda</span>
+                                    <span class="text-xs text-blue-200">${timeString}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (sender === 'ai' || sender === 'admin') {
+                    messageDiv.className = 'flex justify-start';
+                    messageDiv.innerHTML = `
+                        <div class="max-w-xs lg:max-w-md">
+                            <div class="bg-white rounded-lg shadow-sm p-3 border">
+                                <div class="text-gray-800">${this.formatMessage(message)}</div>
+                                <div class="flex items-center justify-between mt-2">
+                                    <span class="text-xs text-gray-500">AI Assistant</span>
+                                    <span class="text-xs text-gray-400">${timeString}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                this.chatHistory.appendChild(messageDiv);
+            }
+
+            async clearChat() {
+                if (confirm('Apakah Anda yakin ingin menghapus riwayat chat ini? Tindakan ini tidak dapat dibatalkan.')) {
+                    try {
+                        const response = await fetch('<?= base_url('dayun/clear_session') ?>', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            // Clear chat container
+                            this.chatHistory.innerHTML = '';
+                            this.welcomeMessage.classList.remove('hidden');
+                            
+                            // Update session ID
+                            this.sessionId = data.new_session_id;
+                            
+                            this.scrollToBottom();
+                        } else {
+                            alert('Gagal menghapus riwayat chat. Silakan coba lagi.');
+                        }
+                    } catch (error) {
+                        console.error('Error clearing chat:', error);
+                        alert('Terjadi kesalahan saat menghapus riwayat chat.');
+                    }
+                }
             }
 
             showLoading(show) {
