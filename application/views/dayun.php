@@ -150,6 +150,9 @@
                 this.addMessage(message, 'user');
                 this.messageInput.value = '';
                 
+                // Track message sending
+                this.trackMessage();
+                
                 // Show typing indicator immediately (no loading overlay)
                 this.showTypingIndicator(true);
 
@@ -183,6 +186,26 @@
                     }
                     
                     this.addMessage(errorMessage + ' Silakan coba lagi.', 'system');
+                }
+            }
+
+            // Track message sending to database
+            async trackMessage() {
+                try {
+                    await fetch('<?= base_url('dayun/track_message') ?>', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            action: 'track_message',
+                            timestamp: new Date().toISOString()
+                        })
+                    });
+                } catch (error) {
+                    // Silent fail - don't interrupt user experience
+                    console.log('Message tracking failed:', error);
                 }
             }
 
